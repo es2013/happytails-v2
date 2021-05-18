@@ -21,9 +21,8 @@ function App() {
       {/* set up react-router just like in porfolio */}
       <Router >
         <Navigation />
-        <h2>Hello Folks!</h2>
-        {/* <Route path="/" component={Homepage} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/" component={Homepage} />
+        {/* <Route path="/dashboard" component={Dashboard} />
         <Route path="/admin" component={AdminDashboard} />
         <Route path="/login-signup" component={LoginSignup} />
         <Route path="/single-dog" component={SingleDog} /> */}

@@ -3,11 +3,11 @@ import React from 'react';
 function Navigation() {
 
     return (
-        <header class="navbar-fixed">
+        <header className="navbar-fixed">
             <nav>
-                <div class="nav-wrapper deep-purple darken-2">
-                    <a href="/" class="homepage-link">Happy Tails</a>
-                    <ul id="nav-mobile" class="right">
+                <div className="nav-wrapper deep-purple darken-2">
+                    <a href="/" className="homepage-link">Happy Tails</a>
+                    <ul id="nav-mobile" className="right">
                         {/* {{ #if loggedIn }} */}
                         <li><a href="/dashboard">Dashboard</a></li>
                         <li><a id="logout" href="/logout">Logout</a></li>
