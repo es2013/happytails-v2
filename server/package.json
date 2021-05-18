@@ -1,0 +1,11 @@
+{"name":"happytails-v2",
+  "dependencies":
+  {
+    "apollo-server-express":"^2.24.0",
+    "graphql":"^15.5.0","nodemon":"^2.0.7"},
+     "scripts":{
+      "start":"node server.js",
+      "watch":"nodemon",
+      "seed":"node seeders/seeds.js"
+    }
+  }
