@@ -7,7 +7,6 @@ import React from "react";
 // } from "react-router-dom";
 import './App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './images/favicon.ico'
 import Header from './components/Header';
 
 function App() {
