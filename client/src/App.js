@@ -1,31 +1,20 @@
 import React from "react";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+// import {
+//   HashRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Projects from './pages/Projects'; //project cards listed out in Project component
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from './images/favicon.ico'
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Header />
+     <h2>Hello Folks!</h2>
     </div>
   );
 }
