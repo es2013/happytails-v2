@@ -1,31 +1,33 @@
 import React from "react";
 import {
   HashRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+  Route
+} from 'react-router-dom';
+
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Projects from './pages/Projects'; //project cards listed out in Project component
+
+import Homepage from './pages/Homepage';
+import Dashboard from './pages/Dashboard';
+import AdminDashboard from './pages/AdminDashBoard';
+import LoginSignup from './pages/LoginSignup';
+import SingleDog from './pages/SingleDog';
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
 
 function App() {
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* set up react-router just like in porfolio */}
+      <Router >
+        <Navigation />
+        <Route path="/" component={Homepage} />
+        {/* <Route path="/dashboard" component={Dashboard} />
+        <Route path="/admin" component={AdminDashboard} />
+        <Route path="/login-signup" component={LoginSignup} />
+        <Route path="/single-dog" component={SingleDog} /> */}
+        <Footer />
+      </Router>
     </div>
   );
 }
