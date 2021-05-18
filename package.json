@@ -1,10 +1,37 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "apollo-server-express": "^2.24.0",
     "dotenv": "^9.0.2",
     "graphql": "^15.5.0",
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1"
+=======
+  "name": "happytails-v2",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "heroku-postbuild": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/es2013/happytails-v2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/es2013/happytails-v2/issues"
+  },
+  "homepage": "https://github.com/es2013/happytails-v2#readme",
+  "dependencies": {
+    "dotenv": "^9.0.2"
+>>>>>>> d6a983b049d17c64dbfb42a6d892921fb7e64d3e
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
