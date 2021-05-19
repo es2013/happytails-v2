@@ -9,7 +9,7 @@ export const LOGIN = gql`
         username
       }
     }
-  };
+  }
 `;
 
 export const ADD_USER = gql`
@@ -32,11 +32,13 @@ export const ADD_USER = gql`
         _id
       }
     }
-  };
+  }
 `;
 
+/*
 export const ADD_CANINE = gql``;
 
 export const ADD_EMPLOYEE = gql``;
 
 export const ADD_VOLUNTEER = gql``;
+*/

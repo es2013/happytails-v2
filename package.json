@@ -23,7 +23,8 @@
   "homepage": "https://github.com/es2013/happytails-v2#readme",
   "dependencies": {
     "dotenv": "^9.0.2",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "redux": "^4.1.0"
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
