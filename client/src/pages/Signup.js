@@ -57,6 +57,16 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
+          <label htmlFor="userName">Username:</label>
+          <input
+            placeholder="username"
+            name="username"
+            type="username"
+            id="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
           <label htmlFor="email">Email:</label>
           <input
             placeholder="youremail@test.com"
