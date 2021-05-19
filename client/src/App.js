@@ -33,28 +33,28 @@ const client = new ApolloClient({
 function App() {
   return (
 
-    
-      
-      <ApolloProvider client={client}>
-        <Router >
-          <div>
-            {/* <Provider store={store}>  */}
-            <Navigation />
-            <Switch>
-              <Route path="/" component={Homepage} />
-          {/* <Route path="/dashboard" component={Dashboard} />
-              <Route path="/admin" component={AdminDashboard} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/success" component={Success} />
-              <Route path="/single-dog/:id" component={SingleDog} /> */}
-          <Footer />
-        </Switch>
-        {/* </Provider> */}
-      </div>
-    </Router>
-  </ApolloProvider>
-    
+
+
+    <ApolloProvider client={client}>
+      <Router >
+        <div>
+          {/* <Provider store={store}>  */}
+          <Navigation />
+          <Switch>
+            <Route path="/" component={Homepage} />
+            <Route path="/dashboard" component={Dashboard} />
+            {/* <Route path="/admin" component={AdminDashboard} /> */}
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            {/* <Route exact path="/success" component={Success} /> */}
+            {/* <Route path="/single-dog/:id" component={SingleDog} /> */}
+            <Footer />
+          </Switch>
+          {/* </Provider> */}
+        </div>
+      </Router>
+    </ApolloProvider>
+
   );
 }
 

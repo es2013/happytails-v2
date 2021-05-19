@@ -10,10 +10,15 @@ function Homepage() {
     return (
         <div className="homepage-container">
         <Hero />
+
         <h2>Hello Folks!</h2>
+
         <UserMessage />
-        <TableAm/>
+        
+        <TableAm />
+
         <TablePm />
+
         </div>
     )
 };
