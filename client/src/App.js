@@ -15,7 +15,11 @@ import Navigation from "./components/Navigation";
 
 // redux //
 import { Provider } from 'react-redux';
+<<<<<<< HEAD
 import store from './utils/store';
+=======
+// import store from './utils/store';
+>>>>>>> 1ccff4cb6b376eaeaf215d2311c13511a84a7ea7
 // import Success from "./pages/Success";
 
 const client = new ApolloClient({
@@ -38,7 +42,11 @@ function App() {
       <ApolloProvider client={client}>
         <Router >
           <div>
+<<<<<<< HEAD
             <Provider store={store}> 
+=======
+            {/* <Provider store={store}>  */}
+>>>>>>> 1ccff4cb6b376eaeaf215d2311c13511a84a7ea7
             <Navigation />
             <Switch>
               <Route path="/" component={Homepage} />
@@ -50,7 +58,11 @@ function App() {
               <Route path="/single-dog/:id" component={SingleDog} /> */}
           <Footer />
         </Switch>
+<<<<<<< HEAD
         </Provider>
+=======
+        {/* </Provider> */}
+>>>>>>> 1ccff4cb6b376eaeaf215d2311c13511a84a7ea7
       </div>
     </Router>
   </ApolloProvider>
