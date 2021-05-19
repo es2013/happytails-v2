@@ -1,5 +1,4 @@
-const IsInteger = require("es-abstract/2015/IsInteger");
-const { Schema } = require("mongoose");
+const { Schema } = require('mongoose');
 
 const canineSchema = new Schema({
   kennelId: {
@@ -44,4 +43,3 @@ const canineSchema = new Schema({
 });
 
 module.exports = canineSchema;
-

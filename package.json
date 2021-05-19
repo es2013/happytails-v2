@@ -21,10 +21,16 @@
     "url": "https://github.com/es2013/happytails-v2/issues"
   },
   "homepage": "https://github.com/es2013/happytails-v2#readme",
-  "dependencies": {
-    "dotenv": "^9.0.2"
-  },
+  
+    "dependencies": {
+      "dotenv": "^9.0.2",
+      "if-env": "^1.0.4"
+    },
+  
   "devDependencies": {
     "concurrently": "^6.1.0"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }

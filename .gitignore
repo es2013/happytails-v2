@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+.DS_Store
+node_modules/
+server/node_modules
+client/node_modules
+=======
+=======
+>>>>>>> 1ccff4cb6b376eaeaf215d2311c13511a84a7ea7
 server/node_modules
 node_modules
 <<<<<<< HEAD
@@ -7,3 +16,7 @@ client/node_modules
 .env
 .vscode
 >>>>>>> d6a983b049d17c64dbfb42a6d892921fb7e64d3e
+<<<<<<< HEAD
+>>>>>>> 374fb7f2da1451b8335082491a32da4efadaf36a
+=======
+>>>>>>> 1ccff4cb6b376eaeaf215d2311c13511a84a7ea7
