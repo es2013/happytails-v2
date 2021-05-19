@@ -22,9 +22,17 @@
   },
   "homepage": "https://github.com/es2013/happytails-v2#readme",
   "dependencies": {
+<<<<<<< HEAD
     "dotenv": "^9.0.2"
+=======
+    "dotenv": "^9.0.2",
+    "if-env": "^1.0.4"
+>>>>>>> feature/signup-user
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }

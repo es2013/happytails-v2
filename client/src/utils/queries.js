@@ -1,5 +1,12 @@
 import gql from 'graphql-tag';
 
-
-// INSERT CANINE? EMPLOYEES? 
-
+export const GET_ME = gql`
+  {
+    me {
+      _id
+      username
+      email
+      firstNamelastName
+    }
+  };
+`;
