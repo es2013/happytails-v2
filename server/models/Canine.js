@@ -1,6 +1,5 @@
 const { Schema } = require('mongoose');
 
-
 const canineSchema = new Schema({
   owner: [
     {
@@ -11,7 +10,6 @@ const canineSchema = new Schema({
     type: String,
     required: true,
   },
-  
   canineId: {
     type: String,
     required: true,
@@ -19,7 +17,6 @@ const canineSchema = new Schema({
   image: {
     type: String,
   },
- 
   name: {
     type: String,
     required: true,
