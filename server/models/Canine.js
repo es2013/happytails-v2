@@ -21,6 +21,10 @@ const canineSchema = new Schema({
     type: String,
     required: true,
   },
+  age:{
+      type:INTEGER,
+      required:true,
+  },
   has_potty_am: {
     type: String,
     required: true,
@@ -40,3 +44,4 @@ const canineSchema = new Schema({
 });
 
 module.exports = canineSchema;
+
