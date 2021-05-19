@@ -26,7 +26,12 @@
     "dotenv": "^9.0.2"
 =======
     "dotenv": "^9.0.2",
+<<<<<<< HEAD
     "if-env": "^1.0.4"
+>>>>>>> feature/signup-user
+=======
+    "if-env": "^1.0.4",
+    "redux": "^4.1.0"
 >>>>>>> feature/signup-user
   },
   "devDependencies": {
