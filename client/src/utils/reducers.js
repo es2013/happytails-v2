@@ -1,92 +1,92 @@
 // import { useReducer } from "react";
-import {
-    UPDATE_CANINE,
-    UPDATE_EMPLOYEE,
-    UPDATE_VOLUNTEER,
+// import {
+//     UPDATE_CANINE,
+//     UPDATE_EMPLOYEE,
+//     UPDATE_VOLUNTEER,
     
-  } from "./actions";
+//   } from "./actions";
   
-  const initialState = {
-    products: [],
-    categories: [],
-    currentCategory: '',
-    cart: [],
-    cartOpen: false
+//   const initialState = {
+//     products: [],
+//     categories: [],
+//     currentCategory: '',
+//     cart: [],
+//     cartOpen: false
   
-  }
+//   }
   
-  export const reducer = (state = initialState, action) => {
-    switch (action.type) {
-      case UPDATE_PRODUCTS:
-        return {
-          ...state,
-          products: [...action.products],
-        };
+//   export const reducer = (state = initialState, action) => {
+//     switch (action.type) {
+//       case UPDATE_PRODUCTS:
+//         return {
+//           ...state,
+//           products: [...action.products],
+//         };
   
-      case UPDATE_CATEGORIES:
-        return {
-          ...state,
-          categories: [...action.categories],
-        };
+//       case UPDATE_CATEGORIES:
+//         return {
+//           ...state,
+//           categories: [...action.categories],
+//         };
   
-      case UPDATE_CURRENT_CATEGORY:
-        return {
-          ...state,
-          currentCategory: action.currentCategory,
-        };
-      case ADD_TO_CART:
-        return {
-          ...state,
-          cartOpen: true,
-          cart: [...state.cart, action.product],
-        };
+//       case UPDATE_CURRENT_CATEGORY:
+//         return {
+//           ...state,
+//           currentCategory: action.currentCategory,
+//         };
+//       case ADD_TO_CART:
+//         return {
+//           ...state,
+//           cartOpen: true,
+//           cart: [...state.cart, action.product],
+//         };
   
-      case ADD_MULTIPLE_TO_CART:
-        return {
-          ...state,
-          cart: [...state.cart, ...action.products],
-        };
+//       case ADD_MULTIPLE_TO_CART:
+//         return {
+//           ...state,
+//           cart: [...state.cart, ...action.products],
+//         };
   
-      case REMOVE_FROM_CART:
-        let newState = state.cart.filter((product) => {
-          return product._id !== action._id;
-        });
+//       case REMOVE_FROM_CART:
+//         let newState = state.cart.filter((product) => {
+//           return product._id !== action._id;
+//         });
   
-        return {
-          ...state,
-          cartOpen: newState.length > 0,
-          cart: newState,
-        };
+//         return {
+//           ...state,
+//           cartOpen: newState.length > 0,
+//           cart: newState,
+//         };
   
-      case UPDATE_CART_QUANTITY:
-        return {
-          ...state,
-          cartOpen: true,
-          cart: state.cart.map((product) => {
-            if (action._id === product._id) {
-              product.purchaseQuantity = action.purchaseQuantity;
-            }
-            return product;
-          }),
-        };
+//       case UPDATE_CART_QUANTITY:
+//         return {
+//           ...state,
+//           cartOpen: true,
+//           cart: state.cart.map((product) => {
+//             if (action._id === product._id) {
+//               product.purchaseQuantity = action.purchaseQuantity;
+//             }
+//             return product;
+//           }),
+//         };
   
-      case CLEAR_CART:
-        return {
-          ...state,
-          cartOpen: false,
-          cart: [],
-        };
+//       case CLEAR_CART:
+//         return {
+//           ...state,
+//           cartOpen: false,
+//           cart: [],
+//         };
   
-      case TOGGLE_CART:
-        return {
-          ...state,
-          cartOpen: !state.cartOpen,
-        };
+//       case TOGGLE_CART:
+//         return {
+//           ...state,
+//           cartOpen: !state.cartOpen,
+//         };
   
-      default:
-        return state;
-    }
-  };
+//       default:
+//         return state;
+//     }
+//   };
   
   // export function useProductReducer(initialState) {
   //   return useReducer(reducer, initialState);
@@ -94,4 +94,4 @@ import {
   
   
   // redux 
-  export default reducer;
+//   export default reducer;

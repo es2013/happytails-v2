@@ -1,12 +1,4 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "apollo-server-express": "^2.24.0",
-    "dotenv": "^9.0.2",
-    "graphql": "^15.5.0",
-    "if-env": "^1.0.4",
-    "jsonwebtoken": "^8.5.1"
-=======
   "name": "happytails-v2",
   "description": "",
   "version": "1.0.0",
@@ -31,7 +23,6 @@
   "homepage": "https://github.com/es2013/happytails-v2#readme",
   "dependencies": {
     "dotenv": "^9.0.2"
->>>>>>> d6a983b049d17c64dbfb42a6d892921fb7e64d3e
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
