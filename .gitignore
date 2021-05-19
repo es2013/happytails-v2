@@ -1,5 +1,9 @@
 server/node_modules
 node_modules
+<<<<<<< HEAD
+client/node_modules
+=======
 .DS_Store
 .env
 .vscode
+>>>>>>> d6a983b049d17c64dbfb42a6d892921fb7e64d3e

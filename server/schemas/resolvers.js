@@ -1,5 +1,6 @@
-// import the gql tagged template function
-const { gql } = require('apollo-server-express');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Canine } = require("../models");
+const { signToken } = require("../utils/auth");
 
-// export the typeDefs
-module.exports = typeDefs;
+
+module.exports = resolvers;
