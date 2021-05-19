@@ -16,7 +16,7 @@ import Navigation from "./components/Navigation";
 // redux //
 import { Provider } from 'react-redux';
 import store from './utils/store';
-import Success from "./pages/Success";
+// import Success from "./pages/Success";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -44,7 +44,8 @@ function App() {
               <Route path="/" component={Homepage} />
           {/* <Route path="/dashboard" component={Dashboard} />
               <Route path="/admin" component={AdminDashboard} />
-              <Route path="/login-signup" component={LoginSignup} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
               <Route exact path="/success" component={Success} />
               <Route path="/single-dog/:id" component={SingleDog} /> */}
           <Footer />
