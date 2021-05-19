@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-
 import './App.css';
 
 
@@ -16,6 +15,8 @@ import Navigation from "./components/Navigation";
 
 // redux //
 import { Provider } from 'react-redux';
+import store from './utils/store';
+
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token')
@@ -31,18 +32,26 @@ const client = new ApolloClient({
 function App() {
   return (
 
-    <div className="App">
-      {/* set up react-router just like in porfolio */}
-      <Router >
-        <Navigation />
-        <Route path="/" component={Homepage} />
-        {/* <Route path="/dashboard" component={Dashboard} />
-        <Route path="/admin" component={AdminDashboard} />
-        <Route path="/login-signup" component={LoginSignup} />
-        <Route path="/single-dog/:id" component={SingleDog} /> */}
-        <Footer />
-      </Router>
-    </div>
+    
+      
+      <ApolloProvider client={client}>
+        <Router >
+          <div>
+            <Provider store={store}> 
+            <Navigation />
+            <Switch>
+              <Route path="/" component={Homepage} />
+          {/* <Route path="/dashboard" component={Dashboard} />
+              <Route path="/admin" component={AdminDashboard} />
+              <Route path="/login-signup" component={LoginSignup} />
+              <Route path="/single-dog/:id" component={SingleDog} /> */}
+          <Footer />
+        </Switch>
+        </Provider>
+      </div>
+    </Router>
+  </ApolloProvider>
+    
   );
 }
 
