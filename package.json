@@ -1,1 +1,20 @@
-{}
+{
+  "name": "happytails-v2",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/es2013/happytails-v2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/es2013/happytails-v2/issues"
+  },
+  "homepage": "https://github.com/es2013/happytails-v2#readme"
+}
