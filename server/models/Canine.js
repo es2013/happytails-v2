@@ -2,7 +2,7 @@ const { Schema } = require('mongoose');
 
 const canineSchema = new Schema({
   kennelId: {
-    type: INTEGER,
+    type: String,
     required: true,
   },
   canineDemeanor: {
@@ -10,7 +10,7 @@ const canineSchema = new Schema({
     required: true,
   },
   canineId: {
-    type: INTEGER,
+    type: String,
     required: true,
   },
   image: {
@@ -21,7 +21,7 @@ const canineSchema = new Schema({
     required: true,
   },
   age:{
-      type:INTEGER,
+      type:String,
       required:true,
   },
   has_potty_am: {

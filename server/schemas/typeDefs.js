@@ -23,6 +23,12 @@ const typeDefs = gql`
             firstName: String!,
             lastName: String!,
             isAdmin: Boolean): Auth
+    removeUser(username: String!,
+            email: String!,
+            password: String!,
+            firstName: String!,
+            lastName: String!,
+            isAdmin: Boolean): Auth
   }
 
   type Auth {
