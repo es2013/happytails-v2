@@ -8,7 +8,7 @@ import './App.css';
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashBoard';
-import LoginSignup from './pages/LoginSignup';
+import LoginSignup from './pages/Login';
 import SingleDog from './pages/SingleDog';
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
