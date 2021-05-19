@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 
+
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -9,8 +10,9 @@ export const LOGIN = gql`
         username
       }
     }
-  };
+  }
 `;
+
 
 export const ADD_USER = gql`
   mutation addUser(
@@ -32,11 +34,11 @@ export const ADD_USER = gql`
         _id
       }
     }
-  };
+  }
 `;
 
+/*
 export const ADD_CANINE = gql``;
-
 export const ADD_EMPLOYEE = gql``;
-
 export const ADD_VOLUNTEER = gql``;
+*/

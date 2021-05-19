@@ -44,8 +44,7 @@ function App() {
             <Route path="/" component={Homepage} />
             <Route path="/dashboard" component={Dashboard} />
             {/* <Route path="/admin" component={AdminDashboard} /> */}
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={LoginSignup} />
             {/* <Route exact path="/success" component={Success} /> */}
             {/* <Route path="/single-dog/:id" component={SingleDog} /> */}
             <Footer />
