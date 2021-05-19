@@ -8,6 +8,7 @@ const typeDefs = gql`
     email: String
     firstName: String
     lastName: String
+    isAdmin: Boolean
   }
 
   type Query {
@@ -16,7 +17,12 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!, firstName: String!, lastName: String!): Auth
+    addUser(username: String!,
+            email: String!,
+            password: String!,
+            firstName: String!,
+            lastName: String!,
+            isAdmin: Boolean): Auth
   }
 
   type Auth {
