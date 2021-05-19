@@ -9,16 +9,13 @@ function Homepage() {
 
     return (
         <div className="homepage-container">
-        <Hero />
+            <Hero />
 
-        <h2>Hello Folks!</h2>
+            <UserMessage />
 
-        <UserMessage />
-        
-        <TableAm />
+            <TableAm />
 
-        <TablePm />
-
+            <TablePm />
         </div>
     )
 };
