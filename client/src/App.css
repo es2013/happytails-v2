@@ -37,8 +37,18 @@ body {
   background-position: center;
 }
 
-
-
+.speech-bubble {
+  position:relative;
+  padding: 15px;
+  margin: 3em;
+  background-color:#FFF;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border: 10px solid rgba(0,0,0,0.095);
+  font-weight: bold;
+  text-align: center;
+}
 
 
 
