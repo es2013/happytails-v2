@@ -20,11 +20,19 @@ const resolvers = {
       return await Canine.find();
     },
     canine: async () => {
-      return await Canine.findById(context.canine._id).populate('name');
+      return await Canine.findById(context.canine._id).populate(
+        'name',
+        'kennel'
+      );
     },
   },
 
   Mutation: {
+    // Add a new canine
+    addDog: async (parent, args) => {
+      const canine = await Canine.create(args);
+      return canine;
+    },
     // Add a new user
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -50,13 +58,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-     // Add a new canine 
-    addDog: async (parent, args) => {
-      const canine = await Canine.create(args);
-      return { canine };
-    }
-    
-  }
+  },
 };
 
 module.exports = resolvers;

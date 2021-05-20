@@ -23,18 +23,29 @@ const typeDefs = gql`
   type Query {
     me: User
     canines: [Canine]
-    canine(name: String!): Canine
+    canine(
+      name: String!
+      kennel: String!
+      demeanor: String!
+      status: String!
+    ): Canine
   }
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!,
-            email: String!,
-            password: String!,
-            firstName: String!,
-            lastName: String!,
-            isAdmin: Boolean): Auth
-    addDog(name:String!, kennel:String!,demeanor: String!,status: String!): Canine
-
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      firstName: String!
+      lastName: String!
+      isAdmin: Boolean
+    ): Auth
+    addDog(
+      name: String!
+      kennel: String!
+      demeanor: String!
+      status: String!
+    ): Canine
   }
   type Auth {
     token: ID!
