@@ -1,0 +1,28 @@
+
+.homepage-link {
+    color: white;
+    font-size: xx-large;
+    font-family: Tahoma;
+    margin: 5%;
+    font-weight: bolder;
+}
+
+.homepage-link:hover {
+    color: #ffd60a;
+    font-size: xx-large;
+    font-family: Tahoma;
+    margin: 5%;
+}
+
+nav ul a {
+    font-family: Tahoma;
+    font-weight: bolder;
+    font-size: large;
+}
+
+nav ul a:hover {
+    color: #ffd60a;
+    font-family: Tahoma;
+    font-weight: bolder;
+    font-size: large;
+}

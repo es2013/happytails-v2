@@ -1,11 +1,12 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
 // import schema from Book.js
 //const bookSchema = require('./Book');
 
-const userSchema = new Schema(
-  {
+const userSchema = new Schema({
     username: {
       type: String,
       required: true,
@@ -13,11 +14,13 @@ const userSchema = new Schema(
     },
     firstName: {
       type: String,
-      required: true
+      required: true,
+      trim: true
     },
     lastName: {
       type: String,
-      required: true
+      required: true,
+      trim: true
     },
     email: {
       type: String,
@@ -54,9 +57,10 @@ userSchema.pre('save', async function (next) {
 
 // Custom method to compare and validate password for logging in
 userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+  return await bcrypt.compare(password, this.password);
 };
 
-const User = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
+

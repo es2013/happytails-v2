@@ -13,7 +13,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    users: [User]
+  
   }
 
  
@@ -26,8 +26,7 @@ const typeDefs = gql`
             firstName: String!,
             lastName: String!,
             isAdmin: Boolean): Auth
-    removeUser(username: String!,
-            isAdmin: Boolean): String
+    
   }
 
   type Auth {
