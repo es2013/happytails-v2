@@ -8,7 +8,8 @@ import './App.css';
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashBoard';
-import LoginSignup from './pages/Login';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
@@ -40,15 +41,16 @@ function App() {
         <div>
           {/* <Provider store={store}>  */}
           <Navigation />
-          <Switch>
+          {/* <Switch> */}
             <Route path="/" component={Homepage} />
             <Route path="/dashboard" component={Dashboard} />
             {/* <Route path="/admin" component={AdminDashboard} /> */}
-            <Route exact path="/login" component={LoginSignup} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
             {/* <Route exact path="/success" component={Success} /> */}
             {/* <Route path="/single-dog/:id" component={SingleDog} /> */}
             <Footer />
-          </Switch>
+          {/* </Switch> */}
           {/* </Provider> */}
         </div>
       </Router>
