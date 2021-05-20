@@ -1,45 +1,40 @@
 const { Schema } = require('mongoose');
 
-const canineSchema = new Schema({
-  kennelId: {
-    type: String,
-    required: true,
-  },
-  canineDemeanor: {
-    type: String,
-    required: true,
-  },
-  canineId: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-  },
+const canineSchema = new Schema(
+  {
   name: {
     type: String,
     required: true,
   },
-  age:{
-      type:String,
-      required:true,
-  },
-  has_potty_am: {
+  kennel: {
     type: String,
     required: true,
   },
-  has_potty_pm: {
+  demeanor: {
     type: String,
     required: true,
   },
-  has_walked_am: {
+  status: {
     type: String,
     required: true,
   },
-  has_walked_pm: {
-    type: String,
-    required: true,
-  },
+  walk:[{
+    timestamp:{
+    type: Date
+    },
+    volunteer_id:{
+      type:String
+    }
+  }],
+  potty_break:[{
+    timestamp:{
+      type: Date
+      },
+      volunteer_id:{
+        type:String
+      }
+  }]
 });
 
 module.exports = canineSchema;
+	

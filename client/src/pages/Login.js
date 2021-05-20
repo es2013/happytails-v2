@@ -27,6 +27,8 @@ function Login(props) {
     });
   };
 
+  console.log("here");
+
   return (
     <div className="container my-1">
       <Link to="/signup">
