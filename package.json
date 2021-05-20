@@ -23,16 +23,7 @@
   "homepage": "https://github.com/es2013/happytails-v2#readme",
   "dependencies": {
     "dotenv": "^9.0.2",
-<<<<<<< HEAD
     "if-env": "^1.0.4"
-<<<<<<< HEAD
->>>>>>> feature/signup-user
-=======
-    "if-env": "^1.0.4",
-    "redux": "^4.1.0"
->>>>>>> feature/signup-user
-=======
->>>>>>> 2b0a5a60b9ef07b7a1a84362305e624c6dd3aeef
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
