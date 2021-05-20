@@ -43,7 +43,13 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
-    }
+    },
+    //Create a new dog
+    addDog:
+
+    //Remove a dog
+    removeDog:
+    
   }
 };
 
