@@ -22,12 +22,10 @@ const typeDefs = gql`
 
   type Query {
     me: User
-<<<<<<< HEAD
-  
-=======
+    user: User
+    users: [User]
     canines: [Canine]
     canine(name: String!): Canine
->>>>>>> 092c10044ec4c94bcd3242041a8abeab8ff998c5
   }
 
  
@@ -40,12 +38,8 @@ const typeDefs = gql`
             firstName: String!,
             lastName: String!,
             isAdmin: Boolean): Auth
-<<<<<<< HEAD
-    
-=======
     addDog(name:String!, kennel:String!,demeanor: String!,status: String!): Canine
-
->>>>>>> 092c10044ec4c94bcd3242041a8abeab8ff998c5
+    findUser(username:String!): User
   }
 
   type Auth {
@@ -56,3 +50,4 @@ const typeDefs = gql`
 
 // export the typeDefs
 module.exports = typeDefs;
+ 
