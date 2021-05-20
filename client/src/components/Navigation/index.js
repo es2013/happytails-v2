@@ -11,14 +11,13 @@ function Navigation() {
                     <a href="/" className="homepage-link">Happy Tails</a>
                     <ul id="nav-mobile" className="right">
                         {/* {{ #if loggedIn }} */}
-                        <li><a href="/dashboard">Dashboard</a></li>
-                        <li><a id="logout" href="/logout">Logout</a></li>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        <li><Link id="logout" to="/logout">Logout</Link></li>
                         {/* {{ else}} */}
-                        <li><a href="/login">Login</a></li>
+                        <li><Link to="/login">Login</Link></li>
                         {/* {{/if}} */}
                     </ul>
                 </div>
-
             </nav>
         </header>
     )
