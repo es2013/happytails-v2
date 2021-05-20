@@ -34,23 +34,25 @@ const client = new ApolloClient({
 function App() {
   return (
 
-
-
     <ApolloProvider client={client}>
       <Router >
         <div>
           {/* <Provider store={store}>  */}
           <Navigation />
-          {/* <Switch> */}
-            <Route path="/" component={Homepage} />
+          <Switch>
+            <Route exact path="/" component={Homepage} />
             <Route path="/dashboard" component={Dashboard} />
             {/* <Route path="/admin" component={AdminDashboard} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             {/* <Route exact path="/success" component={Success} /> */}
-            {/* <Route path="/single-dog/:id" component={SingleDog} /> */}
+
+            {/* this is the path I had earlier. I think it is a more appropriate endpoint but it doesnt matter just lets get the singleDog page to load*/}
+            <Route path="/single-dog/:id" component={SingleDog} />
+            {/* this is the path that that currently renders when select button is clicked.  */}
+            {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
             <Footer />
-          {/* </Switch> */}
+          </Switch>
           {/* </Provider> */}
         </div>
       </Router>
