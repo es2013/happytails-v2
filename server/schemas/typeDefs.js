@@ -13,7 +13,10 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    users: [User]
   }
+
+ 
 
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -24,11 +27,7 @@ const typeDefs = gql`
             lastName: String!,
             isAdmin: Boolean): Auth
     removeUser(username: String!,
-            email: String!,
-            password: String!,
-            firstName: String!,
-            lastName: String!,
-            isAdmin: Boolean): Auth
+            isAdmin: Boolean): String
   }
 
   type Auth {

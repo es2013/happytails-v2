@@ -16,6 +16,11 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    users: async (parents, args, context) => {
+      if (context.user) {
+        return User.find().select('-__v -password')
+      }
+    }
   },
 
   Mutation: {
@@ -27,10 +32,17 @@ const resolvers = {
       return { token, user };
     },
 
-    removeUser: async (parent, args) => {
-      const user = await User.findOneAndDelete(args);
-      return user;
-    },
+    // removeUser: async (parent, args, context) => {
+    //   if (args.isAdmin && context.user != args.username) {
+    //     const user = await User.findOneAndDelete({username: args.username}, function (error){
+    //       console.log(error);
+    //       console.log("This object will get deleted ");
+         
+    //       return ("success!");
+    //   });
+    //   }
+    //   return ("failure")
+    // },
 
     // Login an existing user
     login: async (parent, { email, password }) => {

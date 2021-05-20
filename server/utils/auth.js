@@ -15,11 +15,7 @@ module.exports = {
     if (!token) {
       return req;
     };  
-
     try {
-      console.log('server auth.js');
-      console.log(token);
-
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
     }
