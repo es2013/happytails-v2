@@ -51,8 +51,10 @@ function App() {
             <Route path="/single-dog/:id" component={SingleDog} />
             {/* this is the path that that currently renders when select button is clicked.  */}
             {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
-            <Footer />
+
+            {/* footer only loading on logout page?? */}
           </Switch>
+          <Footer />
           {/* </Provider> */}
         </div>
       </Router>
