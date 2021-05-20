@@ -53,8 +53,8 @@ function App() {
             {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
 
             {/* footer only loading on logout page?? */}
-            <Footer />
           </Switch>
+          <Footer />
           {/* </Provider> */}
         </div>
       </Router>

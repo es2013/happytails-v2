@@ -1,7 +1,7 @@
 import React from 'react';
-import Filters from '../../components/Filters';
-import TableAm from '../../components/TableAm';
-import UserMessage from '../../components/UserMessage';
+import Filters from '../components/Filters';
+import TableAm from '../components/TableAm';
+import UserMessage from '../components/UserMessage';
 
 function Dashboard() {
 
