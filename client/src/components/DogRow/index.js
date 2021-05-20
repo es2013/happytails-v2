@@ -12,7 +12,6 @@ function DogRow() {
             <td> Unleashed </td>
 
             <td><button type="submit" className="waves-effect waves-light btn"><a href="/dashboard/edit/26" className="select-dog">Select</a></button></td>
-            <tr> </tr>
         </tr>
     );
 };
