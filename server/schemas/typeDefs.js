@@ -25,7 +25,6 @@ const typeDefs = gql`
     canines: [Canine]
     canine(name: String!): Canine
   }
-
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!,
@@ -37,7 +36,6 @@ const typeDefs = gql`
     addDog(name:String!, kennel:String!,demeanor: String!,status: String!): Canine
 
   }
-
   type Auth {
     token: ID!
     user: User

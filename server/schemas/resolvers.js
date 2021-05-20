@@ -50,7 +50,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-     // Add a new canine
+     // Add a new canine 
     addDog: async (parent, args) => {
       const canine = await Canine.create(args);
       return { canine };
