@@ -1,32 +1,63 @@
 import React from "react";
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Projects from './pages/Projects'; //project cards listed out in Project component
+
+
+import Homepage from './pages/Homepage';
+import Dashboard from './pages/Dashboard';
+import AdminDashboard from './pages/AdminDashBoard';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import SingleDog from './pages/SingleDog';
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
+
+// redux //
+import { Provider } from 'react-redux';
+// import store from './utils/store';
+// import Success from "./pages/Success";
+
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem('id_token')
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  },
+  uri: '/graphql',
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <ApolloProvider client={client}>
+      <Router >
+        <div>
+          {/* <Provider store={store}>  */}
+          <Navigation />
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route path="/dashboard" component={Dashboard} />
+            {/* <Route path="/admin" component={AdminDashboard} /> */}
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            {/* <Route exact path="/success" component={Success} /> */}
+
+            {/* this is the path I had earlier. I think it is a more appropriate endpoint but it doesnt matter just lets get the singleDog page to load*/}
+            <Route path="/single-dog/:id" component={SingleDog} />
+            {/* this is the path that that currently renders when select button is clicked.  */}
+            {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
+            <Footer />
+          </Switch>
+          {/* </Provider> */}
+        </div>
+      </Router>
+    </ApolloProvider>
+
   );
 }
 
