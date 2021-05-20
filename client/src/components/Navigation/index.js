@@ -1,11 +1,13 @@
 import React from 'react';
+import "./stylesheet.css";
+
 
 function Navigation() {
 
     return (
         <header className="navbar-fixed">
             <nav>
-                <div className="nav-wrapper deep-purple darken-2">
+                <div className="nav-wrapper grey">
                     <a href="/" className="homepage-link">Happy Tails</a>
                     <ul id="nav-mobile" className="right">
                         {/* {{ #if loggedIn }} */}
