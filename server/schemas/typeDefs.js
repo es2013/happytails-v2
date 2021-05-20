@@ -10,9 +10,20 @@ const typeDefs = gql`
     lastName: String
     isAdmin: Boolean
   }
+  type Canine {
+    _id: ID!
+    name: String
+    kennel: String
+    demeanor: String
+    status: String
+    # walk:(timestamp:Date,volunteer_id:String)
+    # potty:(timestamp:Date,volunteer_id:String)
+  }
 
   type Query {
     me: User
+    canines: [Canine]
+    canine(name: String!): Canine
   }
 
   type Mutation {
@@ -23,6 +34,8 @@ const typeDefs = gql`
             firstName: String!,
             lastName: String!,
             isAdmin: Boolean): Auth
+    addDog(name:String!, kennel:String!,demeanor: String!,status: String!): Canine
+
   }
 
   type Auth {
