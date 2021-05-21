@@ -1,0 +1,14 @@
+
+.btn {
+    background-color: #1a659e;
+}
+
+.btn:hover {
+    background-color: #0a85ed;
+}
+
+.select-dog {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}

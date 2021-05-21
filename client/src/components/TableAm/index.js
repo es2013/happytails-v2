@@ -1,6 +1,7 @@
 import React from 'react';
 import DogRow from '../DogRow';
 import dogImage from '../../images/bulldog-favicon.png';
+import "./stylesheet.css";
 
 function TableAm() {
 
