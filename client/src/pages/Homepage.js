@@ -8,7 +8,7 @@ import UserMessage from '../components/UserMessage';
 function Homepage() {
 
     return (
-        <div className="homepage-container">
+        <div className="container">
             <Hero />
 
             <UserMessage />

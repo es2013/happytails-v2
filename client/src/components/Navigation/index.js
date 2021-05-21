@@ -6,7 +6,7 @@ import "./stylesheet.css";
 function Navigation() {
 
     return (
-        <div className="container">
+        <div className="nav-container">
             <header className="navbar-fixed">
                 <nav>
                     <div className="nav-wrapper grey">
