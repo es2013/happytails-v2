@@ -150,7 +150,18 @@ a:hover {
   margin-bottom: 200px;
 }
 
-
+.btn-signup {
+  margin-bottom: 200px;
+}
+/* .hero {
+  height: auto;
+  width: 100%; 
+  background-size: cover;
+  object-fit: cover;
+  height:auto!important;
+  max-height:400px;
+  border-bottom:10px solid #512da8;
+} */
 
 
 
