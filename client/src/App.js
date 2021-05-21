@@ -36,7 +36,6 @@ function App() {
 
     <ApolloProvider client={client}>
       <Router >
-        <div>
           {/* <Provider store={store}>  */}
           <Navigation />
           <Switch>
@@ -56,10 +55,8 @@ function App() {
           </Switch>
           <Footer />
           {/* </Provider> */}
-        </div>
       </Router>
     </ApolloProvider>
-
   );
 }
 

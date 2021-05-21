@@ -7,7 +7,7 @@ function Filters() {
 
     return (
         // in Happy Tails 1.0 we have a conditional to render AM or PM filters.  perhaps we can use props for this?
-
+        
         <ul id='dropdown1' className='dropdown-content'>
             <li id="need-walk-am"><Link to="#!">See dogs that need walks</Link></li>
             <li id="need-potty-am"><Link to="#!">See dogs that need a potty break</Link></li>
