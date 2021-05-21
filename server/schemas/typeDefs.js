@@ -16,8 +16,13 @@ const typeDefs = gql`
     kennel: String
     demeanor: String
     status: String
-    # walk:(timestamp:Date,volunteer_id:String)
-    # potty:(timestamp:Date,volunteer_id:String)
+    walk:[Activity]
+    potty:[Activity]
+
+  }
+  type Activity {
+    timestamp: String
+    volunteer: User
   }
 
   type Query {
@@ -46,6 +51,10 @@ const typeDefs = gql`
       demeanor: String!
       status: String!
     ): Canine
+    addPotty(_id:String!, volunteer: String!): Canine
+    # addPotty(canineId: _id!, volunteer: String!, timestamp: String!): Canine
+    # addWalk(canineId: ID!, volunteerId: username!, timestamp: String!): Activity
+
   }
   type Auth {
     token: ID!

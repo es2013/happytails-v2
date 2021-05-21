@@ -1,4 +1,4 @@
-const { User, Canine } = require('../models');
+const { User, Canine, Activity } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -40,7 +40,26 @@ const resolvers = {
 
       return { token, user };
     },
+    addPotty: async (parent, args, context) => {
+      console.log(args)
+      console.log("-------------------")
+      console.log(context)
 
+      // if (context.User) {
+      //   const potty = await Activity.create({...args, username:context.User.username})
+
+      //   await User.findByIdAndUpdate(
+      //     {_id: context.User._id},
+      //     {$push: { activity : potty }},
+      //     {new: true }
+      //   );
+      //   return activity
+      // }
+      // throw new AuthenticationError('You need to be logged in!');
+
+    },
+
+  
     // Login an existing user
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
