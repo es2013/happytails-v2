@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
 
     return (
-        <div className>
+        <div className="row">
             <footer className="page-footer deep-purple darken-2">
                 <div className="container-footer">
                     <div className="row">
