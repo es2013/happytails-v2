@@ -34,44 +34,45 @@ function Signup(props) {
         ← Go to Login
       </Link>
 
+      <h2>Signup</h2>
+
       <div className='row'>
-        <h2>Signup</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
-            <label htmlFor="firstName input-title-secondary">First Name:</label>
+            <label className="input-title-secondary" htmlFor="firstName">First Name:</label>
             <input
               className="input"
               placeholder="First"
               name="firstName"
-              type="firstName"
+              type="text"
               id="firstName"
               onChange={handleChange}
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label htmlFor="lastName input-title-secondary">Last Name:</label>
+            <label className="input-title-secondary" htmlFor="lastName">Last Name:</label>
             <input
               className="input"
               placeholder="Last"
               name="lastName"
-              type="lastName"
+              type="text"
               id="lastName"
               onChange={handleChange}
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label htmlFor="userName input-title-secondary">Username:</label>
+            <label className="input-title-secondary" htmlFor="userName">Username:</label>
             <input
               className="input"
               placeholder="username"
               name="username"
-              type="username"
+              type="text"
               id="username"
               onChange={handleChange}
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label htmlFor="email input-title-secondary">Email:</label>
+            <label className="input-title-secondary" htmlFor="email">Email:</label>
             <input
               className="input"
               placeholder="youremail@test.com"
@@ -82,7 +83,7 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label htmlFor="pwd input-title-secondary">Password:</label>
+            <label className="input-title-secondary" htmlFor="pwd">Password:</label>
             <input
               className="input"
               placeholder="******"
@@ -93,9 +94,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row flex-end">
-            <button type="submit">
+            <button className="btn" type="submit">
               Submit
-          </button>
+            </button>
           </div>
         </form>
       </div>

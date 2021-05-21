@@ -36,6 +36,7 @@ function Login(props) {
       </Link>
 
       <h2>Login</h2>
+      
       <div className="row">
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
@@ -66,7 +67,7 @@ function Login(props) {
             </div> : null
           }
           <div className="flex-row flex-end">
-            <button type="submit">
+            <button className="btn" type="submit">
               Submit
           </button>
           </div>

@@ -38,7 +38,7 @@ function DogRow() {
             <td className="Easy"> Easy </td>
             <td> Unleashed </td>
 
-            <td><button type="submit" className="waves-effect  btn"><a href="/dashboard/edit/26" className="select-dog">Select</a></button></td>
+            <td><button type="submit" className="btn"><a href="/dashboard/edit/26" className="select-dog">Select</a></button></td>
         </tr>
     );
 };

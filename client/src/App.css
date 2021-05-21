@@ -115,6 +115,7 @@ button {
   font-size: 16px;
   margin: 4px 2px;
   border-radius: 12px;
+  z-index: 0;
 }
 
 button:hover {
@@ -145,6 +146,9 @@ a:hover {
 
 }
 
+.homepage-container {
+  margin-bottom: 200px;
+}
 
 
 
