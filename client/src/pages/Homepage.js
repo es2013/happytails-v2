@@ -7,6 +7,8 @@ import UserMessage from '../components/UserMessage';
 
 function Homepage() {
 
+    // do we need to pass state in homepage? I think all that data would be already rendered in our table components..
+
     return (
         <div className="container">
             <Hero />

@@ -1,7 +1,36 @@
 import React from 'react';
+// import { useMutation, useState } from '@apollo/react-hooks';
+// import Auth from "../utils/auth";
+// this mutation has not be created yet so naming may change
+// import { UPDATE_DOG } from "../utils/mutations";
 
 
 function SingleDog() {
+    // boilerplate state setup for updateDog
+    // const [formState, setFormState] = useState({ walk: '', potty_break: '' })
+    // const [updateDog, { error }] = useMutation(UPDATE_DOG);
+  
+    // const handleFormSubmit = async event => {
+    //   event.preventDefault();
+    //   try {
+    //     const mutationResponse = await updateDog({ variables: { walk: formState.walk, potty_break: formState.potty_break } })
+    //     // const token = mutationResponse.data.login.token;
+    //     // Auth.login(token);
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // };
+  
+    // const handleChange = event => {
+    //   const { name, value } = event.target;
+    //   setFormState({
+    //     ...formState,
+    //     [name]: value
+    //   });
+    // };
+  
+    // console.log("here");
+
 
     return (
         <div className="row">
