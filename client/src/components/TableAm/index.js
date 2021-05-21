@@ -7,7 +7,7 @@ function TableAm() {
     return (
         // REACT reaallly doesnt like this segment and I am not sure why.
         <div className="row s8">
-            <h4 class="flow-text"><span><img className="dog-logo" src="/images/bulldog-favicon.png" alt="bulldog waiting to walk" /></span>AM Shift</h4>
+            <h4 className="flow-text"><span><img className="dog-logo" src="/images/bulldog-favicon.png" alt="bulldog waiting to walk" /></span>AM Shift</h4>
 
 
             <table className="striped z-depth-2">
