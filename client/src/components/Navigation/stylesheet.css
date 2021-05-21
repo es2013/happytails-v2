@@ -33,3 +33,11 @@ nav ul a:hover {
 nav .nav-wrapper {
     background-image: linear-gradient(to right, rgb(0, 78, 137) , rgba(255, 213, 0));
 }
+
+.hero {
+    width: 84vw;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
