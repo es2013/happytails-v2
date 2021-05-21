@@ -18,6 +18,7 @@ body {
   min-height: 100%;
 }
 
+
 body {
   margin: 0;
   padding: 0;
@@ -69,7 +70,81 @@ body {
   text-align: center;
 }
 
+h2 {
+  font-family: Tahoma;
+  text-shadow: 4px 4px 8px #13315c;
 
+}
+
+textarea {
+  background-color: transparent;
+  border-bottom: 1px solid white;
+}
+
+.email {
+  color: #ffd60a;
+  font-weight: 900;
+  font-family: Tahoma;
+  font-size: 1.5em;
+}
+
+.password {
+  color: #ffd60a;
+  font-weight: bolder;
+  font-family: Tahoma;
+  font-size: 1.5em;
+}
+
+.input {
+  color: white;
+  border-bottom: none;
+  box-shadow: none;
+  box-shadow: none;
+  font-family: sans-serif;
+  font-weight: 900;
+}
+
+button {
+  background-color: #1a659e;
+  color: white;
+  font-family: Tahoma;
+  font-weight: bolder;
+  border: none;
+  padding: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+}
+
+button:hover {
+  background-color: #0a85ed;
+  color: #ffd60a;
+  font-family: Tahoma;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.backtosignup {
+  color:white;
+  font-family: Tahoma;
+  font-weight: bold;
+}
+
+a:hover {
+  color:#ffd60a;
+  font-family: Tahoma;
+  font-weight: bold;
+  
+}
+
+.error-text {
+  font-family: sans-serif;
+  font-weight: bolder;
+  color: white;
+
+}
 
 
 
