@@ -1,6 +1,6 @@
 import React from 'react';
 import DogRow from '../DogRow';
-import dogImage from '../../images/shiba-inu-logo.png'
+import dogImage from '../../images/darwinsdogs-favicon.png'
 import "./stylesheet.css";
 
 function TablePm() {
