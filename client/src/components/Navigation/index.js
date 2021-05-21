@@ -8,7 +8,7 @@ function Navigation() {
     return (
         <header className="navbar-fixed">
             <nav>
-                <div className="nav-wrapper grey">
+                <div className="nav-wrapper">
                     <a href="/" className="homepage-link">Happy Tails</a>
                     <ul id="nav-mobile" className="right">
                         {/* {{ #if loggedIn }} */}

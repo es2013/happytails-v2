@@ -1,5 +1,5 @@
 :root {
-  --primary: #2675d5;
+  --primary: #5fa8d3;
   --secondary: #f3d947;
   --tertiary: ;
   --light: #fafafa;
@@ -50,8 +50,24 @@ body {
   text-align: center;
 }
 
+.striped {
+  background-color: #023e7d;
+}
 
-
+.speech-bubble {
+  position:relative;
+  padding: 15px;
+  margin: 3em;
+  /* background-color: #1a659e; */
+  background-color:#5fa8d3;
+  /* background-color:#00a6fb; */
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border: 10px solid rgba(0,0,0,0.095);
+  font-weight: bold;
+  text-align: center;
+}
 
 
 

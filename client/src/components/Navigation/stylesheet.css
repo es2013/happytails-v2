@@ -21,8 +21,12 @@ nav ul a {
 }
 
 nav ul a:hover {
-    color: #ffd60a;
+    color: rgb(0, 78, 137);
     font-family: Tahoma;
     font-weight: bolder;
     font-size: large;
+}
+
+nav .nav-wrapper {
+    background-image: linear-gradient(to right, rgb(0, 78, 137) , rgba(255, 213, 0));
 }
