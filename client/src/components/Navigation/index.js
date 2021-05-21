@@ -6,7 +6,6 @@ import "./stylesheet.css";
 function Navigation() {
 
     return (
-        <div className="container">
             <header className="navbar-fixed">
                 <nav>
                     <div className="nav-wrapper grey">
@@ -22,7 +21,6 @@ function Navigation() {
                     </div>
                 </nav>
             </header>
-        </div>
     )
 };
 
