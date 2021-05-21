@@ -80,14 +80,14 @@ textarea {
   border-bottom: 1px solid white;
 }
 
-.email {
+.input-title-primary {
   color: #ffd60a;
   font-weight: 900;
   font-family: Tahoma;
   font-size: 1.5em;
 }
 
-.password {
+.input-title-secondary {
   color: #ffd60a;
   font-weight: bolder;
   font-family: Tahoma;
@@ -125,7 +125,7 @@ button:hover {
   transition: 0.3s;
 }
 
-.backtosignup {
+.login-signup-toggle {
   color:white;
   font-family: Tahoma;
   font-weight: bold;
