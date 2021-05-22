@@ -16,9 +16,7 @@ module.exports = {
         .trim();
     }
 
-    
-
-
+  
     if (!token) {
       return req;
     }
