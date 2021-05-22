@@ -19,7 +19,7 @@ const canineSchema = new Schema({
     type: String,
     required: true,
   },
-  walks: [
+  walk: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Activity'

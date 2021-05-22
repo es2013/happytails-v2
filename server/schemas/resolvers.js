@@ -17,13 +17,20 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     canines: async () => {
-      return await Canine.find();
+      return await Canine.find().populate('walk')    
+      .populate('potty')
+      .populate('walk');
     },
     canine: async () => {
       return await Canine.findById(context.canine._id).populate(
         'name',
-        'kennel'
+        'kennel',
+        'potty',
+        'walk'
       );
+    },
+    activities: async () => {
+      return await Activity.find();
     },
   },
 
@@ -40,23 +47,24 @@ const resolvers = {
 
       return { token, user };
     },
-    addPotty: async (parent, args, context) => {
-      console.log(args)
-      console.log("-------------------")
-      console.log(context)
+    addPotty: async (parent, args, context) => {  
+      const potty = await Activity.create({...args.potty})
 
-      // if (context.User) {
-      //   const potty = await Activity.create({...args, username:context.User.username})
-
-      //   await User.findByIdAndUpdate(
-      //     {_id: context.User._id},
-      //     {$push: { activity : potty }},
-      //     {new: true }
-      //   );
-      //   return activity
-      // }
-      // throw new AuthenticationError('You need to be logged in!');
-
+        const canine =  await Canine.findByIdAndUpdate(
+          {_id: args.canineId},
+          {$addToSet: {potty: potty}},
+          {new:true}
+        );
+      return potty;
+    },
+    addWalk: async (parent, args, context) => {  
+      const walk = await Activity.create({...args.walk})
+        const canine =  await Canine.findByIdAndUpdate(
+          {_id: args.canineId},
+          {$addToSet: {walk: walk}},
+          {new:true}
+        );
+      return walk
     },
 
   

@@ -9,8 +9,7 @@ const activitySchema = new Schema ({
         // required:true
     },
     volunteer: {
-        type: Schema.Types.ObjectId, 
-        ref: 'User',
+        type: String,
         required: true
     }
 })
@@ -18,3 +17,9 @@ const activitySchema = new Schema ({
 const Activity = model('Activity', activitySchema);
 
 module.exports = Activity;
+
+// volunteer: {
+//     type: Schema.Types.ObjectId, 
+//     ref: 'User',
+//     required: true
+// }

@@ -18,16 +18,21 @@ const typeDefs = gql`
     status: String
     walk:[Activity]
     potty:[Activity]
-
+  }
+  input ActivityInput {
+    timestamp: String!
+    volunteer: String!
   }
   type Activity {
+    _id: ID!
     timestamp: String
-    volunteer: User
+    volunteer: String
   }
 
   type Query {
     me: User
     canines: [Canine]
+    activities: [Activity]
     canine(
       name: String!
       kennel: String!
@@ -51,7 +56,9 @@ const typeDefs = gql`
       demeanor: String!
       status: String!
     ): Canine
-    addPotty(_id:String!, volunteer: String!): Canine
+    addPotty(canineId: ID!, potty: ActivityInput!): Activity
+    addWalk(canineId: ID!, walk: ActivityInput!): Activity
+
     # addPotty(canineId: _id!, volunteer: String!, timestamp: String!): Canine
     # addWalk(canineId: ID!, volunteerId: username!, timestamp: String!): Activity
 
