@@ -52,6 +52,7 @@ const typeDefs = gql`
       lastName: String!
       isAdmin: Boolean
     ): Auth
+    findUser(username:String!): User
     addDog(
       name: String!
       kennel: String!
