@@ -1,4 +1,4 @@
-const { User, Canine } = require('../models');
+const { User, Canine, Activity } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -17,13 +17,20 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     canines: async () => {
-      return await Canine.find();
+      return await Canine.find().populate('walk')    
+      .populate('potty')
+      .populate('walk');
     },
     canine: async () => {
       return await Canine.findById(context.canine._id).populate(
         'name',
-        'kennel'
+        'kennel',
+        'potty',
+        'walk'
       );
+    },
+    activities: async () => {
+      return await Activity.find();
     },
   },
 
@@ -40,7 +47,27 @@ const resolvers = {
 
       return { token, user };
     },
+    addPotty: async (parent, args, context) => {  
+      const potty = await Activity.create({...args.potty})
 
+        const canine =  await Canine.findByIdAndUpdate(
+          {_id: args.canineId},
+          {$addToSet: {potty: potty}},
+          {new:true}
+        );
+      return potty;
+    },
+    addWalk: async (parent, args, context) => {  
+      const walk = await Activity.create({...args.walk})
+        const canine =  await Canine.findByIdAndUpdate(
+          {_id: args.canineId},
+          {$addToSet: {walk: walk}},
+          {new:true}
+        );
+      return walk
+    },
+
+  
     // Login an existing user
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
