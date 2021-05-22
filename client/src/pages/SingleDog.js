@@ -9,7 +9,7 @@ function SingleDog() {
     // boilerplate state setup for updateDog
     // const [formState, setFormState] = useState({ walk: '', potty_break: '' })
     // const [updateDog, { error }] = useMutation(UPDATE_DOG);
-  
+
     // const handleFormSubmit = async event => {
     //   event.preventDefault();
     //   try {
@@ -20,7 +20,7 @@ function SingleDog() {
     //     console.log(error)
     //   }
     // };
-  
+
     // const handleChange = event => {
     //   const { name, value } = event.target;
     //   setFormState({
@@ -28,7 +28,7 @@ function SingleDog() {
     //     [name]: value
     //   });
     // };
-  
+
     // console.log("here");
 
 
@@ -47,26 +47,25 @@ function SingleDog() {
                     <div className="card-action">
                         <p className="flow-text">Please check the activities that have been completed</p>
 
-                        <label className="check">
+                        <label className="check activity-checkbox">
                             <input type="checkbox" className="filled-in" id="potty-check" checked="" />
                             <span className="flow-text">Potty</span>
                         </label>
 
-                        <label className="check">
+                        <label className="check activity-checkbox">
                             <input type="checkbox" className="filled-in" id="walk-check" checked="" />
                             <span className="flow-text">Walk</span>
                         </label>
 
-                        <br>
 
-                            <div className="button-container">
-                                <a className="waves-effect waves-light btn doggie" id="27" data-v_id="14" type="submit">Submit</a>
-                            </div>
+                        <br></br>
+                        <div className="button-container">
+                            <a className="waves-effect waves-light btn doggie-update-submit" id="27" data-v_id="14" type="submit">Submit</a>
+                        </div>
 
-                            <div className="button-container">
-                                <a className="waves-effect waves-light btn delete doggie" id="27" data-v_id="14" type="button">Delete</a>
-                            </div>
-                        </br>
+                        {/* <div className="button-container">
+                            <a className="waves-effect waves-light btn delete doggie" id="27" data-v_id="14" type="button">Delete</a>
+                        </div> */}
                     </div>
                 </div>
             </div>

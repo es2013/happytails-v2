@@ -30,6 +30,11 @@ body {
   background-color: var(--primary);
 }
 
+.activity-checkbox {
+  margin: 20px;
+}
+
+
 /* .hero {
   background-size: cover;
   padding: 1em 0;
@@ -152,6 +157,10 @@ a:hover {
 
 .btn-signup {
   margin-bottom: 200px;
+}
+
+.doggie-update-submit {
+  margin: 20px;
 }
 /* .hero {
   height: auto;
