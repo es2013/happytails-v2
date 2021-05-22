@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import './App.css';
+// import { StoreProvider } from "./utils/GlobalState";
 
 
 import Homepage from './pages/Homepage';
@@ -15,7 +16,7 @@ import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
 
 // redux //
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 // import store from './utils/store';
 // import Success from "./pages/Success";
 
@@ -36,8 +37,8 @@ function App() {
 
     <ApolloProvider client={client}>
       <Router >
-        <div>
           {/* <Provider store={store}>  */}
+          {/* <StoreProvider> */}
           <Navigation />
           <Switch>
             <Route exact path="/" component={Homepage} />
@@ -55,11 +56,10 @@ function App() {
             {/* footer only loading on logout page?? */}
           </Switch>
           <Footer />
+          {/* </StoreProvider> */}
           {/* </Provider> */}
-        </div>
       </Router>
     </ApolloProvider>
-
   );
 }
 
