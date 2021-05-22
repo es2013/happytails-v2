@@ -60,7 +60,7 @@ const resolvers = {
       return {User};
     },
     addPotty: async (parent, args, context) => {  
-      if (context.user) {
+      
       const potty = await Activity.create({...args.potty})
 
         const canine =  await Canine.findByIdAndUpdate(
@@ -69,9 +69,8 @@ const resolvers = {
           {new:true}
         );
       return potty;
-      }
       
-      throw new AuthenticationError('Not logged in');
+      
 
     },
     addWalk: async (parent, args, context) => {  
