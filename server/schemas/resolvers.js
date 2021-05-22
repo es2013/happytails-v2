@@ -32,6 +32,12 @@ const resolvers = {
     activities: async () => {
       return await Activity.find();
     },
+    users: async () => {
+      return await User.find();
+    },
+    user: async (parent, args, context) => {
+    return await User.findById(context.user._id).populate('username')
+    }
   },
 
   Mutation: {
@@ -46,6 +52,12 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    
+    },
+
+    findUser: async (parent, args) => {
+      const findUSer = await User.find(args);
+      return {User};
     },
     addPotty: async (parent, args, context) => {  
       if (context.user) {
@@ -94,3 +106,20 @@ const resolvers = {
 };
 
 module.exports = resolvers;
+
+
+
+
+  // removeUser: async (parent, args, context) => {
+    //   if (args.isAdmin && context.user != args.username) {
+    //     const user = await User.findOneAndDelete({username: args.username}, function (error){
+    //       console.log(error);
+    //       console.log("This object will get deleted ");
+         
+    //       return ("success!");
+    //   });
+    //   }
+    //   return ("failure")
+    // },
+
+    // Login an existing user
