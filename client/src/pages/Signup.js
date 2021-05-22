@@ -1,30 +1,40 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
-import Auth from "../utils/auth";
-import { ADD_USER } from "../utils/mutations";
+import Auth from '../utils/auth';
+import { ADD_USER } from '../utils/mutations';
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email, password: formState.password,
-        firstName: formState.firstName, lastName: formState.lastName
-      }
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // const mutationResponse = await addUser({
+    //   variables: {
+    //     email: formState.email, password: formState.password,
+    //     firstName: formState.firstName, lastName: formState.lastName
+    //   }
+    // });
+    // const token = mutationResponse.data.addUser.token;
+    // Auth.login(token);
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -36,10 +46,12 @@ function Signup(props) {
 
       <h2>Signup</h2>
 
-      <div className='row'>
+      <div className="row">
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="firstName">First Name:</label>
+            <label className="input-title-secondary" htmlFor="firstName">
+              First Name:
+            </label>
             <input
               className="input"
               placeholder="First"
@@ -50,7 +62,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="lastName">Last Name:</label>
+            <label className="input-title-secondary" htmlFor="lastName">
+              Last Name:
+            </label>
             <input
               className="input"
               placeholder="Last"
@@ -61,7 +75,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="userName">Username:</label>
+            <label className="input-title-secondary" htmlFor="userName">
+              Username:
+            </label>
             <input
               className="input"
               placeholder="username"
@@ -72,7 +88,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="email">Email:</label>
+            <label className="input-title-secondary" htmlFor="email">
+              Email:
+            </label>
             <input
               className="input"
               placeholder="youremail@test.com"
@@ -83,7 +101,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="pwd">Password:</label>
+            <label className="input-title-secondary" htmlFor="pwd">
+              Password:
+            </label>
             <input
               className="input"
               placeholder="******"
@@ -102,7 +122,6 @@ function Signup(props) {
       </div>
     </div>
   );
-
 }
 
 export default Signup;
