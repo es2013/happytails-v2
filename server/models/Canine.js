@@ -1,7 +1,8 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
+const Activity = require('./Activity');
 
-const canineSchema = new Schema(
-  {
+
+const canineSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -18,23 +19,20 @@ const canineSchema = new Schema(
     type: String,
     required: true,
   },
-  walk:[{
-    timestamp:{
-    type: Date
-    },
-    volunteer_id:{
-      type:String
+  walk: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Activity'
     }
-  }],
-  potty_break:[{
-    timestamp:{
-      type: Date
-      },
-      volunteer_id:{
-        type:String
-      }
-  }]
+  ],
+  potty: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Activity'
+    }
+  ]
 });
 
-module.exports = canineSchema;
-	
+const Canine = model('Canine', canineSchema);
+
+module.exports = Canine;
