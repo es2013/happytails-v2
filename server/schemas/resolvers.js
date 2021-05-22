@@ -57,7 +57,8 @@ const resolvers = {
           {new:true}
         );
       return potty;
-      } s
+      }
+      
       throw new AuthenticationError('Not logged in');
 
     },
