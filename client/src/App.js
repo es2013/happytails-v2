@@ -8,7 +8,7 @@ import './App.css';
 
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
-import AdminDashboard from './pages/AdminDashBoard';
+//import AdminDashboard from './pages/AdminDashBoard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';

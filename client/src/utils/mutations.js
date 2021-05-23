@@ -15,19 +15,17 @@ export const LOGIN = gql`
 
 
 export const ADD_USER = gql`
-  mutation addUser(
-    $firstName: String!
-    $lastName: String!
-    $username: String!
-    $email: String!
-    $password: String!
+  mutation addUser( $firstName: String!
+                    $lastName: String!
+                    $username: String!
+                    $email: String!
+                    $password: String!
   ) {
-    addUser(
-      firstName: $firstName
-      lastName: $lastName
-      username: $username
-      email: $email
-      password: $password
+    addUser( firstName: $firstName
+             lastName: $lastName
+             username: $username
+             email: $email
+             password: $password
     ) {
       token
       user {
