@@ -28,12 +28,14 @@
 import React from 'react';
 
 // Creating context with defaults
-export const UserRoleContext = React.createContext({
+export const AuthContext = React.createContext({
   isAdmin: false,
+  token: null,
+  setLoggedIn: () => {},
   setIsAdmin: () => {},
 });
 
 // This utility function makes it easier to read the value of context
-export const useIsAdmin = () => {
-  return React.useContext(UserRoleContext);
+export const useAuth = () => {
+  return React.useContext(AuthContext);
 };

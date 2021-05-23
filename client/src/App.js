@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
@@ -13,7 +13,8 @@ import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
-import { UserRoleContext } from './utils/GlobalState';
+import { AuthContext } from './utils/GlobalState';
+import Logout from './pages/Logout';
 
 // redux //
 // import { Provider } from 'react-redux';
@@ -33,13 +34,24 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [admin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('id_token');
+    setToken(token);
+  }, []);
 
   // The provider context is necessary to preserve the global state
   return (
     <ApolloProvider client={client}>
-      <UserRoleContext.Provider
-        value={{ isAdmin: admin, setIsAdmin: (val) => setIsAdmin(val) }}
+      <AuthContext.Provider
+        value={{
+          isAdmin,
+          token,
+          setIsAdmin,
+          setToken,
+        }}
       >
         <Router>
           {/* <Provider store={store}>  */}
@@ -51,6 +63,7 @@ function App() {
             {/* <Route path="/admin" component={AdminDashboard} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/logout" component={Logout} />
             {/* <Route exact path="/success" component={Success} /> */}
 
             {/* this is the path I had earlier. I think it is a more appropriate endpoint but it doesnt matter just lets get the singleDog page to load*/}
@@ -64,7 +77,7 @@ function App() {
           {/* </StoreProvider> */}
           {/* </Provider> */}
         </Router>
-      </UserRoleContext.Provider>
+      </AuthContext.Provider>
     </ApolloProvider>
   );
 }

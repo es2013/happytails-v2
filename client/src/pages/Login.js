@@ -3,13 +3,13 @@ import { useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { useIsAdmin } from '../utils/GlobalState';
+import { useAuth } from '../utils/GlobalState';
 import { useHistory } from 'react-router-dom';
 
 function Login() {
-  const [formState, setFormState] = useState({ email: '', password: '' })
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
-  const { setIsAdmin } = useIsAdmin();
+  const { setIsAdmin, setToken, setLoggedIn } = useAuth();
 
   // The useHistory hook gives access to the history instance that we may use to navigate.
   // Use this instead of window.location.assign('/'); in auth.js so we do not refresh
@@ -25,6 +25,7 @@ function Login() {
       setIsAdmin(mutationResponse.data.login.user.isAdmin);
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+      setToken(token);
 
       // The useHistory hook gives access to the history instance that we may use to navigate.
       // Use this instead of window.location.assign('/'); in auth.js so we do not refresh
