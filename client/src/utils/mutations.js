@@ -48,6 +48,44 @@ export const ADD_CANINE = gql`
       demeanor: $firstName
       status: $lastName
     ) {
+      addPotty(canineId: $canineId) {
+        ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
+      }
+      addWalk(canineId: $canineId) {
+        ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
+      }
+    }
+    canines {
+      _id
+      name
+      kennel
+      status
+      potty {
+        timestamp
+        volunteer
+      }
+      walk {
+        timestamp
+        volunteer
+      }
+    }
+  }
+`;
+
+/*
+export const ADD_CANINE = gql`
+  mutation addDog(
+    $name: String
+    $kennel: String
+    $demeanor: String
+    $status: String
+  ) {
+    addDog(
+      name: $username
+      kennel: $password
+      demeanor: $firstName
+      status: $lastName
+    ) {
       addPotty(
         canineId: $canineId
       ) {
@@ -67,6 +105,7 @@ export const ADD_CANINE = gql`
       },
     }
 `;
+*/
 
 /*
 export const ADD_EMPLOYEE = gql``;
