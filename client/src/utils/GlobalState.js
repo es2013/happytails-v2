@@ -1,4 +1,4 @@
-// import React, { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 // import { useProductReducer } from './reducers';
 
 // const StoreContext = createContext();
@@ -25,7 +25,7 @@
 
 //   export { StoreProvider, useStoreContext };
 
-import React from 'react';
+// import React from 'react';
 
 // Creating context with defaults
 export const AuthContext = React.createContext({

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import Auth from '../utils/auth';
+import { AuthContext } from '../utils/GlobalState';
 import { ADD_USER } from '../utils/mutations';
 
 function Signup(props) {
@@ -23,6 +24,7 @@ function Signup(props) {
     });
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
+    AuthContext.setToken(token)
   };
 
   const handleChange = event => {
