@@ -14,6 +14,8 @@ import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
+import AdminAddDog from './pages/AdminAddDog';
+
 
 // redux //
 // import { Provider } from 'react-redux';
@@ -33,6 +35,7 @@ const client = new ApolloClient({
 })
 
 function App() {
+  
   return (
 
     <ApolloProvider client={client}>
@@ -54,6 +57,8 @@ function App() {
             {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
 
             {/* footer only loading on logout page?? */}
+            <Route exact path="/adddog" component={AdminAddDog} />
+
           </Switch>
           <Footer />
           {/* </StoreProvider> */}
