@@ -4,6 +4,7 @@ import React from 'react';
 // this mutation has not be created yet so naming may change
 // import { UPDATE_DOG } from "../utils/mutations";
 
+
 function SingleDog() {
     // boilerplate state setup for updateDog
     // const [formState, setFormState] = useState({ walk: '', potty_break: '' })
@@ -30,30 +31,21 @@ function SingleDog() {
 
     // console.log("here");
 
-  // const handleFormSubmit = async event => {
-  //   event.preventDefault();
-  //   try {
-  //     const mutationResponse = await updateDog({ variables: { walk: formState.walk, potty_break: formState.potty_break } })
-  //     // const token = mutationResponse.data.login.token;
-  //     // Auth.login(token);
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // };
 
-  // const handleChange = event => {
-  //   const { name, value } = event.target;
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value
-  //   });
-  // };
+    return (
+        <div className="row">
+            <div className="col s12 m4 l2"></div>
 
-  // console.log("here");
+            <div className="col s12 m4 l8 center">
+                <div className="card z-depth-2">
+                    <div className="card-content">
+                        <h3 className="doggy-name flow-text">Apollo</h3>
+                        <img className="single-dog-image" src="/images/dogs/Apollo.jpg" alt="Apollo" width="400" heigh="auto" />
+                    </div>
 
-  return (
-    <div className="row">
-      <div className="col s12 m4 l2"></div>
+                    {/* <!-- Check boxes for the user to check/uncheck to update a dog's activity status --> */}
+                    <div className="card-action">
+                        <p className="flow-text">Please check the activities that have been completed</p>
 
                         <label className="check activity-checkbox">
                             <input type="checkbox" className="filled-in" id="potty-check" checked="" />
@@ -82,23 +74,5 @@ function SingleDog() {
     );
 };
 
-              <div className="button-container">
-                <a
-                  className="waves-effect waves-light btn delete doggie"
-                  id="27"
-                  data-v_id="14"
-                  type="button"
-                >
-                  Delete
-                </a>
-              </div>
-            </br>
-          </div>
-        </div>
-      </div>
-      <div className="col s12 m4 l2"></div>
-    </div>
-  );
-}
 
 export default SingleDog;
