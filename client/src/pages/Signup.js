@@ -13,9 +13,9 @@ function Signup(props) {
     const mutationResponse = await addUser({
       variables: {
         username: formState.username,
-        email: formState.email, 
+        email: formState.email,
         password: formState.password,
-        firstName: formState.firstName, 
+        firstName: formState.firstName,
         lastName: formState.lastName
       }
     });
