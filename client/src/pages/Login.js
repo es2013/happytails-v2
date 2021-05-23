@@ -1,33 +1,49 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { Link } from "react-router-dom";
-import { LOGIN } from "../utils/mutations"
-import Auth from "../utils/auth";
+import { Link } from 'react-router-dom';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
+import { useIsAdmin } from '../utils/GlobalState';
+import { useHistory } from 'react-router-dom';
 
 function Login(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' })
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
+  const { setIsAdmin } = useIsAdmin();
 
-  const handleFormSubmit = async event => {
+  // The useHistory hook gives access to the history instance that we may use to navigate.
+  // Use this instead of window.location.assign('/'); in auth.js so we do not refresh
+  // the page
+  const history = useHistory();
+
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const mutationResponse = await login({ variables: { email: formState.email, password: formState.password } })
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
+      });
+      setIsAdmin(mutationResponse.data.login.user.isAdmin);
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+
+      // The useHistory hook gives access to the history instance that we may use to navigate.
+      // Use this instead of window.location.assign('/'); in auth.js so we do not refresh
+      // the page
+      history.push('/');
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
     });
   };
 
-  console.log("here");
+  console.log('here');
 
   return (
     <div className="container my-1">
@@ -36,11 +52,13 @@ function Login(props) {
       </Link>
 
       <h2>Login</h2>
-      
+
       <div className="row">
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
-            <label className="email input-title-primary" htmlFor="email">Email address:</label>
+            <label className="email input-title-primary" htmlFor="email">
+              Email address:
+            </label>
             <input
               className="input"
               placeholder="youremail@test.com"
@@ -51,7 +69,9 @@ function Login(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="password input-title-secondary" htmlFor="pwd">Password:</label>
+            <label className="password input-title-secondary" htmlFor="pwd">
+              Password:
+            </label>
             <input
               className="input"
               placeholder="******"
@@ -61,21 +81,22 @@ function Login(props) {
               onChange={handleChange}
             />
           </div>
-          {
-            error ? <div>
-              <p className="error-text" >The provided credentials are incorrect</p>
-            </div> : null
-          }
+          {error ? (
+            <div>
+              <p className="error-text">
+                The provided credentials are incorrect
+              </p>
+            </div>
+          ) : null}
           <div className="flex-row flex-end">
             <button className="btn" type="submit">
               Submit
-          </button>
+            </button>
           </div>
         </form>
       </div>
     </div>
   );
 }
-
 
 export default Login;

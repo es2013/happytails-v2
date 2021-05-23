@@ -1,10 +1,9 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import './App.css';
 // import { StoreProvider } from "./utils/GlobalState";
-
 
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
@@ -12,8 +11,9 @@ import AdminDashboard from './pages/AdminDashBoard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';
-import Footer from "./components/Footer";
-import Navigation from "./components/Navigation";
+import Footer from './components/Footer';
+import Navigation from './components/Navigation';
+import { UserRoleContext } from './utils/GlobalState';
 
 // redux //
 // import { Provider } from 'react-redux';
@@ -22,21 +22,26 @@ import Navigation from "./components/Navigation";
 
 const client = new ApolloClient({
   request: (operation) => {
-    const token = localStorage.getItem('id_token')
+    const token = localStorage.getItem('id_token');
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    });
   },
   uri: '/graphql',
-})
+});
 
 function App() {
-  return (
+  const [admin, setIsAdmin] = useState(false);
 
+  // The provider context is necessary to preserve the global state
+  return (
     <ApolloProvider client={client}>
-      <Router >
+      <UserRoleContext.Provider
+        value={{ isAdmin: admin, setIsAdmin: (val) => setIsAdmin(val) }}
+      >
+        <Router>
           {/* <Provider store={store}>  */}
           {/* <StoreProvider> */}
           <Navigation />
@@ -58,7 +63,8 @@ function App() {
           <Footer />
           {/* </StoreProvider> */}
           {/* </Provider> */}
-      </Router>
+        </Router>
+      </UserRoleContext.Provider>
     </ApolloProvider>
   );
 }
