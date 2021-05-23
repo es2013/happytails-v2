@@ -5,28 +5,28 @@ import Auth from '../utils/auth';
 import { ADD_DOG } from '../utils/mutations';
 import Select from 'react-select';
 
-
 function NewDog(props) {
   const [formState, setFormState] = useState({ name: '', kennel: '' });
   const [addDog, { error }] = useMutation(ADD_DOG);
+
   const kennelOptions = [
-      {value: 1, label: "Camp Bowwow"}, 
-      {value: 2, label:"Princess Castle"},
-      {value:3, baleb: "Pawty Haus"},
-      {value:4, label: "Caberet"},
-      {value: 5, label: "Dioji"}
-  ]
+    { value: 1, label: 'Camp Bowwow' },
+    { value: 2, label: 'Princess Castle' },
+    { value: 3, label: 'Pawty Haus' },
+    { value: 4, label: 'Caberet' },
+    { value: 5, label: 'Dioji' },
+  ];
 
   const demeanorOptions = [
-    {value: 1, label: "Easy"}, 
-    {value: 2, label:"Medium"},
-    {value:3, baleb: "Hard"}
-]
-const statusOptions = [
-    {value: 1, label: "Resident"}, 
-    {value: 2, label:"in Foster"},
-    {value:3, baleb: "Adopted"}
-]
+    { value: 1, label: 'Easy' },
+    { value: 2, label: 'Medium' },
+    { value: 3, label: 'Hard' },
+  ];
+  const statusOptions = [
+    { value: 1, label: 'Resident' },
+    { value: 2, label: 'in Foster' },
+    { value: 3, label: 'Adopted' },
+  ];
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -55,9 +55,7 @@ const statusOptions = [
       <div className="row">
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" >
-              Dog Name:
-            </label>
+            <label className="input-title-secondary">Dog Name:</label>
             <input
               className="input"
               placeholder="Name"
@@ -80,25 +78,16 @@ const statusOptions = [
           </div> */}
 
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" >
-              Kennel:
-            </label>
-            <Select options={kennelOptions} />
-
-        
+            <label className="input-title-secondary">Kennel:</label>
+            <Select class="select" options={kennelOptions} />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">
-              Demeanor:
-            </label>
-            <Select options={demeanorOptions} />
-
+            <label className="input-title-secondary">Demeanor:</label>
+            <Select class="select" options={demeanorOptions} />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" >
-                Status 
-            </label>
-            <Select options={statusOptions} />
+            <label className="input-title-secondary">Status</label>
+            <Select class="select" options={statusOptions} />
           </div>
           <div className="flex-row flex-end">
             <button className="btn" type="submit">
