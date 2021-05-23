@@ -5,36 +5,29 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser, { error }] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({ email: '', password: '', username:'', firstName:'', lastName:''});
+  const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async event => {
     event.preventDefault();
-
-    try {
-      const { data } = await addUser({
-        variables: { ...formState },
-      });
-      Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
-    }
-
-    // const mutationResponse = await addUser({
-    //   variables: {
-    //     email: formState.email, password: formState.password,
-    //     firstName: formState.firstName, lastName: formState.lastName
-    //   }
-    // });
-    // const token = mutationResponse.data.addUser.token;
-    // Auth.login(token);
+    const mutationResponse = await addUser({
+      variables: {
+        username: formState.username,
+        email: formState.email,
+        password: formState.password,
+        firstName: formState.firstName,
+        lastName: formState.lastName
+      }
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
   };
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -59,6 +52,7 @@ function Signup(props) {
               type="text"
               id="firstName"
               onChange={handleChange}
+              value={formState.firstName}
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -72,6 +66,8 @@ function Signup(props) {
               type="text"
               id="lastName"
               onChange={handleChange}
+              value={formState.lastName}
+
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -85,6 +81,8 @@ function Signup(props) {
               type="text"
               id="username"
               onChange={handleChange}
+              value={formState.username}
+
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -98,6 +96,8 @@ function Signup(props) {
               type="email"
               id="email"
               onChange={handleChange}
+              value={formState.email}
+
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -111,6 +111,8 @@ function Signup(props) {
               type="password"
               id="pwd"
               onChange={handleChange}
+              value={formState.password}
+
             />
           </div>
           <div className="flex-row flex-end">

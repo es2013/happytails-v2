@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import Auth from '../utils/auth';
-import { ADD_DOG } from '../utils/mutations';
+import { ADD_CANINE } from '../utils/mutations';
 import Select from 'react-select';
 
 function NewDog(props) {
   const [formState, setFormState] = useState({ name: '', kennel: '' });
-  const [addDog, { error }] = useMutation(ADD_DOG);
+  const [addDog, { error }] = useMutation(ADD_CANINE);
 
   const kennelOptions = [
     { value: 1, label: 'Camp Bowwow' },

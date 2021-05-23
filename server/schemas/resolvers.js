@@ -1,8 +1,6 @@
-const { User, Canine, Activity } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
-// const { users, canines } = require('../FakeData');
-
+const {User, Canine, Activity} = require('../models');
+const {AuthenticationError} = require('apollo-server-express');
+const {signToken} = require('../utils/auth');
 const resolvers = {
   Query: {
     // Get a user by username
@@ -10,37 +8,33 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({})
           .select('-__v -password')
-          .populate('dogs');
-
+          .populate('dogs')
+          .populate('activity');
         return userData;
       }
-
       throw new AuthenticationError('Not logged in');
     },
-    canines: async () => {
-      return await Canine.find().populate('walk')    
-      .populate('potty')
-      .populate('walk');
+    users: async () => {
+      return await User.find()
+        .populate('activity');
     },
-    canine: async () => {
-      return await Canine.findById(context.canine._id).populate(
+    user: async (parent, {firstName}) => {
+      return User.findOne({firstName})
+        .select('-__v -password')
+        .populate('activity');
+    },
+    canines: async () => {
+      return await Canine.find()
+    },
+    canine: async (parent, {_id}) => {
+      return await Canine.findById({_id}).populate(
         'name',
         'kennel',
         'potty',
         'walk'
       );
-    },
-    activities: async () => {
-      return await Activity.find();
-    },
-    users: async () => {
-      return await User.find();
-    },
-    user: async (parent, args, context) => {
-    return await User.findById(context.user._id).populate('username')
     }
   },
-
   Mutation: {
     // Add a new canine
     addDog: async (parent, args) => {
@@ -51,73 +45,49 @@ const resolvers = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-
-      return { token, user };
+      return {token, user};
     },
-
-    findUser: async (parent, args) => {
-      const findUSer = await User.find(args);
-      return {User};
-    },
-    //add potty activity to single dognpm 
-    addPotty: async (parent, args, context) => {  
-      const potty = await Activity.create({...args.potty})
-        const canine =  await Canine.findByIdAndUpdate(
+    addPotty: async (parent, args, context) => {
+      console.log(args)
+      if (context.user) {
+        const potty = await Activity.create({...args, username: context.user.username});
+        console.log(potty)
+        await Canine.findByIdAndUpdate(
           {_id: args.canineId},
           {$addToSet: {potty: potty}},
-          {new:true}
+          {new: true}
         );
-      return potty;
-      
+        return potty;
+      }
+      throw new AuthenticationError('You need to be logged In!');
     },
-    //add a walk activity to single dog
-    addWalk: async (parent, args, context) => {  
-      const walk = await Activity.create({...args.walk})
-        const canine =  await Canine.findByIdAndUpdate(
+    addWalk: async (parent, args, context) => {
+      console.log(args, context)
+      if (context.user) {
+        const walk = await Activity.create({...args, username: context.user.username});
+        console.log(walk)
+        await Canine.findByIdAndUpdate(
           {_id: args.canineId},
           {$addToSet: {walk: walk}},
-          {new:true}
+          {new: true}
         );
-      return walk
+        return walk;
+      }
+      throw new AuthenticationError('You need to be logged In!')
     },
-
-
-  
     // Login an existing user
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
-
+    login: async (parent, {email, password}) => {
+      const user = await User.findOne({email});
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
-
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-
       const token = signToken(user);
-      return { token, user };
+      return {token, user};
     },
   },
 };
-
 module.exports = resolvers;
-
-
-
-
-  // removeUser: async (parent, args, context) => {
-    //   if (args.isAdmin && context.user != args.username) {
-    //     const user = await User.findOneAndDelete({username: args.username}, function (error){
-    //       console.log(error);
-    //       console.log("This object will get deleted ");
-         
-    //       return ("success!");
-    //   });
-    //   }
-    //   return ("failure")
-    // },
-
-    // Login an existing user
