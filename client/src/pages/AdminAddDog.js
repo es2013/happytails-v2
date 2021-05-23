@@ -3,15 +3,30 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import Auth from '../utils/auth';
 import { ADD_DOG } from '../utils/mutations';
+import Select from 'react-select';
 
 
 function NewDog(props) {
   const [formState, setFormState] = useState({ name: '', kennel: '' });
   const [addDog, { error }] = useMutation(ADD_DOG);
   const kennelOptions = [
-      "Camp Bowwow", "Princess Castle", "Pawty Haus", "Caberet", "Dioji"
+      {value: 1, label: "Camp Bowwow"}, 
+      {value: 2, label:"Princess Castle"},
+      {value:3, baleb: "Pawty Haus"},
+      {value:4, label: "Caberet"},
+      {value: 5, label: "Dioji"}
   ]
 
+  const demeanorOptions = [
+    {value: 1, label: "Easy"}, 
+    {value: 2, label:"Medium"},
+    {value:3, baleb: "Hard"}
+]
+const statusOptions = [
+    {value: 1, label: "Resident"}, 
+    {value: 2, label:"in Foster"},
+    {value:3, baleb: "Adopted"}
+]
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -40,7 +55,7 @@ function NewDog(props) {
       <div className="row">
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="firstName">
+            <label className="input-title-secondary" >
               Dog Name:
             </label>
             <input
@@ -68,39 +83,22 @@ function NewDog(props) {
             <label className="input-title-secondary" >
               Kennel:
             </label>
-            <input
-              className="input"
-              placeholder="Enter kennel # 1-12"
-              name="kennel"
-              type="text"
-              id="kennel"
-              onChange={handleChange}
-            />
+            <Select options={kennelOptions} />
+
+        
           </div>
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary">
               Demeanor:
             </label>
-            <input
-              className="input"
-              placeholder="Easy Medium Hard"
-              name="demeanor"
-              id="demeanor"
-              onChange={handleChange}
-            />
+            <Select options={demeanorOptions} />
+
           </div>
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary" >
                 Status 
             </label>
-            <input
-              className="input"
-              placeholder="Resident Foster Adopted"
-              name="status"
-              type="text"
-              id="status"
-              onChange={handleChange}
-            />
+            <Select options={statusOptions} />
           </div>
           <div className="flex-row flex-end">
             <button className="btn" type="submit">
