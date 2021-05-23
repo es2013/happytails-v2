@@ -29,6 +29,8 @@ export const GET_DOGS = gql`
       name
       _id
       kennel
+      demeanor
+      status
       potty {
         volunteer
         timestamp
@@ -40,3 +42,4 @@ export const GET_DOGS = gql`
     }
   }
 `;
+
