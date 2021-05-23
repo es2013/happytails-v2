@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
-import Auth from "../utils/auth";
-import { ADD_USER } from "../utils/mutations";
+import Auth from '../utils/auth';
+import { ADD_USER } from '../utils/mutations';
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -13,9 +13,9 @@ function Signup(props) {
     const mutationResponse = await addUser({
       variables: {
         username: formState.username,
-        email: formState.email, 
+        email: formState.email,
         password: formState.password,
-        firstName: formState.firstName, 
+        firstName: formState.firstName,
         lastName: formState.lastName
       }
     });
@@ -39,10 +39,12 @@ function Signup(props) {
 
       <h2>Signup</h2>
 
-      <div className='row'>
+      <div className="row">
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="firstName">First Name:</label>
+            <label className="input-title-secondary" htmlFor="firstName">
+              First Name:
+            </label>
             <input
               className="input"
               placeholder="First"
@@ -53,7 +55,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="lastName">Last Name:</label>
+            <label className="input-title-secondary" htmlFor="lastName">
+              Last Name:
+            </label>
             <input
               className="input"
               placeholder="Last"
@@ -64,7 +68,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="userName">Username:</label>
+            <label className="input-title-secondary" htmlFor="userName">
+              Username:
+            </label>
             <input
               className="input"
               placeholder="username"
@@ -75,7 +81,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="email">Email:</label>
+            <label className="input-title-secondary" htmlFor="email">
+              Email:
+            </label>
             <input
               className="input"
               placeholder="youremail@test.com"
@@ -86,7 +94,9 @@ function Signup(props) {
             />
           </div>
           <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="pwd">Password:</label>
+            <label className="input-title-secondary" htmlFor="pwd">
+              Password:
+            </label>
             <input
               className="input"
               placeholder="******"
@@ -105,7 +115,6 @@ function Signup(props) {
       </div>
     </div>
   );
-
 }
 
 export default Signup;

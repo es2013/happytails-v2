@@ -10,5 +10,16 @@ export const GET_ME = gql`
       lastName
     }
   };
+
+  
 `;
 
+//toby added this 
+export const GET_USERS = gql`
+{
+  users{
+    username
+    
+  }
+}
+`;

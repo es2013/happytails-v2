@@ -6,8 +6,8 @@ import Auth from '../utils/auth';
 import { useIsAdmin } from '../utils/GlobalState';
 import { useHistory } from 'react-router-dom';
 
-function Login(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+function Login() {
+  const [formState, setFormState] = useState({ email: '', password: '' })
   const [login, { error }] = useMutation(LOGIN);
   const { setIsAdmin } = useIsAdmin();
 
@@ -43,7 +43,7 @@ function Login(props) {
     });
   };
 
-  console.log('here');
+  console.log('Login.js inside Login function');
 
   return (
     <div className="container my-1">

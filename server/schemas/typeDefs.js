@@ -31,6 +31,8 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    user: User
+    users: [User]
     canines: [Canine]
     activities: [Activity]
     canine(
@@ -50,6 +52,7 @@ const typeDefs = gql`
       lastName: String!
       isAdmin: Boolean
     ): Auth
+    findUser(username:String!): User
     addDog(
       name: String!
       kennel: String!
@@ -71,3 +74,4 @@ const typeDefs = gql`
 
 // export the typeDefs
 module.exports = typeDefs;
+ 
