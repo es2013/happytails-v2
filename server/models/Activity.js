@@ -9,9 +9,11 @@ const activitySchema = new Schema ({
         // required:true
     },
     volunteer: {
-        type: String,
-        required: true
-    }
+    type: Schema.Types.ObjectId, 
+    ref: 'User',
+    required: true
+}
+
 })
 
 const Activity = model('Activity', activitySchema);
@@ -21,5 +23,9 @@ module.exports = Activity;
 // volunteer: {
 //     type: Schema.Types.ObjectId, 
 //     ref: 'User',
+//     required: true
+// }
+// volunteer: {
+//     type: String,
 //     required: true
 // }

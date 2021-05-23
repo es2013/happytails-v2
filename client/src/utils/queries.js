@@ -23,3 +23,22 @@ export const GET_USERS = gql`
   }
 }
 `;
+
+//get all dogs
+export const GET_DOGS = gql `
+query {
+canines {
+name
+  _id
+  Kennel
+status
+  potty {
+  volunteer
+    timestamp
+}
+  walk {
+  volunteer
+    timestamp
+}
+}}
+`;

@@ -26,7 +26,7 @@ const typeDefs = gql`
   type Activity {
     _id: ID!
     timestamp: String
-    volunteer: String
+    volunteer: [User]
   }
 
   type Query {

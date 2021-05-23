@@ -37,6 +37,27 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_DOG = gql`
+ mutation addDog(
+   $name:String!, 
+   $kennel:String!, 
+   $demeanor:String!, 
+   $status:String!){
+ addDog(
+   name:$name, 
+   kennel: $kennel, 
+   demeanor: $demeanor, 
+   status: $status){
+  _id
+  name 
+  kennel
+  demeanor 
+  status 
+}
+}
+
+`;
+
 /*
 export const ADD_CANINE = gql``;
 export const ADD_EMPLOYEE = gql``;

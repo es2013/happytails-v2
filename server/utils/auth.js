@@ -15,10 +15,6 @@ module.exports = {
         .pop()
         .trim();
     }
-
-    
-
-
     if (!token) {
       return req;
     }

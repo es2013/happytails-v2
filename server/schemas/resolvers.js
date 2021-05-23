@@ -1,6 +1,7 @@
 const { User, Canine, Activity } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+// const { users, canines } = require('../FakeData');
 
 const resolvers = {
   Query: {
@@ -52,17 +53,15 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    
     },
 
     findUser: async (parent, args) => {
       const findUSer = await User.find(args);
       return {User};
     },
+    //add potty activity to single dognpm 
     addPotty: async (parent, args, context) => {  
-      
       const potty = await Activity.create({...args.potty})
-
         const canine =  await Canine.findByIdAndUpdate(
           {_id: args.canineId},
           {$addToSet: {potty: potty}},
@@ -70,9 +69,8 @@ const resolvers = {
         );
       return potty;
       
-      
-
     },
+    //add a walk activity to single dog
     addWalk: async (parent, args, context) => {  
       const walk = await Activity.create({...args.walk})
         const canine =  await Canine.findByIdAndUpdate(
@@ -82,6 +80,7 @@ const resolvers = {
         );
       return walk
     },
+
 
   
     // Login an existing user
