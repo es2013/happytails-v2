@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: '', password: '', username:'', firstName:'', lastName:''});
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async event => {
@@ -54,6 +54,7 @@ function Signup(props) {
               type="text"
               id="firstName"
               onChange={handleChange}
+              value={formState.firstName}
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -67,6 +68,8 @@ function Signup(props) {
               type="text"
               id="lastName"
               onChange={handleChange}
+              value={formState.lastName}
+
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -80,6 +83,8 @@ function Signup(props) {
               type="text"
               id="username"
               onChange={handleChange}
+              value={formState.username}
+
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -93,6 +98,8 @@ function Signup(props) {
               type="email"
               id="email"
               onChange={handleChange}
+              value={formState.email}
+
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -106,6 +113,8 @@ function Signup(props) {
               type="password"
               id="pwd"
               onChange={handleChange}
+              value={formState.password}
+
             />
           </div>
           <div className="flex-row flex-end">

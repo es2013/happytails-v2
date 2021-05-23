@@ -11,7 +11,7 @@ import gql from 'graphql-tag';
 //     }
 //   };
 
-// `;
+//  `;
 
 // //toby added this
 // export const GET_USERS = gql`
@@ -23,23 +23,27 @@ import gql from 'graphql-tag';
 // }
 // `;
 
-export const GET_DOGS = gql`
-  {
-    canines {
-      name
-      _id
-      kennel
-      demeanor
-      status
-      potty {
-        volunteer
-        timestamp
-      }
-      walk {
-        volunteer
-        timestamp
-      }
-    }
+//get all dogs
+export const GET_DOGS = gql `
+query {
+canines {
+name
+  _id
+  kennel
+  demeanor
+status
+  potty {
+  username {
+    username
   }
+  timestamp
+}
+  walk {
+  username {
+    username
+  }
+  timestamp
+}
+}}
 `;
 

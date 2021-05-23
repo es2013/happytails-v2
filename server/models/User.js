@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+const Activity = require('./Activity');
 
 
 
@@ -34,6 +35,10 @@ const userSchema = new Schema({
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    activity: {
+      type: Schema.Types.ObjectId,
+      ref: 'Activity'
     }
   },
   // set this to use virtual below
