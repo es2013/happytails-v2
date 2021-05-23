@@ -50,6 +50,7 @@ export const ADD_CANINE = gql`
       _id
       name
       kennel
+      demeanor
       status
       potty {
         timestamp
