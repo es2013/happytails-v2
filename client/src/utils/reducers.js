@@ -6,14 +6,14 @@
     
 //   } from "./actions";
   
-//   const initialState = {
-//     products: [],
-//     categories: [],
-//     currentCategory: '',
-//     cart: [],
-//     cartOpen: false
+//   // const initialState = {
+//   //   products: [],
+//   //   categories: [],
+//   //   currentCategory: '',
+//   //   cart: [],
+//   //   cartOpen: false
   
-//   }
+//   // }
   
 //   export const reducer = (state = initialState, action) => {
 //     switch (action.type) {
@@ -88,10 +88,10 @@
 //     }
 //   };
   
-  // export function useProductReducer(initialState) {
-  //   return useReducer(reducer, initialState);
-  // }
+//   export function useProductReducer(initialState) {
+//     return useReducer(reducer, initialState);
+//   }
   
   
   // redux 
-//   export default reducer;
+  // export default reducer;

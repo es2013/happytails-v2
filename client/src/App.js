@@ -1,43 +1,61 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import './App.css';
-
+// import { StoreProvider } from "./utils/GlobalState";
 
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
-import AdminDashboard from './pages/AdminDashBoard';
+//import AdminDashboard from './pages/AdminDashBoard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';
-import Footer from "./components/Footer";
-import Navigation from "./components/Navigation";
+import Footer from './components/Footer';
+import Navigation from './components/Navigation';
+import { AuthContext } from './utils/GlobalState';
+import Logout from './pages/Logout';
 
 // redux //
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 // import store from './utils/store';
 // import Success from "./pages/Success";
 
 const client = new ApolloClient({
   request: (operation) => {
-    const token = localStorage.getItem('id_token')
+    const token = localStorage.getItem('id_token');
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    });
   },
   uri: '/graphql',
-})
+});
 
 function App() {
-  return (
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [token, setToken] = useState(null);
 
+  useEffect(() => {
+    const token = localStorage.getItem('id_token');
+    setToken(token);
+  }, []);
+
+  // The provider context is necessary to preserve the global state
+  return (
     <ApolloProvider client={client}>
-      <Router >
-        <div>
+      <AuthContext.Provider
+        value={{
+          isAdmin,
+          token,
+          setIsAdmin,
+          setToken,
+        }}
+      >
+        <Router>
           {/* <Provider store={store}>  */}
+          {/* <StoreProvider> */}
           <Navigation />
           <Switch>
             <Route exact path="/" component={Homepage} />
@@ -45,6 +63,7 @@ function App() {
             {/* <Route path="/admin" component={AdminDashboard} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/logout" component={Logout} />
             {/* <Route exact path="/success" component={Success} /> */}
 
             {/* this is the path I had earlier. I think it is a more appropriate endpoint but it doesnt matter just lets get the singleDog page to load*/}
@@ -53,13 +72,13 @@ function App() {
             {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
 
             {/* footer only loading on logout page?? */}
-            <Footer />
           </Switch>
+          <Footer />
+          {/* </StoreProvider> */}
           {/* </Provider> */}
-        </div>
-      </Router>
+        </Router>
+      </AuthContext.Provider>
     </ApolloProvider>
-
   );
 }
 

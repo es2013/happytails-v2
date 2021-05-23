@@ -5,13 +5,16 @@
     font-family: Tahoma;
     margin: 5%;
     font-weight: bolder;
+    text-shadow: 1px 1px 4px #b5e2fa;
 }
+
 
 .homepage-link:hover {
     color: #ffd60a;
     font-size: xx-large;
     font-family: Tahoma;
     margin: 5%;
+    text-shadow: none;
 }
 
 nav ul a {
@@ -21,8 +24,14 @@ nav ul a {
 }
 
 nav ul a:hover {
-    color: #ffd60a;
+    color: rgb(0, 78, 137);
     font-family: Tahoma;
     font-weight: bolder;
     font-size: large;
 }
+
+nav .nav-wrapper {
+    background-image: linear-gradient(to right, rgb(0, 78, 137) , rgba(255, 213, 0));
+}
+
+
