@@ -4,15 +4,11 @@ import React from 'react';
 // this mutation has not be created yet so naming may change
 // import { UPDATE_DOG } from "../utils/mutations";
 import './stylesheet.css';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_DOGS } from '../../utils/queries';
+
 import { useAuth } from '../../utils/GlobalState';
 
-function DogRow() {
+function DogRow({ dogData }) {
   const { token } = useAuth();
-  const { data } = useQuery(GET_DOGS);
-  console.log('GET_DOGS:', data);
-  let dog;
 
   // boilerplate state setup for updated dog info in dog row.
   // const [formState, setFormState] = useState({ status: '', kennel: '', walk: '', potty_break: '' })
@@ -36,14 +32,10 @@ function DogRow() {
   // };
 
   // console.log("here");
-  if (data) {
-    dog = data.canines;
-    console.log(dog);
-  }
   return (
     <>
-      {dog
-        ? dog.map((canine) => {
+      {dogData
+        ? dogData.map((canine) => {
             return (
               <tr>
                 <td className="Easy">

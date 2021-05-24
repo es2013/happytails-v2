@@ -24,7 +24,7 @@ const resolvers = {
         .populate('activity');
     },
     canines: async () => {
-      return await Canine.find()
+      return await Canine.find().sort({name: 1})
     },
     canine: async (parent, {_id}) => {
       return await Canine.findById({_id}).populate(

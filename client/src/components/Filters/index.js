@@ -1,24 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react"
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
+const SEE_ALL_DOGS = 'See all dogs'
+const SEE_ALL_EASY_DOGS = 'See all easy dogs'
 
-function Filters() {
+const options = [
+  SEE_ALL_DOGS,
+  SEE_ALL_EASY_DOGS
+];
 
+const defaultOption = options[0];
 
-    return (
-        // in Happy Tails 1.0 we have a conditional to render AM or PM filters.  perhaps we can use props for this?
-        
-        <ul id='dropdown1' className='dropdown-content'>
-            <li id="need-walk-am"><Link to="#!">See dogs that need walks</Link></li>
-            <li id="need-potty-am"><Link to="#!">See dogs that need a potty break</Link></li>
-            <li className="divider" tabIndex="-1"></li>
-            <li id="have-walked-am"><Link to="#!">See dogs who have walked</Link></li>
-            <li id="have-potty-am"><Link to="#!">See dogs who have gone potty</Link></li>
-            <li className="divider" tabIndex="-1"></li>
-            <li id="all-happy-am"><Link to="#!">See all happy tails</Link></li>
-            <li id="all-sad-am"><Link to="#!">See all sad tails</Link></li>
-        </ul>
-    );
+function Filters({ dogData, setDogData }) {
+  const handleChange = ({ value }) => {
+    switch(value){
+      case SEE_ALL_EASY_DOGS:
+        setDogData(dogData.filter(d => d.demeanor === "Friendly"))
+        break;
+      case SEE_ALL_DOGS:
+      default:
+        setDogData(dogData)
+    }
+  }
+
+  return <Dropdown options={options} onChange={handleChange} value={defaultOption} placeholder="Select an option" />;
+
 }
 
-export default Filters;
+export default Filters
