@@ -1,6 +1,4 @@
 import React from 'react';
-import Link from 'react';
-
 import Filters from '../components/Filters';
 import TableAm from '../components/TableAm';
 import TablePm from '../components/TablePm';
@@ -8,21 +6,17 @@ import AdminMessage from '../components/AdminMessage';
 
 function AdminDashboard() {
 
-    // function seeUsers() {
+    function seeUsers() {
 
-        // Create a value for seeUsers and if true render users table
+    }
 
-    // }
+    function showRecords() {
 
-    // function showRecords() {
-
-        // Create a value for showRecords and if true render records table
-
-    // }
+    }
 
     return (
         <div className="dashboard-container">
-
+            
             <AdminMessage />
 
             <Filters />
@@ -37,9 +31,9 @@ function AdminDashboard() {
                 <div className="col s4 m2">
                     {/* add on click funtionality to link to add dog page */}
                     <button className="btn add-dog-btn" type="button">
-                        <Link to="/add-dog" className="add-dog">
+                        <a to="/add-dog" className="add-dog">
                             Add a Dog
-                        </Link>
+                        </a>
                     </button>
                 </div>
 
@@ -48,9 +42,9 @@ function AdminDashboard() {
                     <button className="btn see-users-btn" type="button">
                         {/* create user table and render instead of dog tables. */}
 
-                        <Link to="/users" className="see-users">
+                        <a to="/users" className="see-users">
                             See Users
-                        </Link>
+                        </a>
                     </button>
                 </div>
 
