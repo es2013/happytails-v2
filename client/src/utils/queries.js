@@ -11,7 +11,7 @@ import gql from 'graphql-tag';
 //     }
 //   };
 
-// `;
+//  `;
 
 // //toby added this
 // export const GET_USERS = gql`
@@ -23,8 +23,9 @@ import gql from 'graphql-tag';
 // }
 // `;
 
+//get all dogs
 export const GET_DOGS = gql`
-  {
+  query {
     canines {
       name
       _id
@@ -32,11 +33,15 @@ export const GET_DOGS = gql`
       demeanor
       status
       potty {
-        volunteer
+        username {
+          username
+        }
         timestamp
       }
       walk {
-        volunteer
+        username {
+          username
+        }
         timestamp
       }
     }

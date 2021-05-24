@@ -7,8 +7,8 @@ import { GET_DOGS } from '../utils/queries';
 
 function Dashboard() {
   const { data } = useQuery(GET_DOGS);
-  console.log('GET_DOGS:: ', data);
-
+  console.log('GET_DOGS: ', data);
+  
   return (
     <div className="dashboard-container">
       <UserMessage />

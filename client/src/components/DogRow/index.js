@@ -4,8 +4,14 @@ import React from 'react';
 // this mutation has not be created yet so naming may change
 // import { UPDATE_DOG } from "../utils/mutations";
 import './stylesheet.css';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_DOGS } from '../../utils/queries';
 
-function DogRow({ dogRow }) {
+function DogRow() {
+  const { data } = useQuery(GET_DOGS);
+  console.log('GET_DOGS:', data);
+  let dog;
+
   // boilerplate state setup for updated dog info in dog row.
   // const [formState, setFormState] = useState({ status: '', kennel: '', walk: '', potty_break: '' })
   // const [updateDog, { error }] = useMutation(UPDATE_DOG);
@@ -28,29 +34,37 @@ function DogRow({ dogRow }) {
   // };
 
   // console.log("here");
-
-  //const { dogs = [name, kennel, demeanor, status, potty, walk ]} = DogRow;
-
+  if (data) {
+    dog = data.canines;
+    console.log(dog);
+  }
   return (
-      <tr>
-        <td className="Easy">
-          {' '}
-          <span className="status-emoji">😞</span>Belle{' '}
-        </td>
-
-        <td> </td>
-        <td> </td>
-        <td className="Easy"> Easy </td>
-        <td> Unleashed </td>
-
-        <td>
-          <button type="submit" className="btn">
-            <a href="/dashboard/edit/26" className="select-dog">
-              Select
-            </a>
-          </button>
-        </td>
-      </tr>
+    <>
+      {dog
+        ? dog.map((canine) => {
+            return (
+              <tr>
+                <td className="Easy">
+                  {' '}
+                  <span className="status-emoji">😞</span>
+                  {canine.name}
+                </td>
+                <td> </td>
+                <td> </td>
+                <td className="Easy"> {canine.demeanor} </td>
+                <td> {canine.kennel} </td>
+                <td>
+                  <button type="submit" className="btn">
+                    <a href="/dashboard/edit/26" className="select-dog">
+                      Select
+                    </a>
+                  </button>
+                </td>
+              </tr>
+            );
+          })
+        : null}
+    </>
   );
 }
 
