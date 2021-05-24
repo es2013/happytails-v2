@@ -73,7 +73,7 @@ function App() {
             {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
 
             {/* footer only loading on logout page?? */}
-            <Route exact path="/adddog" component={AdminAddDog} />
+            <Route exact path="/add-dog" component={AdminAddDog} />
 
           </Switch>
           <Footer />
