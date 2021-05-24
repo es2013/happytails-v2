@@ -27,22 +27,23 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_CANINE = gql`
-      ) {
-        ActivityInput(
-          timestamp: $timestamp
-          volunteer: $volunteer
-        )
-        }
-      addWalk(
-        canineId: $canineId
-      ) {
-        ActivityInput(
-          timestamp: $timestamp
-          volunteer: $volunteer
-        )
-        }
-      },
-    }
+mutation addDog(
+  $name:String!, 
+  $kennel:String!, 
+  $demeanor:String!, 
+  $status:String!){
+ addDog(
+   name:$name, 
+   kennel: $kennel, 
+   demeanor: $demeanor, 
+   status: $status){
+  _id
+  name 
+  kennel
+  demeanor 
+  status 
+}
+}
 `;
 
 /*
