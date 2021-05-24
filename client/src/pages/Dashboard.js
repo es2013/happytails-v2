@@ -2,22 +2,27 @@ import { useQuery } from '@apollo/client';
 import React from 'react';
 import Filters from '../components/Filters';
 import TableAm from '../components/TableAm';
+import TablePm from '../components/TablePm';
 import UserMessage from '../components/UserMessage';
 import { GET_DOGS } from '../utils/queries';
 
 function Dashboard() {
-  const { data } = useQuery(GET_DOGS);
-  console.log('GET_DOGS:: ', data);
-  return (
-    <div className="dashboard-container">
-      <UserMessage />
+    const { data } = useQuery(GET_DOGS);
+    console.log('GET_DOGS: ', data);
 
-      <Filters />
+    return (
+        <div className="dashboard-container">
+            <UserMessage />
 
-      {/* currently is just one table, but will work on getting to load based on time */}
-      <TableAm />
-    </div>
-  );
-}
+            <Filters />
+
+            {/* currently is both tables, but will work on getting to load current table */}
+
+            <TableAm />
+
+            <TablePm />
+        </div>
+    );
+};
 
 export default Dashboard;

@@ -1,6 +1,5 @@
 // import the gql tagged template function
 const { gql } = require('apollo-server-express');
-
 const typeDefs = gql`
   type User {
     _id: ID!
@@ -9,6 +8,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     isAdmin: Boolean
+    activities: [Activity]
   }
   type Canine {
     _id: ID!
@@ -19,27 +19,29 @@ const typeDefs = gql`
     walk:[Activity]
     potty:[Activity]
   }
-  input ActivityInput {
-    timestamp: String!
-    volunteer: String!
-  }
+  # input ActivityInput {
+  #   _id: ID!
+  #   timestamp: String!
+  # }
   type Activity {
-    _id: ID!
+    _id: ID
     timestamp: String
-    volunteer: String
+    activityType: String
+    username: User
   }
-
   type Query {
     me: User
-    user: User
     users: [User]
+    user(username: String!): User
+    activities(_id: ID, timestamp: String, username: String, activityType: String): Activity
     canines: [Canine]
-    activities: [Activity]
     canine(
+      _id: String
       name: String!
       kennel: String!
       demeanor: String!
       status: String!
+      activityType: String
     ): Canine
   }
   type Mutation {
@@ -52,7 +54,6 @@ const typeDefs = gql`
       lastName: String!
       isAdmin: Boolean
     ): Auth
-    findUser(username:String!): User
     addDog(
       name: String!
       kennel: String!
@@ -77,6 +78,5 @@ const typeDefs = gql`
     user: User
   }
 `;
-
 // export the typeDefs
 module.exports = typeDefs;
