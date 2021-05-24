@@ -47,3 +47,30 @@ export const GET_DOGS = gql`
     }
   }
 `;
+
+//get single dog
+export const GET_DOGS = gql`
+query canine($id: ID!) {
+  canine(_id: $id) {
+    _id
+    name
+    kennel
+    status
+    potty {
+      _id
+      username{
+        username
+      }
+      timestamp
+      
+    }
+    walk {
+      _id
+      username {
+        username
+      }
+      timestamp
+    }
+  }
+}
+`;
