@@ -21,23 +21,29 @@ if (data) {
         <>
         {dog ? ( dog.map((canine) => {
             return (
-                <>
-                <tr>            
-                    <td className='${canine.demeanor}'> <span className="status-emoji">😞</span>{canine.name}</td>
-                    <td> </td>
-                    <td> </td>
-                    <td className='Easy'> {canine.demeanor} </td>
-                    <td className='Easy'> {canine.status} </td>
-                    <td> {canine.kennel} </td>
-                    <td><button type="submit" className="btn"><a href="/dashboard/edit/26" className="select-dog">Select</a></button></td>
-                </tr> 
-                {/* 
-                 */}
-                </>
-                
-            )
-            })
-            ) : null }
+              <tr>
+                <td className="Easy">
+                  {' '}
+                  <span className="status-emoji">😞</span>
+                  {canine.name}
+                </td>
+                <td> </td>
+                <td> </td>
+                <td className="Easy"> {canine.demeanor} </td>
+                <td> {canine.kennel} </td>
+                {token && (
+                  <td>
+                    <button type="submit" className="btn">
+                      <a to="/single-dog/:id" className="select-dog">
+                        Select
+                      </a>
+                    </button>
+                  </td>
+                )}
+              </tr>
+            );
+          })
+        : null}
     </>
    
     );
