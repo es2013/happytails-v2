@@ -6,6 +6,7 @@ import './App.css';
 // import { StoreProvider } from "./utils/GlobalState";
 
 import Homepage from './pages/Homepage';
+import AdminDashboard from './pages/AdminDashBoard';
 import Dashboard from './pages/Dashboard';
 //import AdminDashboard from './pages/AdminDashBoard';
 import Login from './pages/Login';
@@ -60,8 +61,8 @@ function App() {
           <Navigation />
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route path="/dashboard" component={Dashboard} />
-            {/* <Route path="/admin" component={AdminDashboard} /> */}
+            <Route path="/admin-dashboard" component={AdminDashboard} />
+            {/* <Route path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/logout" component={Logout} />
