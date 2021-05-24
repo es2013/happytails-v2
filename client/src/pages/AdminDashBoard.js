@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'react';
+
 import Filters from '../components/Filters';
 import TableAm from '../components/TableAm';
 import TablePm from '../components/TablePm';
@@ -35,9 +37,9 @@ function AdminDashboard() {
                 <div className="col s4 m2">
                     {/* add on click funtionality to link to add dog page */}
                     <button className="btn add-dog-btn" type="button">
-                        <a to="/add-dog" className="add-dog">
+                        <Link to="/add-dog" className="add-dog">
                             Add a Dog
-                        </a>
+                        </Link>
                     </button>
                 </div>
 
@@ -46,9 +48,9 @@ function AdminDashboard() {
                     <button className="btn see-users-btn" type="button">
                         {/* create user table and render instead of dog tables. */}
 
-                        <a to="/users" className="see-users">
+                        <Link to="/users" className="see-users">
                             See Users
-                        </a>
+                        </Link>
                     </button>
                 </div>
 
