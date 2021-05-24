@@ -6,8 +6,10 @@ import React from 'react';
 import './stylesheet.css';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_DOGS } from '../../utils/queries';
+import { useAuth } from '../../utils/GlobalState';
 
 function DogRow() {
+  const { token } = useAuth();
   const { data } = useQuery(GET_DOGS);
   console.log('GET_DOGS:', data);
   let dog;
@@ -53,13 +55,15 @@ function DogRow() {
                 <td> </td>
                 <td className="Easy"> {canine.demeanor} </td>
                 <td> {canine.kennel} </td>
-                <td>
-                  <button type="submit" className="btn">
-                    <a href="/dashboard/edit/26" className="select-dog">
-                      Select
-                    </a>
-                  </button>
-                </td>
+                {token && (
+                  <td>
+                    <button type="submit" className="btn">
+                      <a href="/dashboard/edit/26" className="select-dog">
+                        Select
+                      </a>
+                    </button>
+                  </td>
+                )}
               </tr>
             );
           })
