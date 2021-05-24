@@ -1,52 +1,75 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
-import Auth from '../utils/auth';
 import { ADD_CANINE } from '../utils/mutations';
 import Select from 'react-select';
+import { ValuesOfCorrectTypeRule } from 'graphql';
+import { useHistory } from 'react-router-dom';
+
 
 function NewDog(props) {
-  const [formState, setFormState] = useState({ name: '', kennel: '' });
-  const [addDog, { error }] = useMutation(ADD_CANINE);
+  const [formState, setFormState] = useState({ name: '', kennel: '', status:'', demeanor:'' });
+  const [addDog] = useMutation(ADD_CANINE);
+  const history = useHistory();
 
   const kennelOptions = [
-    { value: 1, label: 'Camp Bowwow' },
-    { value: 2, label: 'Princess Castle' },
-    { value: 3, label: 'Pawty Haus' },
-    { value: 4, label: 'Caberet' },
-    { value: 5, label: 'Dioji' },
+    { value: 'Camp Bowwow', label: 'Camp Bowwow' },
+    { value: 'Princess Castle', label: 'Princess Castle' },
+    { value: 'Pawty Haus', label: 'Pawty Haus' },
+    { value: 'Caberet', label: 'Caberet' },
+    { value: 'Dioji', label: 'Dioji'},
+    { value: 'Chiquita Banana', label: 'Chiquita-Banana'},
+    { value: 'HappyTails', label: 'HappyTails'},
+    { value: 'Playpen', label: 'Playpen'},
+    { value: 'Bullpen', label: 'Bullpen'},
+
   ];
 
   const demeanorOptions = [
-    { value: 1, label: 'Easy' },
-    { value: 2, label: 'Medium' },
-    { value: 3, label: 'Hard' },
+    { value: 'Easy', label: 'Easy', default: 'Easy' },
+    { value: 'Moderate', label: 'Moderate' },
+    { value: 'Difficult', label: 'Difficult' },
   ];
   const statusOptions = [
-    { value: 1, label: 'Resident' },
-    { value: 2, label: 'in Foster' },
-    { value: 3, label: 'Adopted' },
+    { value: 'Resident' , label: 'Resident' },
+    { value: 'In Foster', label: 'In Foster' },
+    { value: 'Adopted' , label: 'Adopted' },
   ];
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const mutationResponse = await addDog({
+      variables: {
+        name: formState.name,
+        kennel: formState.kennel,
+        demeanor: formState.demeanor,
+        status: formState.status,
+      }
+    });
+    history.push('/');
+  }
 
-    try {
-      const { data } = await addDog({
-        variables: { ...formState },
-      });
-      Auth.login(data.addDog.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const handleChange = (event) => {
+function handleInputChange(event)  {
     const { name, value } = event.target;
     setFormState({
       ...formState,
       [name]: value,
     });
+    console.log(formState);
+    console.log(event)
+
   };
+
+  const handleKennelChange = (value) => {
+    setFormState({...formState, 
+      ['kennel']: value.value})
+    }
+    const handleDemeanorChange = (value) => {
+      setFormState({...formState, 
+        ['demeanor']: value.value})
+      }
+      const handleStatusChange = (value) => {
+        setFormState({...formState, 
+          ['status']: value.value})
+        }
 
   return (
     <div className="container my-1 btn-adddog">
@@ -62,7 +85,7 @@ function NewDog(props) {
               name="name"
               type="text"
               id="name"
-              onChange={handleChange}
+             onChange={handleInputChange}
             />
           </div>
           {/* <div className="flex-row space-between my-2">
@@ -79,15 +102,15 @@ function NewDog(props) {
 
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary">Kennel:</label>
-            <Select class="select" options={kennelOptions} />
+            <Select class="select" options={kennelOptions} onChange={handleKennelChange} />
           </div>
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary">Demeanor:</label>
-            <Select class="select" options={demeanorOptions} />
+            <Select class="select" options={demeanorOptions} onChange={handleDemeanorChange} />
           </div>
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary">Status</label>
-            <Select class="select" options={statusOptions} />
+            <Select class="select" options={statusOptions} onChange={handleStatusChange} />
           </div>
           <div className="flex-row flex-end">
             <button className="btn" type="submit">
