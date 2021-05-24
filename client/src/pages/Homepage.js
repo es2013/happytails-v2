@@ -1,26 +1,35 @@
 import React from 'react';
-
+import Filters from '../components/Filters';
 import Hero from '../components/Hero';
 import TableAm from '../components/TableAm';
 import TablePm from '../components/TablePm';
 import UserMessage from '../components/UserMessage';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_DOGS } from '../utils/queries';
+import { useAuth } from '../utils/GlobalState';
 
 function Homepage() {
+  const { token } = useAuth();
+  const { data } = useQuery(GET_DOGS);
+  const [dogData, setDogData] = React.useState([]);
 
-    // do we need to pass state in homepage? I think all that data would be already rendered in our table components..
+  React.useEffect(() => {
+    setDogData(data?.canines);
+  }, [data]);
 
-    return (
-        <div>
-            <Hero />
+  return (
+    <div>
+      <Hero />
 
-            <UserMessage />
+      <UserMessage />
 
-            <TableAm />
+      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
 
-            <TablePm />
-        </div>
-    )
-};
+      <TableAm dogData={dogData} />
+
+      <TablePm />
+    </div>
+  );
+}
 
 export default Homepage;
-

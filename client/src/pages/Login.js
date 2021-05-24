@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
@@ -9,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 function Login() {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
-  const { setIsAdmin, setToken, setLoggedIn } = useAuth();
+  const { setIsAdmin, setToken } = useAuth();
 
   // The useHistory hook gives access to the history instance that we may use to navigate.
   // Use this instead of window.location.assign('/'); in auth.js so we do not refresh

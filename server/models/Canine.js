@@ -5,19 +5,19 @@ const Activity = require('./Activity');
 const canineSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   kennel: {
     type: String,
-    required: true,
+    required: false,
   },
   demeanor: {
     type: String,
-    required: true,
+    required: false,
   },
   status: {
     type: String,
-    required: true,
+    required: false,
   },
   walk: [
     {

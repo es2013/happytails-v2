@@ -1,14 +1,35 @@
-
 .btn {
-    background-color: #1a659e;
+  background-color: #1a659e;
 }
 
 .btn:hover {
-    background-color: #0a85ed;
+  background-color: #0a85ed;
 }
 
 .select-dog {
-    color: white;
-    font-family: Tahoma;
-    font-weight: bolder;
+  color: white;
+  font-family: Tahoma;
+  font-weight: bolder;
+}
+
+.card-body {
+  border: dashed 1px #0a85ed;
+}
+.card-title {
+  border-radius: 10px;
+  background: #f2f2f2;
+  color: #333;
+  padding: 10px;
+  border-radius: 10px;
+}
+.card-subtitle {
+  border-radius: 10px;
+
+  background: yellow;
+  color: #333;
+  padding: 10px;
+  border-radius: 10px;
+}
+.card-img {
+  max-width: 300px;
 }
