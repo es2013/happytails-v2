@@ -61,90 +61,50 @@ function Filters({ dogData, setDogData }) {
         setDogData(dogData.filter((d) => d.demeanor === 'Difficult'));
         break;
       case 'VIEW_WALKED_DOGS':
-        setDogData(dogData.filter((d) => d.walk.username != ''));
+        setDogData(dogData.filter((d) => d.walk.username !== null));
         break;
       case 'VIEW_NOT_WALKED_DOGS':
-        setDogData(dogData.filter((d) => d.walk.username === ''));
+        setDogData(dogData.filter((d) => d.walk.username === null));
         break;
       case 'VIEW_HAS_POTTY_DOGS':
-        setDogData(dogData.filter((d) => d.potty.username != ''));
+        setDogData(dogData.filter((d) => d.potty.username !== null));
         break;
       case 'VIEW_NOT_POTTY_DOGS':
-        setDogData(dogData.filter((d) => d.potty.username === ''));
+        setDogData(dogData.filter((d) => d.potty.username === null));
         break;
       case 'VIEW_HAPPY_TAILS':
         setDogData(
           dogData.filter(
-            (d) => d.potty.username != '' && d.walk.username != ''
+            (d) => d.potty.username !== null && d.walk.username !== null
           )
         );
         break;
       case 'VIEW_SAD_TAILS':
         setDogData(
           dogData.filter(
-            (d) => d.potty.username === '' || d.walk.username === ''
+            (d) => d.potty.username === null || d.walk.username === null
           )
         );
         break;
       default:
         setDogData(dogData);
-    }
+    };
   };
-
-  //const toggle = () => setOpen(!dropdownOpen);
 
   return (
     <Container>
       <Row>
-        <Col md={{ span: 4, offset: 3 }}>blah</Col>
-        <Col md={{ span: 4, offset: 3 }}>
-          <Dropdown
-          options={options}
-          onChange={handleChange}
-          value={defaultOption}
-           id="drop-down"
-          />
+        <Col md={{ span: 4, offset: 3 }}></Col>
+        <Col md={{ span: 2, offset: 2 }}>
+          <Dropdown options={options}
+                    onChange={handleChange}
+                    value={defaultOption}
+                    id="drop-down" />
         </Col>
-        <Col md={{ span: 4, offset: 3 }}>BLAH</Col>
+        <Col md={{ span: 4, offset: 3 }}></Col>
       </Row>
     </Container>
   );
-}
+};
 
-/*
-<div className="row" width="50%">
-  <div className="flex-row space-between my-2">
-    <Select
-      class="select"
-      options={options}
-      onChange={handleChange}
-    />
-  </div>
-</div>
-*/
-/* <Dropdown
-      options={options}
-      onChange={handleChange}
-      value={defaultOption}
-      as="button"
-/> */
-
-/*
-<DropdownButton
-      options={options}
-      onSelect={handleChange}
-      value={defaultOption}
-      title="View Dogs by Filters"
-    >
-      <Dropdown.Item>View all dogs</Dropdown.Item>
-      <Dropdown.Item>View easy dogs</Dropdown.Item>
-      <Dropdown.Item>View difficult dogs</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item>View walked dogs</Dropdown.Item>
-      <Dropdown.Item>View NOT walked dogs</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item>View has-gone-potty dogs</Dropdown.Item>
-      <Dropdown.Item>View has-NOT-gone-potty dogs</Dropdown.Item>
-    </DropdownButton>
-*/
 export default Filters;
