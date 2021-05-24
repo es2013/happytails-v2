@@ -46,40 +46,69 @@ mutation addDog(
 }
 `;
 
+// $kennel: String
+//$demeanor: String
+//$status: String
+//return activity as opposed to canine and walk
+
+
+// export const UPDATE_DOG = gql`
+// mutation updateDog(
+//   $name: String
+//   $potty: ActivityInput
+//   $walk: ActivityInput
+//   $username: String
+//   $timestamp: String
+  
+//   ) {
+//     addPotty(canineId: $canineId) {
+//       ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
+//     }
+//     addWalk(canineId: $canineId) {
+//       ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
+//     }
+//   }
+//   canine {
+//     _id
+//     name
+//     kennel
+//     status
+//     potty {
+//       timestamp
+//       volunteer
+//     }
+//     walk {
+//       timestamp
+//       volunteer
+//     }
+//   }
+// }
+// `;
 
 export const UPDATE_DOG = gql`
-mutation updateDog(
-  $name: String
-  $kennel: String
-  $demeanor: String
-  $status: String
-  $potty: ActivityInput
-  $walk: ActivityInput
-  
-  ) {
-    addPotty(canineId: $canineId) {
-      ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
+
+mutation updateDog($canine: [ID]!) {
+  updateDog(canine: $canine) {
+    timestamp
+    canine{
+      _id
+      name
+      demeanor
+
+
     }
-    addWalk(canineId: $canineId) {
-      ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
-    }
+
   }
-  canines {
-    _id
-    name
-    kennel
-    status
-    potty {
-      timestamp
-      volunteer
-    }
-    walk {
-      timestamp
-      volunteer
-    }
-  }
+
 }
+
+
+
+
+
 `;
+
+
 
 
 

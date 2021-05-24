@@ -61,16 +61,14 @@ const typeDefs = gql`
       status: String!
     ): Canine
 
-    addPotty(canineId: ID!, potty: ActivityInput!): Activity
-    addWalk(canineId: ID!, walk: ActivityInput!): Activity
 
+    addPotty(canineId: ID!, timestamp: String! activityType: String!): Activity
+    addWalk(canineId: ID!, timestamp: String! activityType: String!): Activity
     # addPotty(canineId: _id!, volunteer: String!, timestamp: String!): Canine
     # addWalk(canineId: ID!, volunteerId: username!, timestamp: String!): Activity
+
+
     
-    
-    
-    
-    updateDog( name: String!, kennel: String!, demeanor: String!, status: String!, walk: ActivityInput!, potty: ActivityInput!) Canine
     
     
   type Auth {
@@ -80,3 +78,5 @@ const typeDefs = gql`
 `;
 // export the typeDefs
 module.exports = typeDefs;
+// updateDog( name: String!, kennel: String!, demeanor: String!, status: String!, walk: ActivityInput!, potty: ActivityInput!): Canine
+    
