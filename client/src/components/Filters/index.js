@@ -1,7 +1,5 @@
 import React from 'react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-dropdown';
-import Select from 'react-select';
 import 'react-dropdown/style.css';
 import './stylesheet.css'
 import { Container, Row, Col } from 'react-bootstrap';
