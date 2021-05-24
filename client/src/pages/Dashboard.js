@@ -7,25 +7,22 @@ import UserMessage from '../components/UserMessage';
 import { GET_DOGS } from '../utils/queries';
 import { useAuth } from '../utils/GlobalState';
 
-
 function Dashboard() {
   const { token } = useAuth();
   const { data } = useQuery(GET_DOGS);
   const [dogData, setDogData] = React.useState([]);
 
   React.useEffect(() => {
-    setDogData(data?.canines)
+    setDogData(data?.canines);
   }, [data]);
 
   return (
     <div className="dashboard-container">
       <UserMessage />
 
-      {token && (
-        <Filters dogData={data?.canines} setDogData={setDogData} />
-      )}
+      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
 
-       <TableAm dogData={dogData} />
+      <TableAm dogData={dogData} />
     </div>
   );
 }

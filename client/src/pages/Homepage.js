@@ -14,7 +14,7 @@ function Homepage() {
   const [dogData, setDogData] = React.useState([]);
 
   React.useEffect(() => {
-    setDogData(data?.canines)
+    setDogData(data?.canines);
   }, [data]);
 
   return (
@@ -23,9 +23,7 @@ function Homepage() {
 
       <UserMessage />
 
-      {token && (
-        <Filters dogData={data?.canines} setDogData={setDogData} />
-      )}
+      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
 
       <TableAm dogData={dogData} />
 
