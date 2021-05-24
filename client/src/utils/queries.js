@@ -47,3 +47,6 @@ export const GET_DOGS = gql`
     }
   }
 `;
+
+// create a GET_DOG query to use in SingleDog page.  It will pass the id to dogIdParam.
+

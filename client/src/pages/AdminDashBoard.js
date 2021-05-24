@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Filters from '../components/Filters';
 import TableAm from '../components/TableAm';
 import TablePm from '../components/TablePm';
@@ -10,7 +12,7 @@ function AdminDashboard() {
 
     }
 
-    function showRecords() {
+    function seeRecords() {
 
     }
 
@@ -31,26 +33,27 @@ function AdminDashboard() {
                 <div className="col s4 m2">
                     {/* add on click funtionality to link to add dog page */}
                     <button className="btn add-dog-btn" type="button">
-                        <a to="/add-dog" className="add-dog">
+                        <Link to="/add-dog" className="add-dog">
                             Add a Dog
-                        </a>
+                        </Link>
                     </button>
                 </div>
 
                 {/* See Users shows all users */}
                 <div className="col s4 m2">
-                    <button className="btn see-users-btn" type="button">
+                    <button className="btn see-users-btn" onClick={seeUsers} type="button">
                         {/* create user table and render instead of dog tables. */}
-
-                        <a to="/users" className="see-users">
+                        {/* <a to="/users" className="see-users">
                             See Users
-                        </a>
+                        </a> */}
+
+                        See Users
                     </button>
                 </div>
 
                 {/* takes admin to historical data table */}
                 <div className="col s4 m2">
-                    <button className="btn historical-table-btn" type="button">
+                    <button className="btn historical-table-btn"  onClick={seeRecords} type="button">
                         See Past Records
                     </button>
                 </div>

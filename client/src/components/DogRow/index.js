@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import { useMutation, useState } from '@apollo/react-hooks';
 // import Auth from "../utils/auth";
 // this mutation has not be created yet so naming may change
@@ -26,7 +27,7 @@ function DogRow() {
                             <td className='Easy'> {canine.demeanor} </td>
                             <td className='Easy'> {canine.status} </td>
                             <td> {canine.kennel} </td>
-                            <td><button type="submit" className="btn"><a href="/single-dog/:id" className="select-dog">Select</a></button></td>
+                            <td><button type="submit" className="btn"><Link to={`/single-dog/${canine._id}`} className="select-dog">Select</Link></button></td>
                         </tr>
                         {/* 
                  */}
