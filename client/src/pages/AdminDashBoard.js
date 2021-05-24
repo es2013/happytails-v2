@@ -2,21 +2,25 @@ import React from 'react';
 import Filters from '../components/Filters';
 import TableAm from '../components/TableAm';
 import TablePm from '../components/TablePm';
-import UserMessage from '../components/UserMessage';
+import AdminMessage from '../components/AdminMessage';
 
 function AdminDashboard() {
 
-    function seeUsers() {
+    // function seeUsers() {
 
-    }
+        // Create a value for seeUsers and if true render users table
 
-    function showRecords() {
+    // }
 
-    }
+    // function showRecords() {
+
+        // Create a value for showRecords and if true render records table
+
+    // }
 
     return (
         <div className="dashboard-container">
-            
+
             <AdminMessage />
 
             <Filters />
