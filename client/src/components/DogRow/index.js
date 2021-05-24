@@ -58,7 +58,7 @@ function DogRow() {
                 {token && (
                   <td>
                     <button type="submit" className="btn">
-                      <a href="/dashboard/edit/26" className="select-dog">
+                      <a to="/single-dog/:id" className="select-dog">
                         Select
                       </a>
                     </button>

@@ -6,9 +6,18 @@ import UserMessage from '../components/UserMessage';
 
 function AdminDashboard() {
 
+    function seeUsers() {
+
+    }
+
+    function showRecords() {
+
+    }
+
     return (
         <div className="dashboard-container">
-            <UserMessage />
+            
+            <AdminMessage />
 
             <Filters />
 
@@ -22,14 +31,20 @@ function AdminDashboard() {
                 <div className="col s4 m2">
                     {/* add on click funtionality to link to add dog page */}
                     <button className="btn add-dog-btn" type="button">
-                        Add A Dog
+                        <a to="/add-dog" className="add-dog">
+                            Add a Dog
+                        </a>
                     </button>
                 </div>
 
                 {/* See Users shows all users */}
                 <div className="col s4 m2">
                     <button className="btn see-users-btn" type="button">
-                        See Users
+                        {/* create user table and render instead of dog tables. */}
+
+                        <a to="/users" className="see-users">
+                            See Users
+                        </a>
                     </button>
                 </div>
 
