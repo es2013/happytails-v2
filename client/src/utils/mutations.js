@@ -27,41 +27,26 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_CANINE = gql`
-  mutation addDog(
-    $name: String
-    $kennel: String
-    $demeanor: String
-    $status: String
-  ) {
-    addDog(
-      name: $username
-      kennel: $password
-      demeanor: $firstName
-      status: $lastName
-    ) {
-      addPotty(canineId: $canineId) {
-        ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
-      }
-      addWalk(canineId: $canineId) {
-        ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
-      }
-    }
-    canines {
-      _id
-      name
-      kennel
-      status
-      potty {
-        timestamp
-        volunteer
-      }
-      walk {
-        timestamp
-        volunteer
-      }
-    }
-  }
+mutation addDog(
+  $name:String!, 
+  $kennel:String!, 
+  $demeanor:String!, 
+  $status:String!){
+ addDog(
+   name:$name, 
+   kennel: $kennel, 
+   demeanor: $demeanor, 
+   status: $status){
+  _id
+  name 
+  kennel
+  demeanor 
+  status 
+}
+}
 `;
+
+
 
 /*
 export const ADD_CANINE = gql`

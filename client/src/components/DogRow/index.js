@@ -7,6 +7,13 @@ import "./stylesheet.css";
 import { useQuery } from '@apollo/react-hooks'
 import { GET_DOGS } from '../../utils/queries';
 
+//testing dog cards
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card';
+
+import test from '../../images/dogs/Apollo.jpg';
 
 
 function DogRow() {
@@ -44,14 +51,20 @@ if (data) {
         <>
         {dog ? ( dog.map((canine) => {
             return (
+                <>
                 <tr>            
-                    <td className="Easy"> <span className="status-emoji">😞</span>{canine.name}</td>
+                    <td className='${canine.demeanor}'> <span className="status-emoji">😞</span>{canine.name}</td>
                     <td> </td>
                     <td> </td>
-                    <td className="Easy"> {canine.demeanor} </td>
+                    <td className='Easy'> {canine.demeanor} </td>
+                    <td className='Easy'> {canine.status} </td>
                     <td> {canine.kennel} </td>
                     <td><button type="submit" className="btn"><a href="/dashboard/edit/26" className="select-dog">Select</a></button></td>
                 </tr> 
+                {/* 
+                 */}
+                </>
+                
             )
             })
             ) : null }
