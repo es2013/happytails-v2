@@ -49,7 +49,7 @@ export const GET_DOGS = gql`
 `;
 
 //get single dog
-export const GET_DOGS = gql`
+export const GET_DOG = gql`
 query canine($id: ID!) {
   canine(_id: $id) {
     _id
