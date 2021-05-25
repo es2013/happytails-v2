@@ -6,6 +6,7 @@ import './App.css';
 // import { StoreProvider } from "./utils/GlobalState";
 
 import Homepage from './pages/Homepage';
+import AdminDashboard from './pages/AdminDashBoard';
 import Dashboard from './pages/Dashboard';
 //import AdminDashboard from './pages/AdminDashBoard';
 import Login from './pages/Login';
@@ -15,6 +16,7 @@ import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import { AuthContext } from './utils/GlobalState';
 import Logout from './pages/Logout';
+import AdminAddDog from './pages/AdminAddDog';
 
 // redux //
 // import { Provider } from 'react-redux';
@@ -62,8 +64,8 @@ function App() {
           <Navigation />
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route path="/dashboard" component={Dashboard} />
-            {/* <Route path="/admin" component={AdminDashboard} /> */}
+            <Route path="/admin-dashboard" component={AdminDashboard} />
+            {/* <Route path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/logout" component={Logout} />
@@ -75,6 +77,8 @@ function App() {
             {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
 
             {/* footer only loading on logout page?? */}
+            <Route exact path="/add-dog" component={AdminAddDog} />
+
           </Switch>
           <Footer />
           {/* </StoreProvider> */}

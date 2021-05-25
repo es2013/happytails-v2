@@ -58,7 +58,9 @@ body {
 .striped {
   background-color: #023e7d;
 }
-
+.css-2b097c-container {
+  color: black;
+}
 .speech-bubble {
   position:relative;
   padding: 15px;
@@ -152,6 +154,10 @@ a:hover {
 }
 
 .homepage-container {
+  margin-bottom: 200px;
+}
+
+.dashboard-container {
   margin-bottom: 200px;
 }
 

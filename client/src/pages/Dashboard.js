@@ -2,20 +2,27 @@ import { useQuery } from '@apollo/client';
 import React from 'react';
 import Filters from '../components/Filters';
 import TableAm from '../components/TableAm';
+import TablePm from '../components/TablePm';
 import UserMessage from '../components/UserMessage';
 import { GET_DOGS } from '../utils/queries';
+import { useAuth } from '../utils/GlobalState';
 
 function Dashboard() {
+  const { token } = useAuth();
   const { data } = useQuery(GET_DOGS);
-  console.log('GET_DOGS:: ', data);
+  const [dogData, setDogData] = React.useState([]);
+
+  React.useEffect(() => {
+    setDogData(data?.canines);
+  }, [data]);
+
   return (
     <div className="dashboard-container">
       <UserMessage />
 
-      <Filters />
+      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
 
-      {/* currently is just one table, but will work on getting to load based on time */}
-      <TableAm />
+      <TableAm dogData={dogData} />
     </div>
   );
 }

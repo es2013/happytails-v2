@@ -3,18 +3,13 @@ import DogRow from '../DogRow';
 import dogImage from '../../images/bulldog-favicon-trans-bg.png';
 import './stylesheet.css';
 
-function TableAm() {
+function TableAm({ dogData }) {
+
   return (
     // REACT reaallly doesnt like this segment and I am not sure why.
     <div className="row s8">
       <h4 className="flow-text">
-        <span>
-          <img
-            className="dog-logo"
-            src={dogImage}
-            alt="bulldog waiting to walk"
-          />
-        </span>
+        <span> <img className="dog-logo" src={dogImage} alt="bulldog waiting to walk" /> </span>
         AM Shift
       </h4>
 
@@ -28,8 +23,9 @@ function TableAm() {
             <th>Kennel</th>
           </tr>
         </thead>
+
         <tbody>
-          <DogRow />
+          <DogRow dogData={ dogData }/>
         </tbody>
       </table>
     </div>
