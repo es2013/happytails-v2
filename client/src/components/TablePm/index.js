@@ -9,6 +9,8 @@ function TablePm() {
         <div className="row s8">
 
             <h4 className="flow-text"><span><img className="dog-logo" src={dogImage} alt="shiba inu waiting to walk" /></span>PM Shift</h4>
+            <br />
+            <br />
 
 
             <table className="striped z-depth-2">
