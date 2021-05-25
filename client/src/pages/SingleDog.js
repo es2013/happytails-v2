@@ -4,43 +4,43 @@ import Auth from "../utils/auth";
 // this mutation has not be created yet so naming may change
 // import { UPDATE_DOG } from "../utils/mutations";
 // this query has not be created yet so naming may change
-// import { GET_DOG } from '../utils/queries';
+import { GET_DOG } from '../utils/queries';
 
 function SingleDog() {
-    // boilerplate state setup for updateDog
-    const [formState, setFormState] = useState({ walk: '', potty_break: '' })
-    const [updateDog, { error }] = useMutation(UPDATE_DOG);
+    // // boilerplate state setup for updateDog
+    // const [formState, setFormState] = useState({ walk: '', potty_break: '', _id:'' })
+    // // const [updateDog, { error }] = useMutation(UPDATE_DOG);
 
-    const handleFormSubmit = async event => {
-      event.preventDefault();
-      try {
-        const mutationResponse = await updateDog({ variables: { walk: formState.walk, potty_break: formState.potty_break } })
-        // const token = mutationResponse.data.login.token;
-        // Auth.login(token);
-      } catch (error) {
-        console.log(error)
-      }
-    };
+    // const handleFormSubmit = async event => {
+    //     event.preventDefault();
+    //     try {
+    //         // const mutationResponse = await updateDog({ variables: { walk: formState.walk, potty_break: formState.potty_break } })
+    //         //    / const token = mutationResponse.data.login.token;
+    //         // Auth.login(token);
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // };
 
-    const handleChange = event => {
-      const { name, value } = event.target;
-      setFormState({
-        ...formState,
-        [name]: value
-      });
-    };
+    // // const handleChange = event => {
+    // //   const { name, value } = event.target;
+    // //   setFormState({
+    // //     ...formState,
+    // //     [name]: value
+    // //   });
+    // // };
 
-    // console.log("here");
-    const canine_id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-      ];
+    // // console.log("here");
+    // const canine_id = window.location.toString().split('/')[
+    //     window.location.toString().split('/').length - 1
+    // ];
 
-    const dogIdParam = async (canine_id) => {
-        // useQuery(GET_DOG);
-    }
+    // const DogIdParam = async (canine_id) => {
+    //     useQuery(GET_DOG);
+    // }
 
-    // research useEffect()
-    useEffect(dogIdParam, []);
+    // // research useEffect()
+    // useEffect(DogIdParam, []);
 
     return (
         <div className="row">

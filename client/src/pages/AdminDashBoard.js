@@ -1,37 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Filters from '../components/Filters';
-import TableAm from '../components/TableAm';
-import TablePm from '../components/TablePm';
-import AdminMessage from '../components/AdminMessage';
-import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_DOGS } from '../utils/queries';
 import { useAuth } from '../utils/GlobalState';
 
+import Filters from '../components/Filters';
+import TableAm from '../components/TableAm';
+import TablePm from '../components/TablePm';
+import AdminMessage from '../components/AdminMessage';
+
 function AdminDashboard() {
-  const { token } = useAuth();
-  const { data } = useQuery(GET_DOGS);
-  const [dogData, setDogData] = React.useState([]);
+    const { token } = useAuth();
+    const { data } = useQuery(GET_DOGS);
+    const [dogData, setDogData] = React.useState([]);
 
-  React.useEffect(() => {
-    setDogData(data?.canines);
-  }, [data]);
+    React.useEffect(() => {
+        setDogData(data?.canines);
+    }, [data]);
 
-  function seeUsers() {}
+    function seeUsers() { }
 
-    function seeRecords() {
+    function seeRecords() { }
 
-  return (
-    <div className="dashboard-container">
-      <AdminMessage />
+    return (
+        <div className="dashboard-container">
+            <AdminMessage />
 
-      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
+            {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
 
-      <TableAm dogData={dogData} />
+            <TableAm dogData={dogData} />
 
-      <TablePm />
+            <TablePm />
 
             <TablePm />
 
@@ -60,14 +60,12 @@ function AdminDashboard() {
 
                 {/* takes admin to historical data table */}
                 <div className="col s4 m2">
-                    <button className="btn historical-table-btn"  onClick={seeRecords} type="button">
+                    <button className="btn historical-table-btn" onClick={seeRecords} type="button">
                         See Past Records
                     </button>
                 </div>
             </div>
         </div>
-      </div>
-    </div>
   );
 }
 
