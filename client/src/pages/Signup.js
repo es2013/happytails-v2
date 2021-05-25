@@ -1,32 +1,36 @@
 
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import Auth from '../utils/auth';
-import { AuthContext } from '../utils/GlobalState';
 import { ADD_USER } from '../utils/mutations';
-
-function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '', username:'', firstName:'', lastName:''});
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../utils/GlobalState';
+function Signup() {
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
-
+  const { setToken } = useAuth();
+  const history = useHistory();
   const handleFormSubmit = async event => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        username: formState.username,
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName
-      }
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
-    AuthContext.setToken(token)
+    try {
+      const mutationResponse = await addUser({
+        variables: {
+          username: formState.username,
+          email: formState.email,
+          password: formState.password,
+          firstName: formState.firstName,
+          lastName: formState.lastName
+        }
+      });
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token);
+      setToken(token);
+      history.push('./dashboard')
+    } catch (e) {
+      console.log(e)
+    }
   };
-
   const handleChange = event => {
     const { name, value } = event.target;
     setFormState({
@@ -34,15 +38,12 @@ function Signup(props) {
       [name]: value
     });
   };
-
   return (
     <div className="container my-1 btn-signup ">
       <Link className="login-signup-toggle" to="/login">
         ← Go to Login
       </Link>
-
       <h2>Signup</h2>
-
       <div className="row">
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
@@ -56,7 +57,6 @@ function Signup(props) {
               type="text"
               id="firstName"
               onChange={handleChange}
-              value={formState.firstName}
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -70,8 +70,6 @@ function Signup(props) {
               type="text"
               id="lastName"
               onChange={handleChange}
-              value={formState.lastName}
-
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -85,8 +83,6 @@ function Signup(props) {
               type="text"
               id="username"
               onChange={handleChange}
-              value={formState.username}
-
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -100,8 +96,6 @@ function Signup(props) {
               type="email"
               id="email"
               onChange={handleChange}
-              value={formState.email}
-
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -115,8 +109,6 @@ function Signup(props) {
               type="password"
               id="pwd"
               onChange={handleChange}
-              value={formState.password}
-
             />
           </div>
           <div className="flex-row flex-end">
@@ -129,5 +121,4 @@ function Signup(props) {
     </div>
   );
 }
-
 export default Signup;
