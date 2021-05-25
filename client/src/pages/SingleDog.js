@@ -9,7 +9,7 @@ import { GET_DOG } from '../utils/queries';
 function SingleDog() {
     // boilerplate state setup for updateDog
     const [formState, setFormState] = useState({ walk: '', potty: '', _id: '' });
-    const [canine_id, setCanine_id] = useState('60ac815a839e6a3c5042c4bc');
+    const [canine_id, setCanine_id] = useState('60ad3755d89c0a3f283c1ee3');
 
     console.log(GET_DOG);
 
@@ -19,11 +19,14 @@ function SingleDog() {
         }
     })
 
+    const { walk, potty, _id } = formState;
+
+    console.log(formState);
      
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     
-
+    console.log(data);
 
     // useEffect(() => {
     //     console.log('useEffect ran');
