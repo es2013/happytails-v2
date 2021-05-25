@@ -5,26 +5,33 @@ import Filters from '../components/Filters';
 import TableAm from '../components/TableAm';
 import TablePm from '../components/TablePm';
 import AdminMessage from '../components/AdminMessage';
+import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_DOGS } from '../utils/queries';
+import { useAuth } from '../utils/GlobalState';
 
 function AdminDashboard() {
+  const { token } = useAuth();
+  const { data } = useQuery(GET_DOGS);
+  const [dogData, setDogData] = React.useState([]);
 
-    function seeUsers() {
+  React.useEffect(() => {
+    setDogData(data?.canines);
+  }, [data]);
 
-    }
+  function seeUsers() {}
 
     function seeRecords() {
 
-    }
+  return (
+    <div className="dashboard-container">
+      <AdminMessage />
 
-    return (
-        <div className="dashboard-container">
-            
-            <AdminMessage />
+      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
 
-            <Filters />
+      <TableAm dogData={dogData} />
 
-            {/* currently is both tables, but will work on getting to load current table */}
-            <TableAm />
+      <TablePm />
 
             <TablePm />
 
@@ -59,7 +66,9 @@ function AdminDashboard() {
                 </div>
             </div>
         </div>
-    );
-};
+      </div>
+    </div>
+  );
+}
 
 export default AdminDashboard;

@@ -5,24 +5,26 @@ import TableAm from '../components/TableAm';
 import TablePm from '../components/TablePm';
 import UserMessage from '../components/UserMessage';
 import { GET_DOGS } from '../utils/queries';
+import { useAuth } from '../utils/GlobalState';
 
 function Dashboard() {
-    const { data } = useQuery(GET_DOGS);
-    console.log('GET_DOGS: ', data);
+  const { token } = useAuth();
+  const { data } = useQuery(GET_DOGS);
+  const [dogData, setDogData] = React.useState([]);
 
-    return (
-        <div className="dashboard-container">
-            <UserMessage />
+  React.useEffect(() => {
+    setDogData(data?.canines);
+  }, [data]);
 
-            <Filters />
+  return (
+    <div className="dashboard-container">
+      <UserMessage />
 
-            {/* currently is both tables, but will work on getting to load current table */}
+      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
 
-            <TableAm />
-
-            <TablePm />
-        </div>
-    );
-};
+      <TableAm dogData={dogData} />
+    </div>
+  );
+}
 
 export default Dashboard;

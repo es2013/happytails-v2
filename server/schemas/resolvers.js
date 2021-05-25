@@ -26,13 +26,8 @@ const resolvers = {
     canines: async () => {
       return await Canine.find().sort({name: 1})
     },
-    canine: async (parent, {_id}) => {
-      return await Canine.findById({_id}).populate(
-        'name',
-        'kennel',
-        'potty',
-        'walk'
-      );
+    canine: async (parent, { _id }) => {
+      return await Canine.findOne ({_id})
     }
   },
   Mutation: {
