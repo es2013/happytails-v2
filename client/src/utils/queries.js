@@ -57,13 +57,11 @@ export const GET_DOG = gql`
       potty {
         _id
         username
-
         timestamp
       }
       walk {
         _id
         username
-
         timestamp
       }
     }
