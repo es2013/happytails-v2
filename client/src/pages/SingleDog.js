@@ -7,9 +7,9 @@ import Auth from "../utils/auth";
 import { GET_DOG } from '../utils/queries';
 
 function SingleDog() {
-    // // boilerplate state setup for updateDog
-    // const [formState, setFormState] = useState({ walk: '', potty_break: '', _id:'' })
-    // // const [updateDog, { error }] = useMutation(UPDATE_DOG);
+    // boilerplate state setup for updateDog
+    const [formState, setFormState] = useState({ walk: '', potty: '', _id:'' })
+    // const [updateDog, { error }] = useMutation(UPDATE_DOG);
 
     // const handleFormSubmit = async event => {
     //     event.preventDefault();
@@ -22,25 +22,29 @@ function SingleDog() {
     //     }
     // };
 
-    // // const handleChange = event => {
-    // //   const { name, value } = event.target;
-    // //   setFormState({
-    // //     ...formState,
-    // //     [name]: value
-    // //   });
-    // // };
+    // const handleChange = event => {
+    //   const { name, value } = event.target;
+    //   setFormState({
+    //     ...formState,
+    //     [name]: value
+    //   });
+    // };
 
-    // // console.log("here");
-    // const canine_id = window.location.toString().split('/')[
-    //     window.location.toString().split('/').length - 1
-    // ];
+    // console.log("here");
 
-    // const DogIdParam = async (canine_id) => {
-    //     useQuery(GET_DOG);
-    // }
+    // grabbing canine id from url.
+    const canine_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
+
+    console.log(canine_id);
+
+    const DogIdParam = async (canine_id) => {
+        useQuery(GET_DOG);
+    }
 
     // // research useEffect()
-    // useEffect(DogIdParam, []);
+    useEffect(DogIdParam, []);
 
     return (
         <div className="row">
