@@ -46,71 +46,40 @@ mutation addDog(
 }
 `;
 
-// $kennel: String
-//$demeanor: String
-//$status: String
-//return activity as opposed to canine and walk
-
-
-// export const UPDATE_DOG = gql`
-// mutation updateDog(
-//   $name: String
-//   $potty: ActivityInput
-//   $walk: ActivityInput
-//   $username: String
-//   $timestamp: String
-  
-//   ) {
-//     addPotty(canineId: $canineId) {
-//       ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
-//     }
-//     addWalk(canineId: $canineId) {
-//       ActivityInput(timestamp: $timestamp, volunteer: $volunteer)
-//     }
-//   }
-//   canine {
-//     _id
-//     name
-//     kennel
-//     status
-//     potty {
-//       timestamp
-//       volunteer
-//     }
-//     walk {
-//       timestamp
-//       volunteer
-//     }
-//   }
-// }
-// `;
-
-export const UPDATE_DOG = gql`
-
-mutation updateDog($canine: [ID]!) {
-  updateDog(canine: $canine) {
+//mutation for add potty
+export const ADD_POTTY= gql`
+mutation addPotty(
+  $canineId:ID!, 
+  $activityType:String!, 
+  $timestamp:String!){
+    addPotty(canineId:$canineId,
+    activityType:$activityType, 
+    timestamp:$timestamp ){
+    activityType
     timestamp
-    canine{
-      _id
-      name
-      demeanor
-
-
-    }
-
+    _id
+    username
   }
-
 }
-
-
-
-
-
 `;
-
-
-
-
+//mutation for add potty
+export const ADD_WALK= gql`
+mutation addWalk(
+  $canineId:ID!, 
+  $activityType:String!, 
+  $timestamp:String!){
+    addWalk(canineId:$canineId,
+    activityType:$activityType, 
+    timestamp:$timestamp ){
+    activityType
+    timestamp
+    _id
+    username
+  }
+}
+}
+}
+`;
 
 /*
 export const ADD_EMPLOYEE = gql``;

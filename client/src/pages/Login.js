@@ -23,6 +23,7 @@ function Login() {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
+      
       setIsAdmin(mutationResponse.data.login.user.isAdmin);
       const token = mutationResponse.data.login.token;
       Auth.login(token);
