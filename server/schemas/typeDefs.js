@@ -69,7 +69,7 @@ const typeDefs = gql`
 
 
     
-    
+    updateDog( name: String!, kennel: String!, demeanor: String!, status: String!, walk: ActivityInput!, potty: ActivityInput!): Canine
     
   type Auth {
     token: ID!
@@ -78,5 +78,5 @@ const typeDefs = gql`
 `;
 // export the typeDefs
 module.exports = typeDefs;
-// updateDog( name: String!, kennel: String!, demeanor: String!, status: String!, walk: ActivityInput!, potty: ActivityInput!): Canine
+
     
