@@ -36,12 +36,7 @@ const typeDefs = gql`
     activities(_id: ID, timestamp: String, username: String, activityType: String): Activity
     canines: [Canine]
     canine(
-      _id: String
-      name: String!
-      kennel: String!
-      demeanor: String!
-      status: String!
-      activityType: String
+      _id: ID!
     ): Canine
   }
   type Mutation {
