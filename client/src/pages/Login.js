@@ -28,6 +28,7 @@ function Login() {
       Auth.login(token);
       setToken(token);
 
+
       // The useHistory hook gives access to the history instance that we may use to navigate.
       // Use this instead of window.location.assign('/'); in auth.js so we do not refresh
       // the page

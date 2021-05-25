@@ -1,14 +1,15 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-const assert = require('assert');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 const { authMiddleware } = require('./utils/auth');
 const PORT = process.env.PORT || 3001;
-const Canine = require('./models/Canine');
 const app = express();
+const Canine = require('./models/Canine');
 const canineData = require('./seeders/CanineSeeds');
+const User = require('./models/User');
+const userData = require('./seeders/UserSeeds');
 
 // create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
@@ -31,16 +32,17 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-///////////////////////////////////////
-///  START OF CODE TO SEED DATABASE ///
-///////////////////////////////////////
+//////////////////////////////////////////////
+///  START of Code to seed CANINE DATABASE ///
+//////////////////////////////////////////////
 // To seed the Canine table:
 // 1.) Uncomment the follow section of code, then save.
 // 2.) Run the server in the Server directory.
 // 3.) The Canine table is now seeded.
 // 4.) Comment out this block of code again.
 
-Canine.deleteMany((err, datas) => {
+
+ Canine.deleteMany((err, datas) => {
   if (err) {
     console.log(err);
   };
@@ -49,14 +51,39 @@ Canine.deleteMany((err, datas) => {
     if (err) {
       console.log(err);
     };
-
-    console.log(r);
   });
 });
 
-/////////////////////////////////////
-///  END OF CODE TO SEED DATABASE ///
-/////////////////////////////////////
+//////////////////////////////////////////////
+///  END of Code to seed CANINE DATABASE ///
+//////////////////////////////////////////////
+
+//******************************************
+//*  START of Code to seed USER DATABASE ***
+//******************************************
+// To seed the User table:
+// 1.) Uncomment the follow section of code, then save.
+// 2.) Run the server in the Server directory.
+// 3.) The User table is now seeded.
+// 4.) Comment out this block of code again.
+
+User.deleteMany((err, datas) => {
+  if (err) {
+    console.log(err);
+  };
+
+  User.insertMany(userData, function (err, r) {
+    if (err) {
+      console.log(err);
+    };
+  });
+}); 
+
+
+
+//****************************************
+//*  END of Code to seed USER DATABASE ***
+//****************************************
 
 db.once('open', () => {
   app.listen(PORT, () => {
