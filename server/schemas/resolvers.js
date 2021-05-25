@@ -24,7 +24,8 @@ const resolvers = {
         .populate('activity');
     },
     canines: async () => {
-      return await Canine.find().sort({name: 1})
+      return await Canine.find().populate('potty').populate('walk').sort({ name: 1 })
+  
     },
     canine: async (parent, { _id }) => {
       return await Canine.findOne ({_id})
@@ -49,7 +50,7 @@ const resolvers = {
         console.log(potty)
         await Canine.findByIdAndUpdate(
           {_id: args.canineId},
-          {$addToSet: {potty: potty}},
+          {$push: {potty: potty.canineId}},
           {new: true}
         );
         return potty;
@@ -63,7 +64,7 @@ const resolvers = {
         console.log(walk)
         await Canine.findByIdAndUpdate(
           {_id: args.canineId},
-          {$addToSet: {walk: walk}},
+          {$push: {walk: walk.canineId}},
           {new: true}
         );
         return walk;

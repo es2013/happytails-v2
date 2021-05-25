@@ -27,7 +27,7 @@ const typeDefs = gql`
     _id: ID
     timestamp: String
     activityType: String
-    username: User
+    username: String
   }
   type Query {
     me: User
