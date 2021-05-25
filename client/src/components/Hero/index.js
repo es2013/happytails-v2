@@ -1,6 +1,7 @@
 import React from 'react';
 import "./stylesheet.css";
-import heroImage from '../../images/many-dogs-hero-2.png';
+// import heroImage from '../../images/many-dogs-hero-2.png';
+import heroImage from '../../images/dog-hero.webp';
 
 function Hero() {
   return (

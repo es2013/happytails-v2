@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Activity = require('./Activity');
-
-
 
 const userSchema = new Schema({
     username: {
