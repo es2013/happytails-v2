@@ -11,7 +11,7 @@ import Dashboard from './pages/Dashboard';
 //import AdminDashboard from './pages/AdminDashBoard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import SingleDog from './pages/SingleDog';
+import SingleDog from './pages/SingleDog-tmp';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import { AuthContext } from './utils/GlobalState';
