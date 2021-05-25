@@ -64,8 +64,9 @@ const typeDefs = gql`
 
 
     
-    updateDog( name: String!, kennel: String!, demeanor: String!, status: String!, walk: ActivityInput!, potty: ActivityInput!): Canine
-    
+    updateDog( name: String!, kennel: String!, demeanor: String!, status: String!, walk: ActivityInput!, potty: ActivityInput!): Canine 
+  }activi
+
   type Auth {
     token: ID!
     user: User
