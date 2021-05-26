@@ -23,6 +23,9 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <UserMessage />
+
+      <h3>Filter Dogs by Categories</h3>
+      
       {token && (
         <Filters
           dogData={data?.canines}
