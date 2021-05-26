@@ -14,10 +14,11 @@ import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
+import Donate from './components/Donate';
 import { AuthContext } from './utils/GlobalState';
 import Logout from './pages/Logout';
 import AdminAddDog from './pages/AdminAddDog';
-import Donate from './pages/Donate';
+
 
 // redux //
 // import { Provider } from 'react-redux';
@@ -70,6 +71,8 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/logout" component={Logout} />
+             {/* donate page  */}
+             {/* <Route exact path="/donate" component={Donate} /> */}
             {/* <Route exact path="/success" component={Success} /> */}
 
             {/* this is the path I had earlier. I think it is a more appropriate endpoint but it doesnt matter just lets get the singleDog page to load*/}
@@ -79,8 +82,7 @@ function App() {
 
             {/* footer only loading on logout page?? */}
             <Route exact path="/add-dog" component={AdminAddDog} />
-
-            {/* <Route exact path="/donate" component={Donate} /> */}
+             
 
           </Switch>
           <Footer />
