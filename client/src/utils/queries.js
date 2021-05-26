@@ -33,16 +33,14 @@ export const GET_DOGS = gql`
       demeanor
       status
       potty {
-        username {
-          username
-        }
+        username
         timestamp
+        _id
       }
       walk {
-        username {
-          username
-        }
+        username
         timestamp
+        _id
       }
     }
   }
@@ -50,27 +48,22 @@ export const GET_DOGS = gql`
 
 //get single dog
 export const GET_DOG = gql`
-query canine($id: ID!) {
-  canine(_id: $id) {
-    _id
-    name
-    kennel
-    status
-    potty {
+  query canine($id: ID!) {
+    canine(_id: $id) {
       _id
-      username{
+      name
+      kennel
+      status
+      potty {
+        _id
         username
+        timestamp
       }
-      timestamp
-      
-    }
-    walk {
-      _id
-      username {
+      walk {
+        _id
         username
+        timestamp
       }
-      timestamp
     }
   }
-}
 `;

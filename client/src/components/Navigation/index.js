@@ -2,10 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './stylesheet.css';
 import { useAuth } from '../../utils/GlobalState';
-
 function Navigation() {
   const { isAdmin, token } = useAuth();
-
   return (
     <header className="navbar-fixed">
       <nav>
@@ -14,12 +12,12 @@ function Navigation() {
             Happy Tails
           </a>
           <ul id="nav-mobile" className="right">
-            {/* {isAdmin && <Link to="/dashboard">Admin</Link>} */}
-            <li><Link to="/admin-dashboard">Dashboard</Link></li>
-            { token && (
+            {isAdmin && <Link to="/adminDashBoard">Admin</Link>}
+            <li><Link to="/dashboard">Dashboard</Link></li>
+            {token && (
               <li><Link id="logout" to="/logout">Logout</Link></li>
             )}
-            { !token && (
+            {!token && (
               <li><Link to="/login">Login</Link></li>
             )}
           </ul>
@@ -28,5 +26,4 @@ function Navigation() {
     </header>
   );
 }
-
 export default Navigation;

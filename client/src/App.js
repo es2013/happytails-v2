@@ -36,13 +36,16 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // GetUser details. Check if user is an admin. If they are set them to true with setState.
   const [isAdmin, setIsAdmin] = useState(false);
   const [token, setToken] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('id_token');
     setToken(token);
-  }, []);
+  }, [token]);
+
+  console.log(token)
 
   // The provider context is necessary to preserve the global state
   return (
@@ -51,8 +54,8 @@ function App() {
         value={{
           isAdmin,
           token,
-          setIsAdmin,
           setToken,
+          setIsAdmin
         }}
       >
         <Router>

@@ -46,6 +46,41 @@ mutation addDog(
 }
 `;
 
+//mutation for add potty
+export const ADD_POTTY= gql`
+mutation addPotty(
+  $canineId:ID!, 
+  $activityType:String!, 
+  $timestamp:String!){
+    addPotty(canineId:$canineId,
+    activityType:$activityType, 
+    timestamp:$timestamp ){
+    activityType
+    timestamp
+    _id
+    username
+  }
+}
+`;
+//mutation for add potty
+export const ADD_WALK= gql`
+mutation addWalk(
+  $canineId:ID!, 
+  $activityType:String!, 
+  $timestamp:String!){
+    addWalk(canineId:$canineId,
+    activityType:$activityType, 
+    timestamp:$timestamp ){
+    activityType
+    timestamp
+    _id
+    username
+  }
+}
+}
+}
+`;
+
 /*
 export const ADD_EMPLOYEE = gql``;
 export const ADD_VOLUNTEER = gql``;

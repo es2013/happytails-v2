@@ -168,4 +168,5 @@ canineData =  [
     "status": "Resident"
   }
 ];
+
 module.exports = canineData;

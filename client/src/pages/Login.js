@@ -23,10 +23,12 @@ function Login() {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
+      
       setIsAdmin(mutationResponse.data.login.user.isAdmin);
       const token = mutationResponse.data.login.token;
       Auth.login(token);
       setToken(token);
+
 
       // The useHistory hook gives access to the history instance that we may use to navigate.
       // Use this instead of window.location.assign('/'); in auth.js so we do not refresh
