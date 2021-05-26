@@ -22,6 +22,39 @@ function DogRow(props) {
       this.changeEmoji = this.changeEmoji.bind(this);
     }
 
+    // should this be in helpers?
+    happyTail(props) {
+      // pass dog activity data to check if potty and / or walk activity in AM has been recorded
+      
+      // PREVIOUS LOGIC 
+
+      // let has_potty_am;
+      // let has_walk_am;
+
+      // // check for potty
+      // if (props.potty && !isPM) {
+      //   // should this return true?
+      //   let has_potty_am = true;
+      // }
+
+      // // check for walk
+      // if (props.walk && !isPM) {
+      //   // should this return true? 
+      //   let has_walk_am = true;
+      // }
+
+      // // if both conditions are true, return true
+      // if (has_potty_am && has_walk_am) {
+      //   return true
+      // }
+
+      // NEW LOGIC
+      // if both conditions are true, return true.  I think there is no need to check isPM
+      if (props.potty && props.walk) {
+        return true
+      }
+    }
+
     emojiChange() {
       if (happyTail) {
         // Explicitly focus the span value using the raw DOM API

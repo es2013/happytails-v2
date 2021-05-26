@@ -83,19 +83,6 @@ let allHelpers = {
     return `${new Date(date).getMonth() + 1}/${new Date(
       date
     ).getDate()}/${new Date(date).getFullYear()}`;
-  },
-
-  happyTail: () => {
-    
-    // pass dog data to check if potty and / or walk activity in AM has been recorded
-
-    // if (potty && !isPM) { has_potty_am: true }
-
-    // if (walk && !isPM) { has_walk_am: true }
-
-
-    // if (has_potty_am && has_walk_am) { return true }
-
   }
 };
 
