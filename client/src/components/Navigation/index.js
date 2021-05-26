@@ -16,6 +16,7 @@ function Navigation() {
           <ul id="nav-mobile" className="right">
             {isAdmin && <Link to="/adminDashBoard">Admin</Link>}
             <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/donate">Donate</Link></li>
             {token && (
               <li><Link id="logout" to="/logout">Logout</Link></li>
             )}
