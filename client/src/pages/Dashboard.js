@@ -14,7 +14,7 @@ function Dashboard() {
   const [dogData, setDogData] = React.useState([]);
 
   React.useEffect(() => {
-    setDogData(data?.canines);
+    setDogData(data?.canines || []);
   }, [data]);
 
   const today = new Date();
@@ -23,7 +23,13 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <UserMessage />
-      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
+      {token && (
+        <Filters
+          dogData={data?.canines}
+          setDogData={setDogData}
+          pmShift={nowIsPM}
+        />
+      )}
       {!nowIsPM && <TableAm dogData={dogData} />}
       {nowIsPM && <TablePm dogData={dogData} />}
     </div>
