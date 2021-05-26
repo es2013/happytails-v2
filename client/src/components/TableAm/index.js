@@ -4,6 +4,7 @@ import dogImage from '../../images/bulldog-favicon-trans-bg.png';
 import './stylesheet.css';
 
 function TableAm({ dogData }) {
+
   return (
     <div className="row s8">
       <h4 className="flow-text">

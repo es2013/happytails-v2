@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './stylesheet.css';
-import allHelpers from '../../utils/helpers';
+import allHelpers, { happyTail } from '../../utils/helpers';
 
 const convertActivity = (activity) => {
   return {
@@ -12,6 +12,31 @@ const convertActivity = (activity) => {
 
 function DogRow(props) {
   //const { token } = useAuth();
+
+  // creating Ref to change the status emoji
+  class statusEmoji extends React.Component {
+    constructor(props) {
+      super(props);
+      // create a ref to store the span DOM element
+      this.span = React.createRef();
+      this.changeEmoji = this.changeEmoji.bind(this);
+    }
+
+    emojiChange() {
+      if (happyTail) {
+        // Explicitly focus the span value using the raw DOM API
+        this.changeEmoji.current.value = "😄"
+      }
+    }
+
+    render() {
+      // tell React that we want to associate the <span> ref
+      // with the `emojiChange` that we created in the constructor
+      return (
+        <span className="status-emoji">{this.emojiChange}</span>
+      );
+    }
+  }
 
   // Returns true if PM
   const renderPM = props.timeOfDay === 'PM';
@@ -24,7 +49,7 @@ function DogRow(props) {
             <tr>
               <td className={`$canine.demeanor`}>
                 {' '}
-                <span className="status-emoji">&#128549;</span>
+                <span className="status-emoji">😞</span>
                 {canine.name}
               </td>
               <td>
