@@ -1,29 +1,19 @@
 import gql from 'graphql-tag';
 
-// export const GET_ME = gql`
-//   {
-//     me {
-//       _id
-//       username
-//       email
-//       firstName
-//       lastName
-//     }
-//   };
+// Retrieve all users
+export const GET_USERS = gql`
+  query {
+    users {
+      username
+      email
+      _id
+      firstName
+      lastName
+    }
+  }
+`;
 
-//  `;
-
-// //toby added this
-// export const GET_USERS = gql`
-// {
-//   users{
-//     username
-
-//   }
-// }
-// `;
-
-//get all dogs
+// Retrieve all dogs
 export const GET_DOGS = gql`
   query {
     canines {
@@ -46,31 +36,7 @@ export const GET_DOGS = gql`
   }
 `;
 
-// create a GET_DOG query to use in SingleDog page.  It will pass the id to dogIdParam.
-
-//get single dog
-/* export const GET_DOG = gql`
-  query canine($id: ID!) {
-    canine(_id: $id) {
-      _id
-      name
-      kennel
-      status
-      potty {
-        _id
-        username
-        timestamp
-      }
-      walk {
-        _id
-        username
-        timestamp
-      }
-    }
-  }
-`;
- */
-
+// Retrieve a single dog
 export const GET_DOG = gql`
   query canine($id: ID!) {
     canine(_id: $id) {

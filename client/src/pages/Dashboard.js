@@ -23,7 +23,13 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <UserMessage />
-      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
+      {token && (
+        <Filters
+          dogData={data?.canines}
+          setDogData={setDogData}
+          pmShift={nowIsPM}
+        />
+      )}
       {!nowIsPM && <TableAm dogData={dogData} />}
       {nowIsPM && <TablePm dogData={dogData} />}
     </div>
