@@ -1,62 +1,84 @@
 import React from 'react';
-// import { useMutation, useState } from '@apollo/react-hooks';
-// import Auth from "../utils/auth";
-// this mutation has not be created yet so naming may change
-// import { UPDATE_DOG } from "../utils/mutations";
+import { Link } from 'react-router-dom';
 import './stylesheet.css';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_DOGS } from '../../utils/queries';
+import allHelpers from '../../utils/helpers';
 
-import { useAuth } from '../../utils/GlobalState';
+const convertActivity = (activity) => {
+  return {
+    ...activity,
+    timestamp: new Date(Number(activity.timestamp)),
+  };
+};
 
-function DogRow({ dogData }) {
-  const { token } = useAuth();
+function DogRow(props) {
+  const { data } = useQuery(GET_DOGS);
 
-  // boilerplate state setup for updated dog info in dog row.
-  // const [formState, setFormState] = useState({ status: '', kennel: '', walk: '', potty_break: '' })
-  // const [updateDog, { error }] = useMutation(UPDATE_DOG);
+  let dog;
 
-  // const handleFormSubmit = async event => {
-  //     event.preventDefault();
-  //     try {
-  //         const mutationResponse = await updateDog({ variables: { status: formState.status, kennel: formState.kennel, walk: formState.walk, potty_break: formState.potty_break } })
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-  // };
+  if (data) {
+    dog = data.canines;
+    console.log(dog);
+  }
 
-  // const handleChange = event => {
-  //     const { name, value } = event.target;
-  //     setFormState({
-  //         ...formState,
-  //         [name]: value
-  //     });
-  // };
+  // Returns true if PM
+  const renderPM = props.timeOfDay === 'PM';
 
-  // console.log("here");
   return (
     <>
-      {dogData
-        ? dogData.map((canine) => {
+      {dog
+        ? dog.map((canine) => {
             return (
-              <tr>
-                <td className="Easy">
-                  {' '}
-                  <span className="status-emoji">😞</span>
-                  {canine.name}
-                </td>
-                <td> </td>
-                <td> </td>
-                <td className="Easy"> {canine.demeanor} </td>
-                <td> {canine.kennel} </td>
-                {token && (
+              <>
+                <tr>
+                  <td className={`$canine.demeanor`}>
+                    {' '}
+                    <span className="status-emoji">&#128549;</span>
+                    {canine.name}
+                  </td>
+                  <td>
+                    {canine.potty
+                      .map(convertActivity)
+                      .filter((activity) =>
+                        allHelpers.isToday(activity.timestamp)
+                      )
+                      .filter(
+                        (activity) =>
+                          allHelpers.isPM(activity.timestamp) === renderPM
+                      )
+                      .map((activity) => activity.username)
+                      .join(', ')}
+                  </td>
+
+                  <td>
+                    {canine.walk
+                      .map(convertActivity)
+                      .filter((activity) =>
+                        allHelpers.isToday(activity.timestamp)
+                      )
+                      .filter(
+                        (activity) =>
+                          allHelpers.isPM(activity.timestamp) === renderPM
+                      )
+                      .map((activity) => activity.username)
+                      .join(', ')}
+                  </td>
+                  <td className="Easy"> {canine.demeanor} </td>
+                  <td className="Easy"> {canine.status} </td>
+                  <td> {canine.kennel} </td>
                   <td>
                     <button type="submit" className="btn">
-                      <a href="/dashboard/edit/26" className="select-dog">
+                      <Link
+                        to={`/single-dog/${canine._id}`}
+                        className="select-dog"
+                      >
                         Select
-                      </a>
+                      </Link>
                     </button>
                   </td>
-                )}
-              </tr>
+                </tr>
+              </>
             );
           })
         : null}

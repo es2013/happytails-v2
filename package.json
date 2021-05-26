@@ -22,13 +22,13 @@
   },
   "homepage": "https://github.com/es2013/happytails-v2#readme",
   "dependencies": {
+    "concurrently": "^6.1.0",
     "dotenv": "^9.0.2",
     "if-env": "^1.0.4",
     "nodemon": "^2.0.7",
-    "react-stripe-checkout": "^2.6.3"
-  },
-  "devDependencies": {
-    "concurrently": "^6.1.0"
+    "react-stripe-checkout": "^2.6.3",
+    "jquery": "^3.6.0"
+    
   },
   "prettier": {
     "singleQuote": true

@@ -1,14 +1,11 @@
-
-
-  
 //   export function idbPromise(storeName, method, object) {
 //     return new Promise((resolve, reject) => {
 //       // open connection to the database `shop-shop` with the version of 1
 //       const request = window.indexedDB.open("shop-shop", 1);
-  
+
 //       // create variables to hold reference to the database, transaction (tx), and object store
 //       let db, tx, store;
-  
+
 //       // if version has changed (or if this is the first time using the database), run this method and create the three object stores
 //       request.onupgradeneeded = function (e) {
 //         const db = request.result;
@@ -17,12 +14,12 @@
 //         db.createObjectStore("categories", { keyPath: "_id" });
 //         db.createObjectStore("cart", { keyPath: "_id" });
 //       };
-  
+
 //       // handle any errors with connecting
 //       request.onerror = function (e) {
 //         console.log("There was an error");
 //       };
-  
+
 //       // on database open success
 //       request.onsuccess = function (e) {
 //         // save a reference of the database to the `db` variable
@@ -31,12 +28,12 @@
 //         tx = db.transaction(storeName, "readwrite");
 //         // save a reference to that object store
 //         store = tx.objectStore(storeName);
-  
+
 //         // if there's any errors, let us know
 //         db.onerror = function (e) {
 //           console.log("error", e);
 //         };
-  
+
 //         switch (method) {
 //           case 'put':
 //             store.put(object);
@@ -55,8 +52,7 @@
 //             console.log('No valid method');
 //             break;
 //         }
-  
-        
+
 //         // when the transaction is complete, close the connection
 //         tx.oncomplete = function () {
 //           db.close();
@@ -65,59 +61,29 @@
 //     });
 //   }
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
 let allHelpers = {
-    format_date: date => {
-        return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(
-            date
-        ).getFullYear()}`;
-    },
+  isToday: (date) => {
+    const today = new Date();
+    const dateIsToday =
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear();
 
-    // Returns true if current time is before noon, false otherwise
-    shift_change: () => {
-        // let currentHour = moment().hour();
-        let today = new Date();
-        let currentHour = today.getHours();
+    return dateIsToday;
+  },
 
-        if (currentHour >= 0 && currentHour <= 11) {
-            return true;
-        }
+  isPM: (date) => {
+    const hours = date.getHours();
+    return hours >= 12;
+  },
 
-        return false;
-    },
-
-    // Used to check whether a dog's activity is carried out
-    // Returns true if the activity is done, false otherwise
-    isDone: (activity) => {
-        if (activity) {
-            return true;
-        };
-
-        return false;
-    },
-
-    // AM shift: If a dog has gotten its potty and walk, return true, false otherwise
-    happy_tail_am: (has_walked_am, has_potty_am) => {
-        if (has_walked_am && has_potty_am) {
-            return true;
-        }
-
-        return false;
-    },
-
-    // PM shift: If a dog has gotten its potty and walk, return true, false otherwise
-    happy_tail_pm: (has_walked_pm, has_potty_pm) => {
-        // if dog has_walked AND has_pottied then change status-emoji from sad face to happy face 
-        if (has_walked_pm && has_potty_pm) {
-            return true;
-        };
-
-        return false;
-    }
+  format_date: (date) => {
+    return `${new Date(date).getMonth() + 1}/${new Date(
+      date
+    ).getDate()}/${new Date(date).getFullYear()}`;
+  },
 };
 
 module.exports = allHelpers;
