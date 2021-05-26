@@ -17,6 +17,7 @@ import Navigation from './components/Navigation';
 import { AuthContext } from './utils/GlobalState';
 import Logout from './pages/Logout';
 import AdminAddDog from './pages/AdminAddDog';
+import ViewUsers from './pages/ViewUsers';
 import Donate from './pages/Donate';
 
 // redux //
@@ -77,8 +78,8 @@ function App() {
             {/* this is the path that that currently renders when select button is clicked.  */}
             {/* <Route path="/dashboard/edit/:id" component={SingleDog} /> */}
 
-            {/* footer only loading on logout page?? */}
             <Route exact path="/add-dog" component={AdminAddDog} />
+            <Route exact path="/view-users" component={ViewUsers} />
 
             {/* <Route exact path="/donate" component={Donate} /> */}
 

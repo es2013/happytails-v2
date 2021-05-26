@@ -3,6 +3,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './stylesheet.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import allHelpers from '../../utils/helpers';
 
 const options = [
   { value: 'VIEW_ALL_DOGS', label: 'View all dogs' },
@@ -52,7 +53,28 @@ const options = [
 
 const defaultOption = options[0];
 
-function Filters({ dogData, setDogData }) {
+function Filters({ dogData, setDogData, pmShift }) {
+  function isActivityDoneForToday(d, activity) {
+    const activitiesInShift = (d[activity] || [])
+      .map((a) => ({ ...a, timestamp: new Date(Number(a.timestamp)) }))
+      .filter((a) => allHelpers.isPM(a.timestamp) === pmShift);
+    const latestActivity = activitiesInShift?.[activitiesInShift.length - 1];
+    const latestActivityDate = latestActivity?.timestamp;
+    return latestActivityDate && allHelpers.isToday(latestActivityDate);
+  }
+
+  function hasWalkDone(d) {
+    return isActivityDoneForToday(d, 'walk');
+  }
+
+  function hasPottyDone(d) {
+    return isActivityDoneForToday(d, 'potty');
+  }
+
+  function isHappyTails(d) {
+    return hasWalkDone(d) && hasPottyDone(d);
+  }
+
   const handleChange = ({ value }) => {
     switch (value) {
       case 'VIEW_EASY_DOGS':
@@ -74,34 +96,22 @@ function Filters({ dogData, setDogData }) {
         setDogData(dogData.filter((d) => d.status === 'Resident'));
         break;
       case 'VIEW_WALKED_DOGS':
-        let test = dogData.filter((d) => d.walk.username !== '');
-        console.log('%%% test: ');
-        console.log(test);
-        
-        setDogData(dogData.filter((d) => d.walk.username !== ''));
+        setDogData(dogData.filter(hasWalkDone));
         break;
       case 'VIEW_NOT_WALKED_DOGS':
-        setDogData(dogData.filter((d) => d.walk.username === ''));
+        setDogData(dogData.filter((d) => !hasWalkDone(d)));
         break;
       case 'VIEW_HAS_POTTY_DOGS':
-        setDogData(dogData.filter((d) => d.potty.username !== null));
+        setDogData(dogData.filter(hasPottyDone));
         break;
       case 'VIEW_NOT_POTTY_DOGS':
-        setDogData(dogData.filter((d) => d.potty.username === null));
+        setDogData(dogData.filter((d) => !hasPottyDone(d)));
         break;
       case 'VIEW_HAPPY_TAILS':
-        setDogData(
-          dogData.filter(
-            (d) => d.potty.username !== null && d.walk.username !== null
-          )
-        );
+        setDogData(dogData.filter(isHappyTails));
         break;
       case 'VIEW_SAD_TAILS':
-        setDogData(
-          dogData.filter(
-            (d) => d.potty.username === null || d.walk.username === null
-          )
-        );
+        setDogData(dogData.filter((d) => !isHappyTails(d)));
         break;
       default:
         setDogData(dogData);

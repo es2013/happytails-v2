@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './stylesheet.css';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_DOGS } from '../../utils/queries';
 import allHelpers from '../../utils/helpers';
-//import { useAuth } from '../utils/GlobalState';
 
 const convertActivity = (activity) => {
   return {
@@ -57,16 +54,13 @@ function DogRow(props) {
               <td className="Easy"> {canine.status} </td>
               <td> {canine.kennel} </td>
               {/* {token && ( */}
-                <td>
-                  <button type="submit" className="btn">
-                    <Link
-                      to={`/single-dog/${canine._id}`}
-                      className="select-dog"
-                    >
-                      Select
-                    </Link>
-                  </button>
-                </td>
+              <td>
+                <button type="submit" className="btn">
+                  <Link to={`/single-dog/${canine._id}`} className="select-dog">
+                    Select
+                  </Link>
+                </button>
+              </td>
               {/* )} */}
             </tr>
           </>

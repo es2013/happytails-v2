@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
-import Auth from '../utils/auth';
 import { useHistory } from 'react-router-dom';
-// this mutation has not be created yet so naming may change
-// import { UPDATE_DOG } from "../utils/mutations";
-// this query has not be created yet so naming may change
 import { GET_DOG } from '../utils/queries';
 import { ADD_POTTY, ADD_WALK } from '../utils/mutations';
 
 function SingleDog(props) {
-  // boilerplate state setup for updateDog
   const [formState, setFormState] = useState({
     walk: false,
     potty: false,
     _id: '',
   });
+
   const [canine_id, setCanine_id] = useState(props.match.params.id);
   const [singleDogData, setSingleDogData] = useState([]);
-  //const [updateDog, setUpdateDog] = useState(UPDATE_DOG);
 
   const [addPotty] = useMutation(ADD_POTTY);
   const [addWalk] = useMutation(ADD_WALK);
