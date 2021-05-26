@@ -77,6 +77,7 @@ function Filters({ dogData, setDogData }) {
         let test = dogData.filter((d) => d.walk.username !== '');
         console.log('%%% test: ');
         console.log(test);
+        
         setDogData(dogData.filter((d) => d.walk.username !== ''));
         break;
       case 'VIEW_NOT_WALKED_DOGS':
