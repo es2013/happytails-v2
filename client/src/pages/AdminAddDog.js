@@ -5,23 +5,48 @@ import Select from 'react-select';
 import { ValuesOfCorrectTypeRule } from 'graphql';
 import { useHistory } from 'react-router-dom';
 
-
 function NewDog(props) {
-  const [formState, setFormState] = useState({ name: '', kennel: '', status:'', demeanor:'' });
+  const [formState, setFormState] = useState({
+    name: '',
+    kennel: '',
+    status: '',
+    demeanor: '',
+  });
   const [addDog] = useMutation(ADD_CANINE);
   const history = useHistory();
 
   const kennelOptions = [
-    { value: 'Camp Bowwow', label: 'Camp Bowwow' },
-    { value: 'Princess Castle', label: 'Princess Castle' },
-    { value: 'Pawty Haus', label: 'Pawty Haus' },
+    { value: 'All-Star', label: 'All-Star' },
+    { value: 'Bark Bud', label: 'Bark Bud' },
+    { value: 'Bestie', label: 'Bestie' },
+    { value: 'Better Bark', label: 'Better Bark' },
+    { value: 'Bullpen', label: 'Bullpen' },
     { value: 'Caberet', label: 'Caberet' },
-    { value: 'Dioji', label: 'Dioji'},
-    { value: 'Chiquita Banana', label: 'Chiquita-Banana'},
-    { value: 'HappyTails', label: 'HappyTails'},
-    { value: 'Playpen', label: 'Playpen'},
-    { value: 'Bullpen', label: 'Bullpen'},
-
+    { value: 'Camp Bowwow', label: 'Camp Bowwow' },
+    { value: 'Chiquita Banana', label: 'Chiquita-Banana' },
+    { value: 'Crate Escape', label: 'Crate Escape' },
+    { value: 'De Treats', label: 'De Treats' },
+    { value: 'Dioji', label: 'Dioji' },
+    { value: 'Doggie Town', label: 'Doggie Town' },
+    { value: 'DogTopia', label: 'DogTopia' },
+    { value: 'DogVenture', label: 'DogVenture' },
+    { value: 'Happy Tails', label: 'Happy Tails' },
+    { value: 'Paw Pal', label: 'Paw Pal' },
+    { value: 'Pawsome', label: 'Pawsome' },
+    { value: 'Pawty Haus', label: 'Pawty Haus' },
+    { value: 'Playpen', label: 'Playpen' },
+    { value: 'Princess Castle', label: 'Princess Castle' },
+    { value: 'Queens Castle', label: 'Queens Castle' },
+    { value: 'Royal Palace', label: 'Royal Palace' },
+    { value: 'Ruff Line', label: 'Ruff Line' },
+    { value: 'Slobbery', label: 'Slobbery' },
+    { value: 'Tall Tails', label: 'Tall Tails' },
+    { value: 'The Four Paws', label: 'The Four Paws' },
+    { value: 'The Good Life', label: 'The Good Life' },
+    { value: 'Unleashed', label: 'Unleashed' },
+    { value: 'Wag Zone', label: 'Wag Zone' },
+    { value: 'Woody Gang', label: 'Woody Gang' },
+    { value: 'Woof Woof', label: 'Woof Woof' },
   ];
 
   const demeanorOptions = [
@@ -30,9 +55,9 @@ function NewDog(props) {
     { value: 'Difficult', label: 'Difficult' },
   ];
   const statusOptions = [
-    { value: 'Resident' , label: 'Resident' },
+    { value: 'Resident', label: 'Resident' },
     { value: 'In Foster', label: 'In Foster' },
-    { value: 'Adopted' , label: 'Adopted' },
+    { value: 'Adopted', label: 'Adopted' },
   ];
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -42,34 +67,30 @@ function NewDog(props) {
         kennel: formState.kennel,
         demeanor: formState.demeanor,
         status: formState.status,
-      }
+      },
     });
     history.push('/');
-  }
+  };
 
-function handleInputChange(event)  {
+  function handleInputChange(event) {
     const { name, value } = event.target;
     setFormState({
       ...formState,
       [name]: value,
     });
     console.log(formState);
-    console.log(event)
-
-  };
+    console.log(event);
+  }
 
   const handleKennelChange = (value) => {
-    setFormState({...formState, 
-      ['kennel']: value.value})
-    }
-    const handleDemeanorChange = (value) => {
-      setFormState({...formState, 
-        ['demeanor']: value.value})
-      }
-      const handleStatusChange = (value) => {
-        setFormState({...formState, 
-          ['status']: value.value})
-        }
+    setFormState({ ...formState, ['kennel']: value.value });
+  };
+  const handleDemeanorChange = (value) => {
+    setFormState({ ...formState, ['demeanor']: value.value });
+  };
+  const handleStatusChange = (value) => {
+    setFormState({ ...formState, ['status']: value.value });
+  };
 
   return (
     <div className="container my-1 btn-adddog">
@@ -85,7 +106,7 @@ function handleInputChange(event)  {
               name="name"
               type="text"
               id="name"
-             onChange={handleInputChange}
+              onChange={handleInputChange}
             />
           </div>
           {/* <div className="flex-row space-between my-2">
@@ -102,15 +123,27 @@ function handleInputChange(event)  {
 
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary">Kennel:</label>
-            <Select class="select" options={kennelOptions} onChange={handleKennelChange} />
+            <Select
+              class="select"
+              options={kennelOptions}
+              onChange={handleKennelChange}
+            />
           </div>
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary">Demeanor:</label>
-            <Select class="select" options={demeanorOptions} onChange={handleDemeanorChange} />
+            <Select
+              class="select"
+              options={demeanorOptions}
+              onChange={handleDemeanorChange}
+            />
           </div>
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary">Status</label>
-            <Select class="select" options={statusOptions} onChange={handleStatusChange} />
+            <Select
+              class="select"
+              options={statusOptions}
+              onChange={handleStatusChange}
+            />
           </div>
           <div className="flex-row flex-end">
             <button className="btn" type="submit">
