@@ -15,8 +15,6 @@ const convertActivity = (activity) => {
 function DogRow(props) {
   const { data } = useQuery(GET_DOGS);
 
-  console.log('GET_DOGS:', data);
-
   let dog;
 
   if (data) {
@@ -24,9 +22,7 @@ function DogRow(props) {
     console.log(dog);
   }
 
-console.log( '##### props.timeOfDay: ' );
-console.log( props.timeOfDay );
-
+  // Returns true if PM
   const renderPM = props.timeOfDay === 'PM';
 
   return (
