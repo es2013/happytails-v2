@@ -14,7 +14,7 @@ function Homepage() {
   const [dogData, setDogData] = React.useState([]);
 
   React.useEffect(() => {
-    setDogData(data?.canines);
+    setDogData(data?.canines || []);
   }, [data]);
 
   return (

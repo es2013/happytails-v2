@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './stylesheet.css';
 import { useAuth } from '../../utils/GlobalState';
+
 function Navigation() {
   const { isAdmin, token } = useAuth();
+  
   return (
     <header className="navbar-fixed">
       <nav>

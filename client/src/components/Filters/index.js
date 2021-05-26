@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import './stylesheet.css'
+import './stylesheet.css';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const options = [
@@ -13,6 +13,15 @@ const options = [
       { value: 'VIEW_EASY_DOGS', label: 'View easy dogs' },
       { value: 'VIEW_MODERATE_DOGS', label: 'View moderate dogs' },
       { value: 'VIEW_DIFFICULT_DOGS', label: 'View difficult dogs' },
+    ],
+  },
+  {
+    type: 'group',
+    name: 'Status',
+    items: [
+      { value: 'VIEW_ADOPTED_DOGS', label: 'View adopted dogs' },
+      { value: 'VIEW_FOSTER_DOGS', label: 'View in-foster dogs' },
+      { value: 'VIEW_RESIDENT_DOGS', label: 'View resident dogs' },
     ],
   },
   {
@@ -41,9 +50,6 @@ const options = [
   },
 ];
 
-// const options = [
-//   'first', 'second', 'third'
-// ]
 const defaultOption = options[0];
 
 function Filters({ dogData, setDogData }) {
@@ -58,11 +64,23 @@ function Filters({ dogData, setDogData }) {
       case 'VIEW_DIFFICULT_DOGS':
         setDogData(dogData.filter((d) => d.demeanor === 'Difficult'));
         break;
+      case 'VIEW_ADOPTED_DOGS':
+        setDogData(dogData.filter((d) => d.status === 'Adopted'));
+        break;
+      case 'VIEW_FOSTER_DOGS':
+        setDogData(dogData.filter((d) => d.status === 'In Foster'));
+        break;
+      case 'VIEW_RESIDENT_DOGS':
+        setDogData(dogData.filter((d) => d.status === 'Resident'));
+        break;
       case 'VIEW_WALKED_DOGS':
-        setDogData(dogData.filter((d) => d.walk.username !== null));
+        let test = dogData.filter((d) => d.walk.username !== '');
+        console.log('%%% test: ');
+        console.log(test);
+        setDogData(dogData.filter((d) => d.walk.username !== ''));
         break;
       case 'VIEW_NOT_WALKED_DOGS':
-        setDogData(dogData.filter((d) => d.walk.username === null));
+        setDogData(dogData.filter((d) => d.walk.username === ''));
         break;
       case 'VIEW_HAS_POTTY_DOGS':
         setDogData(dogData.filter((d) => d.potty.username !== null));
@@ -86,7 +104,7 @@ function Filters({ dogData, setDogData }) {
         break;
       default:
         setDogData(dogData);
-    };
+    }
   };
 
   return (
@@ -94,15 +112,17 @@ function Filters({ dogData, setDogData }) {
       <Row>
         <Col md={{ span: 4, offset: 3 }}></Col>
         <Col md={{ span: 2, offset: 2 }}>
-          <Dropdown options={options}
-                    onChange={handleChange}
-                    value={defaultOption}
-                    id="drop-down" />
+          <Dropdown
+            options={options}
+            onChange={handleChange}
+            value={defaultOption}
+            id="drop-down"
+          />
         </Col>
         <Col md={{ span: 4, offset: 3 }}></Col>
       </Row>
     </Container>
   );
-};
+}
 
 export default Filters;
