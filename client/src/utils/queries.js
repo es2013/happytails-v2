@@ -46,7 +46,31 @@ export const GET_DOGS = gql`
   }
 `;
 
+// create a GET_DOG query to use in SingleDog page.  It will pass the id to dogIdParam.
+
 //get single dog
+/* export const GET_DOG = gql`
+  query canine($id: ID!) {
+    canine(_id: $id) {
+      _id
+      name
+      kennel
+      status
+      potty {
+        _id
+        username
+        timestamp
+      }
+      walk {
+        _id
+        username
+        timestamp
+      }
+    }
+  }
+`;
+ */
+
 export const GET_DOG = gql`
   query canine($id: ID!) {
     canine(_id: $id) {

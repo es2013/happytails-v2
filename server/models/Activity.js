@@ -1,12 +1,10 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const { localTimestamp } = require('../utils/local-timestamp');
 
 const activitySchema = new Schema({
   timestamp: {
     type: Date,
-    default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
-    // required:true
+    default: localTimestamp
   },
   username: {
     type: String,
