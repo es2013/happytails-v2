@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
 import { GET_DOG } from '../utils/queries';
 import { ADD_POTTY, ADD_WALK } from '../utils/mutations';
+import allHelpers from '../utils/helpers.js';
 
 function SingleDog(props) {
-  const [formState, setFormState] = useState({
+  /*   const [formState, setFormState] = useState({
     walk: false,
     potty: false,
     _id: '',
-  });
+  }); */
+
+  const [dogPotty, setDogPotty] = useState(false);
+  const [dogWalk, setDogWalk] = useState(false);
+  const [_id, setId] = useState('');
 
   const [canine_id, setCanine_id] = useState(props.match.params.id);
   const [singleDogData, setSingleDogData] = useState([]);
 
   const [addPotty] = useMutation(ADD_POTTY);
   const [addWalk] = useMutation(ADD_WALK);
+  const [dogData, setDogData] = useState({});
   const history = useHistory();
 
   const handleFormSubmit = async (event) => {
     // event.preventDefault();
     try {
-      if (formState.walk) {
+      if (dogWalk) {
         const { error, data } = await addWalk({
           variables: {
             canineId: canine_id,
@@ -32,7 +38,7 @@ function SingleDog(props) {
         //   throw error.message
         // }
       }
-      if (formState.potty) {
+      if (dogPotty) {
         const { error, data } = await addPotty({
           variables: {
             canineId: canine_id,
@@ -42,18 +48,21 @@ function SingleDog(props) {
         console.log('!!! Potty: ', { error, data });
       }
 
-      history.push('/');
+      //history.push('/');
+      window.location = '/dashboard';
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleChange = (event) => {
-    const { name, checked } = event.target;
-    setFormState({
-      ...formState,
-      [name]: checked,
-    });
+  const handlePottyChange = (event) => {
+    const { checked } = event.target;
+    setDogPotty(checked);
+  };
+
+  const handleWalkChange = (event) => {
+    const { checked } = event.target;
+    setDogWalk(checked);
   };
 
   const { loading, error, data } = useQuery(GET_DOG, {
@@ -61,6 +70,47 @@ function SingleDog(props) {
       id: canine_id,
     },
   });
+
+  useEffect(() => {
+    setDogData(data?.canine || {});
+  }, [data]);
+
+  console.log('&&&&&&&&');
+  console.log(data);
+
+  useEffect(() => {
+    if (dogData.potty) {
+      // console.log("dogData", dogData.potty.forEach(d => console.log(d)))
+      dogData.potty.forEach((p) => {
+        if (
+          p.username &&
+          allHelpers.isToday(new Date(Number(p.timestamp))) &&
+          allHelpers.isPM(new Date(Number(p.timestamp)))
+        ) {
+          console.log('Yes potty!');
+          setDogPotty(true);
+        } else {
+          console.log('No potty!');
+        }
+      });
+    }
+
+    if (dogData.walk) {
+      // console.log("dogData", dogData.potty.forEach(d => console.log(d)))
+      dogData.walk.forEach((p) => {
+        if (
+          p.username &&
+          allHelpers.isToday(new Date(Number(p.timestamp))) &&
+          allHelpers.isPM(new Date(Number(p.timestamp)))
+        ) {
+          console.log('Yes walk!');
+          setDogWalk(true);
+        } else {
+          console.log('No walk!');
+        }
+      });
+    }
+  }, [dogData]);
 
   if (loading) return 'Loading...';
   if (error) return `GET_DOG Error: ${error.message}`;
@@ -72,7 +122,7 @@ function SingleDog(props) {
       <div className="col s12 m4 l8 center">
         <div className="card z-depth-2">
           <div className="card-content">
-            <h3 className="doggy-name flow-text">{data.canine.name}</h3>
+            <h3 className="doggy-name flow-text">{dogData.name}</h3>
             <img
               className="single-dog-image"
               src="../images/dogs/Apollo.jpg"
@@ -90,11 +140,11 @@ function SingleDog(props) {
             <label className="check activity-checkbox">
               <input
                 name="potty"
-                onClick={handleChange}
+                onClick={handlePottyChange}
                 type="checkbox"
                 className="filled-in"
                 id="potty-check"
-                checked={formState.potty}
+                checked={dogPotty}
               />
               <span className="flow-text">Potty</span>
             </label>
@@ -102,11 +152,11 @@ function SingleDog(props) {
             <label className="check activity-checkbox">
               <input
                 name="walk"
-                onClick={handleChange}
+                onClick={handleWalkChange}
                 type="checkbox"
                 className="filled-in"
                 id="walk-check"
-                checked={formState.walk}
+                checked={dogWalk}
               />
               <span className="flow-text">Walk</span>
             </label>
@@ -130,7 +180,7 @@ function SingleDog(props) {
                 onClick={() => {
                   handleFormSubmit();
                 }}
-                disabled={!formState.walk && !formState.potty}
+                disabled={!dogWalk && !dogPotty}
               >
                 Submit
               </button>
