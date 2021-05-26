@@ -42,17 +42,17 @@ app.get('*', (req, res) => {
 // 4.) Comment out this block of code again.
 
 
- Canine.deleteMany((err, datas) => {
-  if (err) {
-    console.log(err);
-  };
+//  Canine.deleteMany((err, datas) => {
+//   if (err) {
+//     console.log(err);
+//   };
 
-  Canine.insertMany(canineData, function (err, r) {
-    if (err) {
-      console.log(err);
-    };
-  });
-});
+//   Canine.insertMany(canineData, function (err, r) {
+//     if (err) {
+//       console.log(err);
+//     };
+//   });
+// });
 
 //////////////////////////////////////////////
 ///  END of Code to seed CANINE DATABASE ///

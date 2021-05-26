@@ -47,7 +47,7 @@ mutation addDog(
 `;
 
 //mutation for add potty
-export const ADD_POTTY= gql`
+export const ADD_POTTY = gql`
 mutation addPotty(
   $canineId:ID!, 
   $activityType:String!, 
@@ -63,7 +63,7 @@ mutation addPotty(
 }
 `;
 //mutation for add potty
-export const ADD_WALK= gql`
+export const ADD_WALK = gql`
 mutation addWalk(
   $canineId:ID!, 
   $activityType:String!, 
@@ -76,8 +76,6 @@ mutation addWalk(
     _id
     username
   }
-}
-}
 }
 `;
 
