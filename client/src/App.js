@@ -18,12 +18,8 @@ import Donate from './components/Donate';
 import { AuthContext } from './utils/GlobalState';
 import Logout from './pages/Logout';
 import AdminAddDog from './pages/AdminAddDog';
-<<<<<<< HEAD
-
-=======
 import ViewUsers from './pages/ViewUsers';
 import Donate from './pages/Donate';
->>>>>>> develop
 
 // redux //
 // import { Provider } from 'react-redux';
