@@ -41,18 +41,17 @@ app.get('*', (req, res) => {
 // 3.) The Canine table is now seeded.
 // 4.) Comment out this block of code again.
 
+/* Canine.deleteMany((err, datas) => {
+  if (err) {
+    console.log(err);
+  };
 
-//  Canine.deleteMany((err, datas) => {
-//   if (err) {
-//     console.log(err);
-//   };
-
-//   Canine.insertMany(canineData, function (err, r) {
-//     if (err) {
-//       console.log(err);
-//     };
-//   });
-// });
+  Canine.insertMany(canineData, function (err, r) {
+    if (err) {
+      console.log(err);
+    };
+  });
+}); */
 
 //////////////////////////////////////////////
 ///  END of Code to seed CANINE DATABASE ///
@@ -67,19 +66,17 @@ app.get('*', (req, res) => {
 // 3.) The User table is now seeded.
 // 4.) Comment out this block of code again.
 
-// User.deleteMany((err, datas) => {
-//   if (err) {
-//     console.log(err);
-//   };
+/* User.deleteMany((err, datas) => {
+  if (err) {
+    console.log(err);
+  };
 
-//   User.insertMany(userData, function (err, r) {
-//     if (err) {
-//       console.log(err);
-//     };
-//   });
-// }); 
-
-
+  User.insertMany(userData, function (err, r) {
+    if (err) {
+      console.log(err);
+    };
+  });
+});  */
 
 //****************************************
 //*  END of Code to seed USER DATABASE ***

@@ -25,6 +25,7 @@ const typeDefs = gql`
   # }
   type Activity {
     _id: ID
+    canindId: String
     timestamp: String
     activityType: String
     username: String
@@ -55,8 +56,8 @@ const typeDefs = gql`
       demeanor: String!
       status: String!
     ): Canine
-    addPotty(canineId: ID!, timestamp: String! activityType:String!): Activity
-    addWalk(canineId: ID!, timestamp:String! activityType: String!): Activity
+    addPotty(canineId: ID!): Activity
+    addWalk(canineId: ID!): Activity
     # addPotty(canineId: _id!, volunteer: String!, timestamp: String!): Canine
     # addWalk(canineId: ID!, volunteerId: username!, timestamp: String!): Activity
   }
