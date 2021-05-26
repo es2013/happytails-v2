@@ -26,6 +26,7 @@ function TablePm({ dogData }) {
             <th>PM Potty Break</th>
             <th>PM Walk</th>
             <th>Doggy Demeanor</th>
+            <th>Status</th>
             <th>Kennel</th>
           </tr>
         </thead>

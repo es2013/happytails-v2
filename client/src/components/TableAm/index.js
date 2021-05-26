@@ -28,6 +28,7 @@ function TableAm({ dogData }) {
             <th>AM Potty Break</th>
             <th>AM Walk</th>
             <th>Doggy Demeanor</th>
+            <th>Status</th>
             <th>Kennel</th>
           </tr>
         </thead>

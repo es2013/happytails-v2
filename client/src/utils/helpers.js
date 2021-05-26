@@ -74,9 +74,9 @@ let allHelpers = {
     return dateIsToday;
   },
 
-  isPM: (date)  => {
-      const hours = date.getHours();
-      return hours >= 12;
+  isPM: (date) => {
+    const hours = date.getHours();
+    return hours >= 12;
   },
 
   format_date: (date) => {

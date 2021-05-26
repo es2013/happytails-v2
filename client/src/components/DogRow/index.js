@@ -23,7 +23,7 @@ function DogRow(props) {
     dog = data.canines;
     console.log(dog);
   }
-  
+
 console.log( '##### props.timeOfDay: ' );
 console.log( props.timeOfDay );
 

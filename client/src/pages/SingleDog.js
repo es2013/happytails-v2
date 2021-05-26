@@ -61,17 +61,11 @@ function SingleDog(props) {
     });
   };
 
-  console.log('!!!! props:', props);
-  console.log(canine_id);
-
   const { loading, error, data } = useQuery(GET_DOG, {
     variables: {
       id: canine_id,
     },
   });
-
-  console.log('!!!!! data: ');
-  console.log(data);
 
   if (loading) return 'Loading...';
   if (error) return `GET_DOG Error: ${error.message}`;

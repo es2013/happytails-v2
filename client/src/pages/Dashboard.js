@@ -6,6 +6,7 @@ import TablePm from '../components/TablePm';
 import UserMessage from '../components/UserMessage';
 import { GET_DOGS } from '../utils/queries';
 import { useAuth } from '../utils/GlobalState';
+import allHelpers from '../utils/helpers';
 
 function Dashboard() {
   const { token } = useAuth();
@@ -16,14 +17,15 @@ function Dashboard() {
     setDogData(data?.canines);
   }, [data]);
 
+  const today = new Date();
+  const nowIsPM = allHelpers.isPM(today);
+
   return (
     <div className="dashboard-container">
       <UserMessage />
-
       {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
-
-      <TableAm dogData={dogData} />
-      <TablePm dogData={dogData} />
+      {!nowIsPM && <TableAm dogData={dogData} />}
+      {nowIsPM && <TablePm dogData={dogData} />}
     </div>
   );
 }
