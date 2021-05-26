@@ -65,7 +65,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/admin-dashboard" component={AdminDashboard} />
-            {/* <Route path="/dashboard" component={Dashboard} /> */}
+            <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/logout" component={Logout} />

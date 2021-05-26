@@ -41,8 +41,7 @@ app.get('*', (req, res) => {
 // 3.) The Canine table is now seeded.
 // 4.) Comment out this block of code again.
 
-/** 
- Canine.deleteMany((err, datas) => {
+/* Canine.deleteMany((err, datas) => {
   if (err) {
     console.log(err);
   };
@@ -77,9 +76,7 @@ app.get('*', (req, res) => {
       console.log(err);
     };
   });
-}); 
-
-**/
+});  */
 
 //****************************************
 //*  END of Code to seed USER DATABASE ***
