@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import './App.css';
-// import { StoreProvider } from "./utils/GlobalState";
+import { StoreProvider } from "./utils/GlobalState";
 
 import Homepage from './pages/Homepage';
 import AdminDashboard from './pages/AdminDashBoard';
@@ -17,6 +17,7 @@ import Navigation from './components/Navigation';
 import { AuthContext } from './utils/GlobalState';
 import Logout from './pages/Logout';
 import AdminAddDog from './pages/AdminAddDog';
+import Donate from './pages/Donate';
 
 // redux //
 // import { Provider } from 'react-redux';
@@ -60,12 +61,12 @@ function App() {
       >
         <Router>
           {/* <Provider store={store}>  */}
-          {/* <StoreProvider> */}
+          <StoreProvider>
           <Navigation />
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/admin-dashboard" component={AdminDashboard} />
-            {/* <Route path="/dashboard" component={Dashboard} /> */}
+            <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/logout" component={Logout} />
@@ -79,9 +80,11 @@ function App() {
             {/* footer only loading on logout page?? */}
             <Route exact path="/add-dog" component={AdminAddDog} />
 
+            {/* <Route exact path="/donate" component={Donate} /> */}
+
           </Switch>
           <Footer />
-          {/* </StoreProvider> */}
+          </StoreProvider>
           {/* </Provider> */}
         </Router>
       </AuthContext.Provider>
