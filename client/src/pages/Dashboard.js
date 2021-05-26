@@ -14,7 +14,7 @@ function Dashboard() {
   const [dogData, setDogData] = React.useState([]);
 
   React.useEffect(() => {
-    setDogData(data?.canines);
+    setDogData(data?.canines || []);
   }, [data]);
 
   const today = new Date();
