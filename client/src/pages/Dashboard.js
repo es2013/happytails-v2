@@ -23,6 +23,7 @@ function Dashboard() {
       {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
 
       <TableAm dogData={dogData} />
+      <TablePm dogData={dogData} />
     </div>
   );
 }

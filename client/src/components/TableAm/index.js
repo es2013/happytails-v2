@@ -33,7 +33,7 @@ function TableAm({ dogData }) {
         </thead>
 
         <tbody>
-          <DogRow dogData={dogData} />
+          <DogRow dogData={dogData} timeOfDay="AM" />
         </tbody>
       </table>
     </div>
