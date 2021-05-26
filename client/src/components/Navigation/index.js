@@ -14,8 +14,10 @@ function Navigation() {
             Happy Tails
           </a>
           <ul id="nav-mobile" className="right">
-            {isAdmin && <Link to="/adminDashBoard">Admin</Link>}
+            {isAdmin && <li><Link to="/add-dog">Add a Dog</Link></li>}
+            {isAdmin && <li><Link to="/view-users">Dog Lovers</Link></li>}
             <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/donate">Donate</Link></li>
             {token && (
               <li><Link id="logout" to="/logout">Logout</Link></li>
             )}
