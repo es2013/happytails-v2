@@ -58,8 +58,10 @@ function Filters({ dogData, setDogData, pmShift }) {
     const activitiesInShift = (d[activity] || [])
       .map((a) => ({ ...a, timestamp: new Date(Number(a.timestamp)) }))
       .filter((a) => allHelpers.isPM(a.timestamp) === pmShift);
+      
     const latestActivity = activitiesInShift?.[activitiesInShift.length - 1];
     const latestActivityDate = latestActivity?.timestamp;
+
     return latestActivityDate && allHelpers.isToday(latestActivityDate);
   }
 
