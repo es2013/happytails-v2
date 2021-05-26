@@ -9,6 +9,7 @@
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "heroku-postbuild": "cd client && npm run build"
+   
   },
   "repository": {
     "type": "git",
@@ -22,14 +23,18 @@
   },
   "homepage": "https://github.com/es2013/happytails-v2#readme",
   "dependencies": {
+    "@stripe/stripe-js": "github:stripe/stripe-js",
+    "concurrently": "^6.1.0",
     "dotenv": "^9.0.2",
     "if-env": "^1.0.4",
-    "nodemon": "^2.0.7"
-  },
-  "devDependencies": {
-    "concurrently": "^6.1.0"
+    "jquery": "^3.6.0",
+    "nodemon": "^2.0.7",
+    "react-stripe-checkout": "^2.6.3"
   },
   "prettier": {
     "singleQuote": true
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.7.0"
   }
 }

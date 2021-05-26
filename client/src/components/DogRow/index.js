@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './stylesheet.css';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_DOGS } from '../../utils/queries';
 import allHelpers from '../../utils/helpers';
 
 const convertActivity = (activity) => {
@@ -13,75 +11,61 @@ const convertActivity = (activity) => {
 };
 
 function DogRow(props) {
-  const { data } = useQuery(GET_DOGS);
-
-  let dog;
-
-  if (data) {
-    dog = data.canines;
-    console.log(dog);
-  }
+  //const { token } = useAuth();
 
   // Returns true if PM
   const renderPM = props.timeOfDay === 'PM';
 
   return (
     <>
-      {dog
-        ? dog.map((canine) => {
-            return (
-              <>
-                <tr>
-                  <td className={`$canine.demeanor`}>
-                    {' '}
-                    <span className="status-emoji">&#128549;</span>
-                    {canine.name}
-                  </td>
-                  <td>
-                    {canine.potty
-                      .map(convertActivity)
-                      .filter((activity) =>
-                        allHelpers.isToday(activity.timestamp)
-                      )
-                      .filter(
-                        (activity) =>
-                          allHelpers.isPM(activity.timestamp) === renderPM
-                      )
-                      .map((activity) => activity.username)
-                      .join(', ')}
-                  </td>
+      {props.dogData.map((canine) => {
+        return (
+          <>
+            <tr>
+              <td className={`$canine.demeanor`}>
+                {' '}
+                <span className="status-emoji">&#128549;</span>
+                {canine.name}
+              </td>
+              <td>
+                {canine.potty
+                  .map(convertActivity)
+                  .filter((activity) => allHelpers.isToday(activity.timestamp))
+                  .filter(
+                    (activity) =>
+                      allHelpers.isPM(activity.timestamp) === renderPM
+                  )
+                  .map((activity) => activity.username)
+                  .join(', ')}
+              </td>
 
-                  <td>
-                    {canine.walk
-                      .map(convertActivity)
-                      .filter((activity) =>
-                        allHelpers.isToday(activity.timestamp)
-                      )
-                      .filter(
-                        (activity) =>
-                          allHelpers.isPM(activity.timestamp) === renderPM
-                      )
-                      .map((activity) => activity.username)
-                      .join(', ')}
-                  </td>
-                  <td className="Easy"> {canine.demeanor} </td>
-                  <td className="Easy"> {canine.status} </td>
-                  <td> {canine.kennel} </td>
-                  <td>
-                    <button type="submit" className="btn">
-                      <Link
-                        to={`/single-dog/${canine._id}`}
-                        className="select-dog"
-                      >
-                        Select
-                      </Link>
-                    </button>
-                  </td>
-                </tr>
-              </>
-            );
-          })
-        : null}
+              <td>
+                {canine.walk
+                  .map(convertActivity)
+                  .filter((activity) => allHelpers.isToday(activity.timestamp))
+                  .filter(
+                    (activity) =>
+                      allHelpers.isPM(activity.timestamp) === renderPM
+                  )
+                  .map((activity) => activity.username)
+                  .join(', ')}
+              </td>
+              <td className="Easy"> {canine.demeanor} </td>
+              <td className="Easy"> {canine.status} </td>
+              <td> {canine.kennel} </td>
+              {/* {token && ( */}
+              <td>
+                <button type="submit" className="btn">
+                  <Link to={`/single-dog/${canine._id}`} className="select-dog">
+                    Select
+                  </Link>
+                </button>
+              </td>
+              {/* )} */}
+            </tr>
+          </>
+        );
+      })}
     </>
   );
 }

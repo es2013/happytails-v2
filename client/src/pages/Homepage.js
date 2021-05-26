@@ -14,14 +14,14 @@ function Homepage() {
   const [dogData, setDogData] = React.useState([]);
 
   React.useEffect(() => {
-    setDogData(data?.canines);
+    setDogData(data?.canines || []);
   }, [data]);
 
   return (
     <div>
       <Hero />
       <UserMessage />
-      {token && <Filters dogData={data?.canines} setDogData={setDogData} />}
+      {/* {token && <Filters dogData={data?.canines} setDogData={setDogData} />} */}
       <TableAm dogData={dogData} />
       <br></br><br></br>
       <TablePm dogData={dogData} />

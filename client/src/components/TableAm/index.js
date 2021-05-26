@@ -5,7 +5,6 @@ import './stylesheet.css';
 
 function TableAm({ dogData }) {
   return (
-    // REACT reaallly doesnt like this segment and I am not sure why.
     <div className="row s8">
       <h4 className="flow-text">
         <span>
