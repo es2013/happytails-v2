@@ -1,6 +1,6 @@
 import React from 'react';
 import DogRow from '../DogRow';
-import dogImage from '../../images/shiba-inu-logo-trans-bg.png';
+import dogImage from '../../images/shiba-inu-logo-trans-bg-min.png';
 import './stylesheet.css';
 
 function TablePm({ dogData }) {

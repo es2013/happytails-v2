@@ -90,7 +90,6 @@ export const GET_DOG = gql`
       }
     }
   }
-}
 `;
 
 export const QUERY_CHECKOUT = gql`
