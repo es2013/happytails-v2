@@ -4,7 +4,7 @@ const path = require('path');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 const { authMiddleware } = require('./utils/auth');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const app = express();
 const Canine = require('./models/Canine');
 const canineData = require('./seeders/CanineSeeds');
@@ -66,17 +66,17 @@ app.get('*', (req, res) => {
 // 3.) The User table is now seeded.
 // 4.) Comment out this block of code again.
 
-/* User.deleteMany((err, datas) => {
-  if (err) {
-    console.log(err);
-  };
+//  User.deleteMany((err, datas) => {
+//   if (err) {
+//     console.log(err);
+//   };
 
-  User.insertMany(userData, function (err, r) {
-    if (err) {
-      console.log(err);
-    };
-  });
-});  */
+//   User.insertMany(userData, function (err, r) {
+//     if (err) {
+//       console.log(err);
+//     };
+//   });
+// });  
 
 //****************************************
 //*  END of Code to seed USER DATABASE ***
