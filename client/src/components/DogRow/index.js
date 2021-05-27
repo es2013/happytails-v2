@@ -12,15 +12,14 @@ const convertActivity = (activity) => {
 
 function DogRow(props) {
   //const { token } = useAuth();
-  const [isHappy, setIsHappy] = useState(false);
+  const [isHappy, setIsHappy] = useState(true);
 
   // if both conditions are true, return true. 
   useEffect(() => {
-    function handleEmojiChange() {
         if (props.potty && props.walk) {
           return setIsHappy(true);
-        }
-    }
+        } 
+        console.log(isHappy)
   });
 
   // Returns true if PM
@@ -35,7 +34,7 @@ function DogRow(props) {
               <td className={`$canine.demeanor`}>
                 {' '}
                 {/* if state = happy render :) */}
-                <span className="status-emoji">({() => { isHappy ? "😁" : "😞" }})</span>
+                <span className="status-emoji">{ isHappy ? "😁" : "😞" }</span>
                 {canine.name}
               </td>
               <td>
