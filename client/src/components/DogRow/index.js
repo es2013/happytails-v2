@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {useAuth} from '../../utils/GlobalState';
 import { Link } from 'react-router-dom';
 import './stylesheet.css';
 import allHelpers from '../../utils/helpers';
@@ -11,7 +12,7 @@ const convertActivity = (activity) => {
 };
 
 function DogRow(props) {
-  //const { token } = useAuth();
+  const { token } = useAuth();
 
   // Returns true if PM
   const renderPM = props.timeOfDay === 'PM';
@@ -92,7 +93,7 @@ function DogRow(props) {
               <td className="Easy"> {canine.demeanor} </td>
               <td className="Easy"> {canine.status} </td>
               <td> {canine.kennel} </td>
-              {/* {token && ( */}
+              {token && (
               <td>
                 <button type="submit" className="btn">
                   <Link to={`/single-dog/${canine._id}`} className="select-dog">
@@ -100,7 +101,7 @@ function DogRow(props) {
                   </Link>
                 </button>
               </td>
-              {/* )} */}
+               )} 
             </tr>
           </>
         );
