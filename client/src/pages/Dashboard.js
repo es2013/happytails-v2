@@ -23,7 +23,11 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <UserMessage />
-      <div className="center-align"><h6>You can choose a filter to view by:</h6></div>
+      {token && (
+        <div className="center-align">
+          <h6>You can choose a filter to view by:</h6>
+        </div>
+      )}
       {token && (
         <Filters
           dogData={data?.canines}
