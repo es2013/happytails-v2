@@ -1,9 +1,9 @@
 import React from "react";
-import Donate from "../components/Donate";
+import RenderDonate from "../components/RenderDonate";
 
 function Donate() {
     return (
-        <Donate />
+        <RenderDonate />
     )
 }
 

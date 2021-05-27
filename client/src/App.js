@@ -14,7 +14,6 @@ import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
-import Donate from './components/Donate';
 import { AuthContext } from './utils/GlobalState';
 import Logout from './pages/Logout';
 import AdminAddDog from './pages/AdminAddDog';
@@ -84,7 +83,7 @@ function App() {
             <Route exact path="/add-dog" component={AdminAddDog} />
             <Route exact path="/view-users" component={ViewUsers} />
 
-            {/* <Route exact path="/donate" component={Donate} /> */}
+            <Route exact path="/donate" component={Donate} />
 
           </Switch>
           <Footer />
