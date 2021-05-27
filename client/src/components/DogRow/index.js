@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './stylesheet.css';
 import allHelpers from '../../utils/helpers';
@@ -19,12 +19,51 @@ function DogRow(props) {
   return (
     <>
       {props.dogData.map((canine) => {
+        //console.log(canine.name, canine.potty.length, canine.walk.length)
+
+        let todayPresentPottyAM = canine.potty.filter(
+          (p) =>
+            allHelpers.isToday(new Date(Number(p.timestamp))) &&
+            allHelpers.isPM(new Date(Number(p.timestamp))) === false
+        );
+
+        let todayPresentWalkAM = canine.walk.filter(
+          (p) =>
+            allHelpers.isToday(new Date(Number(p.timestamp))) &&
+            allHelpers.isPM(new Date(Number(p.timestamp))) === false
+        );
+
+        let todayPresentPottyPM = canine.potty.filter(
+          (p) =>
+            allHelpers.isToday(new Date(Number(p.timestamp))) &&
+            allHelpers.isPM(new Date(Number(p.timestamp)))
+        );
+
+        let todayPresentWalkPM = canine.walk.filter(
+          (p) =>
+            allHelpers.isToday(new Date(Number(p.timestamp))) &&
+            allHelpers.isPM(new Date(Number(p.timestamp)))
+        );
+
+        
+
         return (
           <>
             <tr>
               <td className={`$canine.demeanor`}>
-                {' '}
-                <span className="status-emoji">&#128549;</span>
+                {canine.potty.length !== 0 &&
+                canine.walk.length !== 0 &&
+                todayPresentPottyAM.length &&
+                todayPresentWalkAM.length ? (
+                  <span className="status-emoji">H</span>
+                ) : canine.potty.length !== 0 &&
+                  canine.walk.length !== 0 &&
+                  todayPresentPottyPM.length &&
+                  todayPresentWalkPM.length ? (
+                  <span className="status-emoji">H</span>
+                ) : (
+                  <span className="status-emoji">&#128549;</span>
+                )}
                 {canine.name}
               </td>
               <td>
