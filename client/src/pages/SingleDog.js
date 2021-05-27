@@ -125,10 +125,10 @@ function SingleDog(props) {
             <h3 className="doggy-name flow-text">{dogData.name}</h3>
             <img
               className="single-dog-image"
-              src="../images/dogs/Apollo.jpg"
+              src={`/dogs/${dogData.name}.jpg`}
               alt="Apollo"
-              width="400"
-              heigh="auto"
+              width="150"
+              heigh="150"
             />
           </div>
 
