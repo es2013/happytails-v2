@@ -4,8 +4,8 @@ import './stylesheet.css';
 function RenderDonate() {
   return (
     
-    <div className="row">
-    <div className="col s12 m3">
+    <div className="row center-align">
+    <div className="col s12 m3 flexbox">
       <div className="card">
         <div className="card-image">
         <img

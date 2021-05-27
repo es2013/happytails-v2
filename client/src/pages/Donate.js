@@ -3,7 +3,9 @@ import RenderDonate from "../components/RenderDonate";
 
 function Donate() {
     return (
-        <RenderDonate />
+        <div className="container">
+            <RenderDonate />
+        </div>
     )
 }
 
