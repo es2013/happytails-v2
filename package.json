@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/es2013/happytails-v2#readme",
   "dependencies": {
-    "@stripe/stripe-js": "github:stripe/stripe-js",
+    "@stripe/stripe-js": "^1.15.0",
     "concurrently": "^6.1.0",
     "dotenv": "^9.0.2",
     "if-env": "^1.0.4",
@@ -32,8 +32,5 @@
   },
   "prettier": {
     "singleQuote": true
-  },
-  "devDependencies": {
-    "webpack-cli": "^4.7.0"
   }
 }

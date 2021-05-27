@@ -71,6 +71,8 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/logout" component={Logout} />
+             {/* donate page  */}
+             {/* <Route exact path="/donate" component={Donate} /> */}
             {/* <Route exact path="/success" component={Success} /> */}
 
             {/* this is the path I had earlier. I think it is a more appropriate endpoint but it doesnt matter just lets get the singleDog page to load*/}
@@ -81,7 +83,7 @@ function App() {
             <Route exact path="/add-dog" component={AdminAddDog} />
             <Route exact path="/view-users" component={ViewUsers} />
 
-            {/* <Route exact path="/donate" component={Donate} /> */}
+            <Route exact path="/donate" component={Donate} />
 
           </Switch>
           <Footer />
