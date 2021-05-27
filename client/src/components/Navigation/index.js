@@ -16,6 +16,7 @@ function Navigation() {
           <ul id="nav-mobile" className="right">
             {isAdmin && <li><Link to="/add-dog">Add a Dog</Link></li>}
             {isAdmin && <li><Link to="/view-users">Dog Lovers</Link></li>}
+            {isAdmin && <li><Link to="/admin-dashboard">Dashboard</Link></li>}
             <li><Link to="/dashboard">Dashboard</Link></li>
             <li><Link to="/donate">Donate</Link></li>
             {token && (
