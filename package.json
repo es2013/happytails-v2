@@ -27,6 +27,7 @@
     "dotenv": "^9.0.2",
     "if-env": "^1.0.4",
     "jquery": "^3.6.0",
+    "jsdom": "^16.6.0",
     "nodemon": "^2.0.7",
     "react-stripe-checkout": "^2.6.3"
   },
