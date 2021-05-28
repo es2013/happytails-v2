@@ -15,12 +15,6 @@ function ViewUsers() {
   if (loading) return 'Loading...';
   if (error) return `GET_USERS Error: ${error.message}`;
 
-  console.log('*#*#*# GET_USERS data: ');
-  console.log(data);
-
-  console.log('&&& isAdmin ', isAdmin);
-  console.log('*** token ', token);
-
   return (
     <>
       <div>
@@ -33,6 +27,7 @@ function ViewUsers() {
               <th>Name</th>
               <th>Username</th>
               <th>Email Address</th>
+              <th>Role</th>
             </tr>
           </thead>
           <tbody>
@@ -41,10 +36,12 @@ function ViewUsers() {
                 <>
                   <tr>
                     <td>
-                      {users.firstName} {users.lastName}
+                      {users.lastName}, {users.firstName}
                     </td>
                     <td>{users.username}</td>
                     <td>{users.email}</td>
+                    {users.isAdmin && <td>Admin</td>}
+                    {!users.isAdmin && <td>Caretaker</td>}
                   </tr>
                 </>
               );
@@ -52,7 +49,7 @@ function ViewUsers() {
           </tbody>
           <tfoot>
             <tr>
-              <td>Sum</td>
+              <td>Blah</td>
             </tr>
           </tfoot>
         </table>

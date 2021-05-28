@@ -32,7 +32,7 @@ function SingleDog(props) {
             canineId: canine_id,
           },
         });
-        console.log('!!! Walk', { error, data });
+        console.log('!!! Walk Error: ', { error, data });
         // if (error) {
         //   throw error.message
         // }
@@ -44,10 +44,11 @@ function SingleDog(props) {
           },
         });
 
-        console.log('!!! Potty: ', { error, data });
+        console.log('!!! Potty Error: ', { error, data });
       }
 
-      //history.push('/');
+      // In order for the updated info to show up on the Dashboard, we need
+      // to use window.location to do a hard refresh
       window.location = '/dashboard';
     } catch (error) {
       console.log(error);
@@ -74,38 +75,27 @@ function SingleDog(props) {
     setDogData(data?.canine || {});
   }, [data]);
 
-  console.log('&&&&&&&&');
-  console.log(data);
-
   useEffect(() => {
     if (dogData.potty) {
-      // console.log("dogData", dogData.potty.forEach(d => console.log(d)))
       dogData.potty.forEach((p) => {
         if (
           p.username &&
           allHelpers.isToday(new Date(Number(p.timestamp))) &&
           allHelpers.isPM(new Date(Number(p.timestamp)))
         ) {
-          console.log('Yes potty!');
           setDogPotty(true);
-        } else {
-          console.log('No potty!');
         }
       });
     }
 
     if (dogData.walk) {
-      // console.log("dogData", dogData.potty.forEach(d => console.log(d)))
       dogData.walk.forEach((p) => {
         if (
           p.username &&
           allHelpers.isToday(new Date(Number(p.timestamp))) &&
           allHelpers.isPM(new Date(Number(p.timestamp)))
         ) {
-          console.log('Yes walk!');
           setDogWalk(true);
-        } else {
-          console.log('No walk!');
         }
       });
     }
@@ -125,7 +115,7 @@ function SingleDog(props) {
             <img
               className="single-dog-image"
               src={`/dogs/${dogData.name}.jpg`}
-              alt="Apollo"
+              alt={`${dogData.name}`}
               width="150"
               heigh="150"
             />

@@ -85,9 +85,3 @@ mutation addWalk(
     }
   }
 `;
-
-
-/*
-export const ADD_EMPLOYEE = gql``;
-export const ADD_VOLUNTEER = gql``;
-*/

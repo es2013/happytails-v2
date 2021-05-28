@@ -1,6 +1,5 @@
 import { useReducer } from 'react';
 import {
-  UPDATE_CANINE,
   ADD_TO_CART,
   REMOVE_FROM_CART,
   CLEAR_CART,

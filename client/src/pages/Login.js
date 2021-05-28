@@ -47,8 +47,6 @@ function Login() {
     });
   };
 
-  console.log('Login.js inside Login function');
-
   return (
     <div className="container my-1">
       <Link className="login-signup-toggle" to="/signup">
