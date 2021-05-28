@@ -36,16 +36,35 @@ nav .nav-wrapper {
 
 
 @media only screen and (max-width: 849px) {
+    
+.homepage-link {
+    color: white;
+    font-size: larger;
+    font-family: Tahoma;
+    margin: 5%;
+    font-weight: bolder;
+    text-shadow: 1px 1px 4px #b5e2fa;
+}
+
+
+.homepage-link:hover {
+    color: #ffd60a;
+    font-size: larger;
+    font-family: Tahoma;
+    margin: 5%;
+    text-shadow: none;
+}
+    
     nav ul a {
         font-family: Tahoma;
-        font-weight: normal;
-        font-size: 7px;
+        font-weight: bold;
+        font-size: 15px;
     }
 
     nav ul a:hover {
         color: rgb(0, 78, 137);
         font-family: Tahoma;
         font-weight: bold;
-        font-size: 7px;
+        font-size: 15px;
     }
 }

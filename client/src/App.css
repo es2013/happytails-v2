@@ -15,9 +15,8 @@
 
 html,
 body {
-  min-height: 100%;
+  min-height: 100vh;
 }
-
 
 body {
   margin: 0;
@@ -30,12 +29,9 @@ body {
   background-color: var(--primary);
 }
 
-
 .activity-checkbox {
   margin: 20px;
 }
-
-
 
 .speech-bubble {
   position:relative;
@@ -53,9 +49,11 @@ body {
 .striped {
   background-color: #023e7d;
 }
+
 .css-2b097c-container {
   color: black;
 }
+
 .speech-bubble {
   position:relative;
   padding: 15px;
@@ -74,7 +72,6 @@ body {
 h2 {
   font-family: Tahoma;
   text-shadow: 4px 4px 8px #13315c;
-
 }
 
 textarea {
