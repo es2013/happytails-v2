@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
@@ -6,12 +5,14 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../utils/GlobalState';
+
 function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
   const { setToken } = useAuth();
   const history = useHistory();
-  const handleFormSubmit = async event => {
+
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const mutationResponse = await addUser({
@@ -20,22 +21,22 @@ function Signup() {
           email: formState.email,
           password: formState.password,
           firstName: formState.firstName,
-          lastName: formState.lastName
-        }
+          lastName: formState.lastName,
+        },
       });
       const token = mutationResponse.data.addUser.token;
       Auth.login(token);
       setToken(token);
-      history.push('./dashboard')
+      history.push('./dashboard');
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
     });
   };
   return (
