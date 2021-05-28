@@ -35,3 +35,17 @@ nav .nav-wrapper {
 }
 
 
+@media only screen and (max-width: 849px) {
+    nav ul a {
+        font-family: Tahoma;
+        font-weight: normal;
+        font-size: 7px;
+    }
+
+    nav ul a:hover {
+        color: rgb(0, 78, 137);
+        font-family: Tahoma;
+        font-weight: bold;
+        font-size: 7px;
+    }
+}
