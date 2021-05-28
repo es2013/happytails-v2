@@ -34,6 +34,8 @@ function AuthenticationGuard() {
   const [token, setToken] = useState(null);
   const { data } = useQuery(GET_CURRENT_USER);
 
+  console.log('##111 data: ', data );
+
   useEffect(() => {
     const token = localStorage.getItem('id_token');
 
@@ -42,11 +44,16 @@ function AuthenticationGuard() {
 
   useEffect(() => {
     if (data) {
-      setIsAdmin(data.me.isAdmin);
+      console.log('##222 data: ', data);
+      if (data.me.isAdmin === true) {
+        setIsAdmin(data.me.isAdmin);
+      }
     }
   }, [data]);
 
   console.log(token);
+  console.log('@@@ isAdmin: ', isAdmin);
+  console.log('##333 data: ', data);
 
   return (
     <AuthContext.Provider

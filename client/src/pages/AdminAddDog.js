@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_CANINE } from '../utils/mutations';
 import Select from 'react-select';
-import { useHistory } from 'react-router-dom';
+import { useAuth } from '../utils/GlobalState';
 
 function NewDog(props) {
+  const { isAdmin } = useAuth();
+
   const [formState, setFormState] = useState({
     name: '',
     kennel: '',
     status: '',
     demeanor: '',
   });
+
   const [addDog] = useMutation(ADD_CANINE);
-  const history = useHistory();
 
   const kennelOptions = [
     { value: 'All-Star', label: 'All-Star' },
@@ -94,22 +96,24 @@ function NewDog(props) {
 
   return (
     <div className="container my-1 btn-adddog">
-      <h2>Add a Dog</h2>
+      {isAdmin && (<h2>Add a Dog</h2>)}
+      {!isAdmin && (<h3>You are not an admin!</h3>)}
 
-      <div className="row">
-        <form onSubmit={handleFormSubmit}>
-          <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">Dog Name:</label>
-            <input
-              className="input"
-              placeholder="Name"
-              name="name"
-              type="text"
-              id="name"
-              onChange={handleInputChange}
-            />
-          </div>
-          {/* <div className="flex-row space-between my-2">
+      {isAdmin && (
+        <div className="row">
+          <form onSubmit={handleFormSubmit}>
+            <div className="flex-row space-between my-2">
+              <label className="input-title-secondary">Dog Name:</label>
+              <input
+                className="input"
+                placeholder="Name"
+                name="name"
+                type="text"
+                id="name"
+                onChange={handleInputChange}
+              />
+            </div>
+            {/* <div className="flex-row space-between my-2">
             <label className="input-title-secondary" htmlFor="kennel">
               Kennel:
             </label>
@@ -120,37 +124,38 @@ function NewDog(props) {
             ))}
           </select>
           </div> */}
-          <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">Kennel:</label>
-            <Select
-              class="select"
-              options={kennelOptions}
-              onChange={handleKennelChange}
-            />
-          </div>
-          <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">Demeanor:</label>
-            <Select
-              class="select"
-              options={demeanorOptions}
-              onChange={handleDemeanorChange}
-            />
-          </div>
-          <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">Status</label>
-            <Select
-              class="select"
-              options={statusOptions}
-              onChange={handleStatusChange}
-            />
-          </div>
-          <div className="flex-row flex-end">
-            <button className="btn" type="submit">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+            <div className="flex-row space-between my-2">
+              <label className="input-title-secondary">Kennel:</label>
+              <Select
+                class="select"
+                options={kennelOptions}
+                onChange={handleKennelChange}
+              />
+            </div>
+            <div className="flex-row space-between my-2">
+              <label className="input-title-secondary">Demeanor:</label>
+              <Select
+                class="select"
+                options={demeanorOptions}
+                onChange={handleDemeanorChange}
+              />
+            </div>
+            <div className="flex-row space-between my-2">
+              <label className="input-title-secondary">Status</label>
+              <Select
+                class="select"
+                options={statusOptions}
+                onChange={handleStatusChange}
+              />
+            </div>
+            <div className="flex-row flex-end">
+              <button className="btn" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

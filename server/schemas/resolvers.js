@@ -7,8 +7,9 @@ const resolvers = {
   Query: {
     // Get a user by username
     me: async (parent, args, context) => {
+      console.log('*** context: ', context);
       if (context.user) {
-        const userData = await User.findById(context.user._id)
+        const userData = await User.findById(context.user._id);
         return userData;
       }
       throw new AuthenticationError('Not logged in');
@@ -32,9 +33,7 @@ const resolvers = {
         .sort({ name: 1 });
     },
     canine: async (parent, { _id }) => {
-      return await Canine.findOne({ _id })
-        .populate('potty')
-        .populate('walk');
+      return await Canine.findOne({ _id }).populate('potty').populate('walk');
     },
   },
   Mutation: {
