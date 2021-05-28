@@ -28,8 +28,6 @@ function TableAm({ dogData }) {
         </span>
         AM Shift
       </h4>
-      <br />
-      <br />
 
       <table className="striped z-depth-2">
         <thead>

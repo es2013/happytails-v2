@@ -17,7 +17,6 @@ function SingleDog(props) {
   const [_id, setId] = useState('');
 
   const [canine_id, setCanine_id] = useState(props.match.params.id);
-  const [singleDogData, setSingleDogData] = useState([]);
 
   const [addPotty] = useMutation(ADD_POTTY);
   const [addWalk] = useMutation(ADD_WALK);

@@ -28,8 +28,6 @@ function TablePm({ dogData }) {
         </span>
         PM Shift
       </h4>
-      <br />
-      <br />
 
       <table className="striped z-depth-2">
         <thead>
