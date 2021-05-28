@@ -5,7 +5,7 @@ import { useAuth } from '../../utils/GlobalState';
 
 function Navigation() {
   const { isAdmin, token } = useAuth();
-  
+
   return (
     <header className="navbar-fixed">
       <nav>
@@ -15,15 +15,18 @@ function Navigation() {
           </a>
           <ul id="nav-mobile" className="right">
             {isAdmin && <li><Link to="/add-dog">Add a Dog</Link></li>}
+
             {isAdmin && <li><Link to="/view-users">Dog Lovers</Link></li>}
-            <li><Link to="/dashboard">Dashboard</Link></li>
+
+            {isAdmin && <li><Link to="/admin-dashboard">Dashboard</Link></li>}
+
+            {!isAdmin && token && <li><Link to="/dashboard">Dashboard</Link></li>}
+
             <li><Link to="/donate">Donate</Link></li>
-            {token && (
-              <li><Link id="logout" to="/logout">Logout</Link></li>
-            )}
-            {!token && (
-              <li><Link to="/login">Login</Link></li>
-            )}
+
+            {token && <li><Link id="logout" to="/logout">Logout</Link></li>}
+
+            {!token && <li><Link to="/login">Login</Link></li>}
           </ul>
         </div>
       </nav>

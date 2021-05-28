@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_CANINE } from '../utils/mutations';
 import Select from 'react-select';
-import { ValuesOfCorrectTypeRule } from 'graphql';
 import { useHistory } from 'react-router-dom';
 
 function NewDog(props) {
@@ -69,7 +68,10 @@ function NewDog(props) {
         status: formState.status,
       },
     });
-    history.push('/');
+
+    // In order for the updated info to show up on the Dashboard, we need
+    // to use window.location to do a hard refresh
+    window.location = '/admin-dashboard';
   };
 
   function handleInputChange(event) {
@@ -78,8 +80,6 @@ function NewDog(props) {
       ...formState,
       [name]: value,
     });
-    console.log(formState);
-    console.log(event);
   }
 
   const handleKennelChange = (value) => {
@@ -120,7 +120,6 @@ function NewDog(props) {
             ))}
           </select>
           </div> */}
-
           <div className="flex-row space-between my-2">
             <label className="input-title-secondary">Kennel:</label>
             <Select

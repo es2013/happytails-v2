@@ -1,23 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GET_USERS } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
+import { useAuth } from '../utils/GlobalState';
 
 function ViewUsers() {
+  const { isAdmin, token } = useAuth();
+  const [userData, setUserData] = useState();
   const { loading, error, data } = useQuery(GET_USERS);
-  console.log('*#*#*# GET_USERS data: ');
-  console.log(data);
+
+  useEffect(() => {
+    setUserData(data?.users || {});
+  }, [userData]);
+
+  if (loading) return 'Loading...';
+  if (error) return `GET_USERS Error: ${error.message}`;
 
   return (
     <>
-      {data.users.map((users) => {
-        return (
-          <>
+      <div>
+        <br />
+        <h4 className="flow-text">Employees and Volunteers</h4>
+
+        <table className="striped z-depth-2">
+          <thead>
             <tr>
-              <div>users.firstName</div>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Email Address</th>
+              <th>Role</th>
             </tr>
-          </>
-        );
-      })}
+          </thead>
+          <tbody>
+            {data.users.map((users) => {
+              return (
+                <>
+                  <tr>
+                    <td>
+                      {users.lastName}, {users.firstName}
+                    </td>
+                    <td>{users.username}</td>
+                    <td>{users.email}</td>
+                    {users.isAdmin && <td>Admin</td>}
+                    {!users.isAdmin && <td>Caretaker</td>}
+                  </tr>
+                </>
+              );
+            })}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Blah</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </>
   );
 }
