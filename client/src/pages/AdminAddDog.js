@@ -69,7 +69,9 @@ function NewDog(props) {
         status: formState.status,
       },
     });
-    history.push('/');
+
+    //history.push('/');
+    window.location = '/admin-dashboard';
   };
 
   function handleInputChange(event) {
