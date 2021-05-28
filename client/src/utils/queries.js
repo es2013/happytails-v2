@@ -1,5 +1,20 @@
 import gql from 'graphql-tag';
 
+// Retrieve the current user, used to help check for admin status
+// when page reloads after an update
+export const GET_CURRENT_USER = gql`
+  query {
+    me {
+      username
+      email
+      _id
+      firstName
+      lastName
+      isAdmin
+    }
+  }
+`;
+
 // Retrieve all users
 export const GET_USERS = gql`
   query {

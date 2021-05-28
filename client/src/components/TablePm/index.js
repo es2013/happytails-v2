@@ -42,9 +42,7 @@ function TablePm({ dogData }) {
         </thead>
 
         <tbody>
-          {/* <DogRow dogData={dogData} timeOfDay="AM" /> */}
           {dogData.map((canine) => {
-            // console.log(canine.name, canine.potty, canine.walk)
 
             let todayPresentPotty = canine.potty.filter(
               (p) =>
