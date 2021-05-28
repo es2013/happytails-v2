@@ -33,6 +33,7 @@ function ViewUsers() {
               <th>Name</th>
               <th>Username</th>
               <th>Email Address</th>
+              <th>Role</th>
             </tr>
           </thead>
           <tbody>
@@ -41,10 +42,12 @@ function ViewUsers() {
                 <>
                   <tr>
                     <td>
-                      {users.firstName} {users.lastName}
+                      {users.lastName}, {users.firstName}
                     </td>
                     <td>{users.username}</td>
                     <td>{users.email}</td>
+                    {users.isAdmin && (<td>Admin</td>)}
+                    {!users.isAdmin && (<td>Caretaker</td>)}
                   </tr>
                 </>
               );

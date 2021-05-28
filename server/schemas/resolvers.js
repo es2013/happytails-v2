@@ -1,7 +1,7 @@
 const { User, Canine, Activity } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { localTimestamp } = require( '../utils/local-timestamp');
+const { localTimestamp } = require('../utils/local-timestamp');
 
 const resolvers = {
   Query: {
@@ -17,7 +17,11 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     users: async () => {
-      return await User.find().populate('activity');
+      return await User.find()
+        .populate('activity')
+        .sort({ isAdmin: -1 })
+        .sort({ lastName: 1 })
+        .sort({ firstName: 1 });
     },
     user: async (parent, { firstName }) => {
       return User.findOne({ firstName })
@@ -32,7 +36,9 @@ const resolvers = {
     },
     canine: async (parent, { _id }) => {
       console.log('inside resovers.js => _id', _id);
-      return await Canine.findOne({ _id }).populate('potty').populate('walk');
+      return await Canine.findOne({ _id })
+        .populate('potty')
+        .populate('walk');
     },
   },
   Mutation: {
@@ -48,7 +54,7 @@ const resolvers = {
       return { token, user };
     },
     addPotty: async (parent, args, context) => {
-      console.log({ args, date:localTimestamp()});
+      console.log({ args, date: localTimestamp() });
       if (context.user) {
         const potty = await Activity.create({
           ...args,
