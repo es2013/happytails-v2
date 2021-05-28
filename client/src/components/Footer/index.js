@@ -14,7 +14,7 @@ function Footer() {
             </div>
           </div>
           <div>
-          <Link className="donate-link" to="/donate">Donate</Link>
+          <Link className="donate-link center" to="/donate">Donate</Link>
           </div>
         </div>
       </footer>

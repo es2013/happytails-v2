@@ -18,17 +18,14 @@
 }
 
 .donate-link {
-    padding: 0px;
+    padding: 70px;
     margin-bottom: 20px;
     text-decoration: none;
-    color: aliceblue;
-    font-family: Tahoma;
-    font-weight: bolder;
-    font-size: large;
+    font-weight: bold;
 }
 
 .donate-link:hover {
-    color: rgb(0, 78, 137);
+    color: white;
     font-family: Tahoma;
     font-weight: bolder;
     font-size: large;
