@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Activity = require('./Activity');
 
-const userSchema = new Schema({
+const userSchema = new Schema(
+  {
     username: {
       type: String,
       required: true,
@@ -12,12 +13,12 @@ const userSchema = new Schema({
     firstName: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     lastName: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     email: {
       type: String,
@@ -31,12 +32,12 @@ const userSchema = new Schema({
     },
     isAdmin: {
       type: Boolean,
-      default: false
+      default: false,
     },
     activity: {
       type: Schema.Types.ObjectId,
-      ref: 'Activity'
-    }
+      ref: 'Activity',
+    },
   },
   // set this to use virtual below
   {
@@ -46,7 +47,7 @@ const userSchema = new Schema({
   }
 );
 
-// hash user password
+// Hash the user's password
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
@@ -64,4 +65,3 @@ userSchema.methods.isCorrectPassword = async function (password) {
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-

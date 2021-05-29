@@ -1,5 +1,5 @@
-// import the gql tagged template function
 const { gql } = require('apollo-server-express');
+
 const typeDefs = gql`
   scalar Upload
 
@@ -82,13 +82,11 @@ const typeDefs = gql`
     ): Canine!
     addPotty(canineId: ID!): Activity
     addWalk(canineId: ID!): Activity
-    # addPotty(canineId: _id!, volunteer: String!, timestamp: String!): Canine
-    # addWalk(canineId: ID!, volunteerId: username!, timestamp: String!): Activity
   }
   type Auth {
     token: ID!
     user: User
   }
 `;
-// export the typeDefs
+
 module.exports = typeDefs;
