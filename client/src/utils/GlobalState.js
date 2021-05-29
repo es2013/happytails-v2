@@ -26,8 +26,10 @@ export { StoreProvider, useStoreContext };
 export const AuthContext = React.createContext({
   isAdmin: false,
   token: null,
+  currentUsername: null,
   setToken: () => {},
   setIsAdmin: () => {},
+  setCurrentUsername: () => {}
 });
 
 // This utility function makes it easier to read the value of context
