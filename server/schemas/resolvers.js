@@ -2,14 +2,16 @@ const { User, Canine, Activity } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { localTimestamp } = require('../utils/local-timestamp');
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
+const { v4: uuidv4 } = require('uuid');
+const { GraphQLUpload } = require('graphql-upload');
 
 const resolvers = {
+  Upload: GraphQLUpload,
   Query: {
     // Get a user by username
     me: async (parent, args, context) => {
-      console.log('*** context: ', context);
       if (context.user) {
         const userData = await User.findById(context.user._id);
         return userData;
@@ -44,21 +46,31 @@ const resolvers = {
       const canine = await Canine.create(args);
       return canine;
       //return {}
-      
     },
-    singleUpload: async (parent, args) => {
-      const file = await args.file;
-      const { createReadStream, filename, mimetype, encoding } = file
-      const filePath = path.join(__dirname, `../../client/dogs/${filename}`);
-      console.log({ file, filePath });
-      try {
-        const fileStream = createReadStream();
-        fileStream.pipe(fs.createWriteStream(filePath));
-        return { filename, mimetype, encoding, url: '' }
-      } catch (err) {
-        // console.log("ERRR", err)
-        return { filename, mimetype, encoding, url: '' }
-      }
+    addDogWithImage: async (parent, { file: fileInput, ...canine }) => {
+      const file = await fileInput;
+      const { createReadStream, filename } = file;
+      const fileNameSplit = filename.split('.');
+      const extension = fileNameSplit[fileNameSplit.length - 1];
+      const imageId = uuidv4();
+      const fileNameToSave = `${imageId}.${extension}`;
+      
+      const filePath = path.join(
+        __dirname,
+        `../public/assets/images/canines/${fileNameToSave}`
+      );
+
+      const fileStream = createReadStream();
+      fileStream.pipe(fs.createWriteStream(filePath));
+
+      const url = `/assets/images/canines/${fileNameToSave}`;
+
+      const result = await Canine.create({
+        ...canine,
+        image: url,
+      });
+
+      return result;
     },
     // Add a new user
     addUser: async (parent, args) => {

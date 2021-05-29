@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_CANINE, SINGLE_UPLOAD } from '../utils/mutations';
+import { ADD_CANINE, ADD_DOG_WITH_IMAGE } from '../utils/mutations';
 import Select from 'react-select';
 import { useAuth } from '../utils/GlobalState';
 
@@ -16,7 +16,7 @@ function NewDog(props) {
   });
 
   const [addDog] = useMutation(ADD_CANINE);
-  const [uploadImage] = useMutation(SINGLE_UPLOAD)
+  const [uploadImage] = useMutation(ADD_DOG_WITH_IMAGE);
 
   const kennelOptions = [
     { value: 'All-Star', label: 'All-Star' },
@@ -65,24 +65,24 @@ function NewDog(props) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // const mutationResponse = await addDog({
-    //   variables: {
-    //     name: formState.name,
-    //     kennel: formState.kennel,
-    //     demeanor: formState.demeanor,
-    //     status: formState.status,
-    //     image: formState.image,
-    //   },
-    // });
+
+    // TODO: validate that all forms fields are filled in
 
     const mutationResponse = await uploadImage({
-      variables: { file: formState.image }
-    })
-    console.log("UPLOAD IMAGE RESPONE::: ", mutationResponse)
+      variables: {
+        file: formState.image,
+        name: formState.name,
+        kennel: formState.kennel,
+        demeanor: formState.demeanor,
+        status: formState.status,
+      },
+    });
+    
+    console.log('UPLOAD IMAGE RESPONE::: ', mutationResponse);
 
     // In order for the updated info to show up on the Dashboard, we need
     // to use window.location to do a hard refresh
-    // window.location = '/admin-dashboard';
+    window.location = '/admin-dashboard';
   };
 
   function handleInputChange(event) {
@@ -105,24 +105,21 @@ function NewDog(props) {
 
   const onImageChange = (e) => {
     let file = e.target.files[0];
-    console.log(file);
-    
+
     if (file) {
-      setFormState({ ...formState, image: file })
+      setFormState({ ...formState, image: file });
     }
-  }
+  };
 
   return (
     <div className="container my-1 btn-adddog">
-      {isAdmin && (<h2>Add a Dog</h2>)}
-      {!isAdmin && (<h3>You are not an admin!</h3>)}
+      {isAdmin && <h2>Add a Dog</h2>}
+      {!isAdmin && <h3>You are not an admin!</h3>}
 
       {isAdmin && (
         <div className="row">
           <form onSubmit={handleFormSubmit}>
             <div className="flex-row space-between my-2">
-              <input name="image" type="file" onChange={onImageChange} /><br />
-
               <label className="input-title-secondary">Dog Name:</label>
               <input
                 className="input"
@@ -153,6 +150,7 @@ function NewDog(props) {
               />
             </div>
             <div className="flex-row space-between my-2">
+              <br />
               <label className="input-title-secondary">Demeanor:</label>
               <Select
                 class="select"
@@ -161,12 +159,21 @@ function NewDog(props) {
               />
             </div>
             <div className="flex-row space-between my-2">
+              <br />
               <label className="input-title-secondary">Status</label>
               <Select
                 class="select"
                 options={statusOptions}
                 onChange={handleStatusChange}
               />
+            </div>
+            <div className="flex-row space-between my-2">
+              <br />
+              <label className="input-title-secondary">
+                Upload an image for your dog:
+              </label>
+              &nbsp;&nbsp;&nbsp;
+              <input name="image" type="file" onChange={onImageChange} />
             </div>
             <div className="flex-row flex-end">
               <button className="btn" type="submit">

@@ -15,7 +15,6 @@ import gql from 'graphql-tag';
 //   }
 // `;
 
-
 export const GET_CURRENT_USER = gql`
   query {
     me {
@@ -28,7 +27,6 @@ export const GET_CURRENT_USER = gql`
     }
   }
 `;
-
 
 // Retrieve all users
 export const GET_USERS = gql`
@@ -53,6 +51,7 @@ export const GET_DOGS = gql`
       kennel
       demeanor
       status
+      image
       potty {
         username
         timestamp
@@ -75,6 +74,7 @@ export const GET_DOG = gql`
       name
       kennel
       status
+      image
       potty {
         _id
         username

@@ -20,7 +20,6 @@ function SingleDog(props) {
   const history = useHistory();
 
   const handleFormSubmit = async (event) => {
-    // event.preventDefault();
     try {
       if (dogWalk) {
         const { error, data } = await addWalk({
@@ -100,6 +99,8 @@ function SingleDog(props) {
   if (loading) return 'Loading...';
   if (error) return `GET_DOG Error: ${error.message}`;
 
+  console.log(process.env);
+
   return (
     <div className="row">
       {!dogData && <h3>No dog selected!</h3>}
@@ -119,7 +120,11 @@ function SingleDog(props) {
               <h3 className="doggy-name flow-text">{dogData.name}</h3>
               <img
                 className="single-dog-image"
-                src={`/dogs/${dogData.name}.jpg`}
+                src={
+                  dogData.image
+                    ? `${process.env.REACT_APP_API_BASE_URL}/${dogData.image}`
+                    : `/dogs/${dogData.name}.jpg`
+                }
                 alt={`${dogData.name}`}
                 width="150"
                 heigh="150"
