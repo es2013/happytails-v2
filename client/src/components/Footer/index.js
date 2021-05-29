@@ -11,10 +11,11 @@ function Footer() {
             <div className="col s12">
               <p className="center">Thank you for your love and kindness! 💗</p>
               <p className="center">© 2021 Copyright Happy Tails 🐶</p>
+              <Link className="donate-link center" to="/donate">Donate</Link>
             </div>
           </div>
           <div>
-          <Link className="donate-link center" to="/donate">Donate</Link>
+            {/* <Link className="donate-link center" to="/donate">Donate</Link> */}
           </div>
         </div>
       </footer>
