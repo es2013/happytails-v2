@@ -59,7 +59,7 @@ function TablePm({ dogData }) {
             return (
               <>
                 <tr>
-                  <td className={`$canine.demeanor`}>
+                  <td className={canine.demeanor}>
                     {canine.potty.length !== 0 &&
                     canine.walk.length !== 0 &&
                     todayPresentPotty.length &&
@@ -91,8 +91,8 @@ function TablePm({ dogData }) {
                       .map((activity) => activity.username)
                       .join(', ')}
                   </td>
-                  <td className="Easy"> {canine.demeanor} </td>
-                  <td className="Easy"> {canine.status} </td>
+                  <td className={canine.demeanor}> {canine.demeanor} </td>
+                  <td className="status"> {canine.status} </td>
                   <td> {canine.kennel} </td>
                   {token && (
                     <td>

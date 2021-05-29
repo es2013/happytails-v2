@@ -30,7 +30,7 @@ function AdminDashboard() {
       <AdminMessage />
       {token && (
         <div className="center-align">
-          <h6>You can choose a filter to view by:</h6>
+          <h6>Filter dogs by category:</h6>
         </div>
       )}
       {token && (
@@ -40,14 +40,12 @@ function AdminDashboard() {
           pmShift={nowIsPM}
         />
       )}
-      {!nowIsPM && <TableAm dogData={dogData} />}
-      {nowIsPM && <TablePm dogData={dogData} />}
 
       <div className="row">
         {/* Add Dog button links to add dog page*/}
         <div className="col s12 center-align">
           <button className="btn admin-btn add-dog-btn" type="button">
-            <Link to="/add-dog" className="add-dog">
+            <Link to="/add-dog" className="admin-link add-dog">
               Add a Dog
             </Link>
           </button>
@@ -58,9 +56,9 @@ function AdminDashboard() {
             type="button"
           >
             {/* create user table and render instead of dog tables. */}
-            {/* <a to="/users" className="see-users">
+            {/* <Link to="/users" className="admin-link see-users">
                             See Users
-                        </a> */}
+                </Link> */}
             See Users
           </button>
 
@@ -73,6 +71,10 @@ function AdminDashboard() {
           </button>
 
         </div>
+
+        {!nowIsPM && <TableAm dogData={dogData} />}
+        {nowIsPM && <TablePm dogData={dogData} />}
+
       </div>
     </div>
   );

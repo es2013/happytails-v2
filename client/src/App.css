@@ -166,9 +166,13 @@ a:hover {
 }
 
 .admin-btn {
-  margin: 60px 25px 5px 25px;
+  margin: 50px 25px 70px 25px;
 }
 
+.admin-link {
+  text-decoration: none;
+  color: white;
+}
 
 
 
