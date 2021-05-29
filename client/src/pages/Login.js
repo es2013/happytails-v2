@@ -33,7 +33,7 @@ function Login() {
       // The useHistory hook gives access to the history instance that we may
       // use to navigate. Use this instead of window.location.assign('/');
       // in auth.js so we do not refresh the page
-      history.push('/');
+      history.push('/dashboard');
     } catch (e) {
       console.log(e);
     }

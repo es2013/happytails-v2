@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const Activity = require('./Activity');
 
-
 const canineSchema = new Schema({
   name: {
     type: String,
@@ -26,15 +25,15 @@ const canineSchema = new Schema({
   walk: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Activity'
-    }
+      ref: 'Activity',
+    },
   ],
   potty: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Activity'
-    }
-  ]
+      ref: 'Activity',
+    },
+  ],
 });
 
 const Canine = model('Canine', canineSchema);

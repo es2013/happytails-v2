@@ -10,13 +10,9 @@ module.exports = {
 
     // ["Bearer", "<tokenvalue>"]
     if (req.headers.authorization) {
-      token = token
-        .split(' ')
-        .pop()
-        .trim();
+      token = token.split(' ').pop().trim();
     }
 
-  
     if (!token) {
       return req;
     }
@@ -24,20 +20,13 @@ module.exports = {
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-    }
-    catch {
-      
-    }
+    } catch {}
 
     return req;
   },
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };
 
-    return jwt.sign(
-      { data: payload },
-      secret,
-      { expiresIn: expiration }
-    );
-  }
+    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  },
 };

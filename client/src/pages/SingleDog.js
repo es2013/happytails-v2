@@ -42,7 +42,7 @@ function SingleDog(props) {
         console.log('!!! Potty Error: ', { error, data });
       }
 
-      // In order for the updated info to show up on the Dashboard, we need
+      // In order for the updated info to show up on the Dashboard, we
       // to use window.location to do a hard refresh
       window.location = '/dashboard';
     } catch (error) {

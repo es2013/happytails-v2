@@ -80,7 +80,7 @@ function NewDog(props) {
     
     console.log('UPLOAD IMAGE RESPONE::: ', mutationResponse);
 
-    // In order for the updated info to show up on the Dashboard, we need
+    // In order for the updated info to show up on the Dashboard, we
     // to use window.location to do a hard refresh
     window.location = '/admin-dashboard';
   };
@@ -131,16 +131,16 @@ function NewDog(props) {
               />
             </div>
             {/* <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="kennel">
-              Kennel:
-            </label>
-            <div className="select-container"></div>
-            <select className="select-container">
-            {kennelOptions.map((kennelOptions) => (
-              <option value={kennelOptions.value}>{kennelOptions.value}</option>
-            ))}
-          </select>
-          </div> */}
+              <label className="input-title-secondary" htmlFor="kennel">
+                  Kennel:
+              </label>
+              <div className="select-container"></div>
+              <select className="select-container">
+                {kennelOptions.map((kennelOptions) => (
+                  <option value={kennelOptions.value}>{kennelOptions.value}</option>
+                  ))}
+              </select>
+            </div> */}
             <div className="flex-row space-between my-2">
               <label className="input-title-secondary">Kennel:</label>
               <Select
@@ -176,6 +176,7 @@ function NewDog(props) {
               <input name="image" type="file" onChange={onImageChange} />
             </div>
             <div className="flex-row flex-end">
+              <br />
               <button className="btn" type="submit">
                 Submit
               </button>

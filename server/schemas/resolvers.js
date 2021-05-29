@@ -45,7 +45,6 @@ const resolvers = {
     addDog: async (parent, args) => {
       const canine = await Canine.create(args);
       return canine;
-      //return {}
     },
     addDogWithImage: async (parent, { file: fileInput, ...canine }) => {
       const file = await fileInput;
@@ -112,18 +111,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged In!');
     },
-    // updateDog: async (parent, args, context) => {
-    //   const potty = await Activity.create({ ...args.potty });
-    //   const walk = await Activity.create({ ...args.walk });
-    //   const canine = await Canine.findByIdAndUpdate(
-    //   { _id: args.canineId },
-    //   { $addToSet: { walk: walk } },
-    //   { $addToSet: { potty: potty } },
-    //   { new: true }
-    //   );
-    //   return {walk, potty};
-    // },
-
     // Login an existing user
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
