@@ -14,7 +14,7 @@ function AdminDashboard() {
   const { data } = useQuery(GET_DOGS);
   const [dogData, setDogData] = React.useState([]);
 
-  if (!isAdmin){
+  if (!isAdmin) {
     window.location = '/dashboard';
   };
 
@@ -75,10 +75,10 @@ function AdminDashboard() {
           </button>
 
         </div>
-
-        {!nowIsPM && <TableAm dogData={dogData} />}
-        {nowIsPM && <TablePm dogData={dogData} />}
-
+        <section className="container center-align">
+          {!nowIsPM && <TableAm dogData={dogData} />}
+          {nowIsPM && <TablePm dogData={dogData} />}
+        </section>
       </div>
     </div>
   );
