@@ -9,6 +9,7 @@
     width: 100%;
     position: sticky;
     padding: 0%;
+    background-image: linear-gradient(to right, rgb(0, 78, 137) , rgba(255, 213, 0));
 }
 
 .center {
