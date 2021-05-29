@@ -1,6 +1,7 @@
 import React from 'react';
 import './stylesheet.css';
 
+
 function RenderDonate() {
   return (
     <div className="row">
