@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_CANINE, ADD_DOG_WITH_IMAGE } from '../utils/mutations';
+import { ADD_DOG_WITH_IMAGE } from '../utils/mutations';
 import Select from 'react-select';
 import { useAuth } from '../utils/GlobalState';
 
@@ -15,7 +15,6 @@ function NewDog(props) {
     image: undefined,
   });
 
-  const [addDog] = useMutation(ADD_CANINE);
   const [uploadImage] = useMutation(ADD_DOG_WITH_IMAGE);
 
   const kennelOptions = [
@@ -78,8 +77,6 @@ function NewDog(props) {
       },
     });
     
-    console.log('UPLOAD IMAGE RESPONE::: ', mutationResponse);
-
     // In order for the updated info to show up on the Dashboard, we
     // to use window.location to do a hard refresh
     window.location = '/admin-dashboard';

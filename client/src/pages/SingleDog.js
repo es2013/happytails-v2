@@ -11,9 +11,7 @@ function SingleDog(props) {
   const [dogPotty, setDogPotty] = useState(false);
   const [dogWalk, setDogWalk] = useState(false);
   const [_id, setId] = useState('');
-
   const [canine_id, setCanine_id] = useState(props.match.params.id);
-
   const [addPotty] = useMutation(ADD_POTTY);
   const [addWalk] = useMutation(ADD_WALK);
   const [dogData, setDogData] = useState({});
@@ -98,8 +96,6 @@ function SingleDog(props) {
 
   if (loading) return 'Loading...';
   if (error) return `GET_DOG Error: ${error.message}`;
-
-  console.log(process.env);
 
   return (
     <div className="row">

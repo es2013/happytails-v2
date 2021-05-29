@@ -11,18 +11,23 @@
 
   .row {
     align-items: center;
-    
+    justify-content: center;
   }
+  
+.row {
+  margin: 2px;
+}
   
   .donateP{
     color: rgb(0, 78, 137);
-    font-weight: 900;
+    font-weight: 400;
     font-family: 'Karla', sans-serif;
-    font-size: x-large;
+    font-size: large;
     align-items: center;
   }
 
   .card .card-image .card-title {
     color: #ffd60a;
     background-color: rgb(69, 57, 10);
+    
   }
