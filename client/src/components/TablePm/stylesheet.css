@@ -44,16 +44,16 @@
   }
   
   .Easy {
-    color: rgb(51, 138, 33);
+    color: rgb(64, 241, 28);
     font-weight: bold;
   }
   
   .Moderate {
-    color: rgb(171, 180, 35);
+    color: rgb(239, 255, 14);
     font-weight: bold;
   }
   
   .Difficult {
-    color: rgb(138, 28, 28);
+    color: rgb(240, 17, 17);
     font-weight: bold;
   }

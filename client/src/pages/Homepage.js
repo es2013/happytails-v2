@@ -21,10 +21,12 @@ function Homepage() {
     <div>
       <Hero />
       <UserMessage />
-      <TableAm dogData={dogData} />
-      <br /><br />
-      <TablePm dogData={dogData} />
-      <br /><br /><br /><br /><br /><br />
+      <section className="container center-align">
+        <TableAm dogData={dogData} />
+        <br /><br />
+        <TablePm dogData={dogData} />
+        <br /><br /><br /><br /><br /><br />
+      </section>
     </div>
   );
 }
