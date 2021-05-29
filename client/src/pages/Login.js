@@ -30,10 +30,16 @@ function Login() {
       Auth.login(token);
       setToken(token);
 
+      const isAdmin = mutationResponse.data.login.user.isAdmin;
+
       // The useHistory hook gives access to the history instance that we may
       // use to navigate. Use this instead of window.location.assign('/');
       // in auth.js so we do not refresh the page
-      history.push('/dashboard');
+      if (isAdmin) {
+        history.push('/admin-dashboard');
+      }else{
+        history.push('/dashboard');
+      }
     } catch (e) {
       console.log(e);
     }

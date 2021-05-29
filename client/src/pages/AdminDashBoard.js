@@ -10,9 +10,13 @@ import AdminMessage from '../components/AdminMessage';
 import allHelpers from '../utils/helpers';
 
 function AdminDashboard() {
-  const { token } = useAuth();
+  const { token, isAdmin } = useAuth();
   const { data } = useQuery(GET_DOGS);
   const [dogData, setDogData] = React.useState([]);
+
+  if (!isAdmin){
+    window.location = '/dashboard';
+  };
 
   React.useEffect(() => {
     setDogData(data?.canines || []);
