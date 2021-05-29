@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_CANINE } from '../utils/mutations';
+import { ADD_CANINE, ADD_DOG_WITH_IMAGE } from '../utils/mutations';
 import Select from 'react-select';
-import { ValuesOfCorrectTypeRule } from 'graphql';
-import { useHistory } from 'react-router-dom';
+import { useAuth } from '../utils/GlobalState';
 
 function NewDog(props) {
+  const { isAdmin } = useAuth();
+
   const [formState, setFormState] = useState({
     name: '',
     kennel: '',
     status: '',
     demeanor: '',
+    image: undefined,
   });
+
   const [addDog] = useMutation(ADD_CANINE);
-  const history = useHistory();
+  const [uploadImage] = useMutation(ADD_DOG_WITH_IMAGE);
 
   const kennelOptions = [
     { value: 'All-Star', label: 'All-Star' },
@@ -59,17 +62,27 @@ function NewDog(props) {
     { value: 'In Foster', label: 'In Foster' },
     { value: 'Adopted', label: 'Adopted' },
   ];
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addDog({
+
+    // TODO: validate that all forms fields are filled in
+
+    const mutationResponse = await uploadImage({
       variables: {
+        file: formState.image,
         name: formState.name,
         kennel: formState.kennel,
         demeanor: formState.demeanor,
         status: formState.status,
       },
     });
-    history.push('/');
+    
+    console.log('UPLOAD IMAGE RESPONE::: ', mutationResponse);
+
+    // In order for the updated info to show up on the Dashboard, we
+    // to use window.location to do a hard refresh
+    window.location = '/admin-dashboard';
   };
 
   function handleInputChange(event) {
@@ -78,8 +91,6 @@ function NewDog(props) {
       ...formState,
       [name]: value,
     });
-    console.log(formState);
-    console.log(event);
   }
 
   const handleKennelChange = (value) => {
@@ -92,66 +103,87 @@ function NewDog(props) {
     setFormState({ ...formState, ['status']: value.value });
   };
 
+  const onImageChange = (e) => {
+    let file = e.target.files[0];
+
+    if (file) {
+      setFormState({ ...formState, image: file });
+    }
+  };
+
   return (
     <div className="container my-1 btn-adddog">
-      <h2>Add a Dog</h2>
+      {isAdmin && <h2>Add a Dog</h2>}
+      {!isAdmin && <h3>You are not an admin!</h3>}
 
-      <div className="row">
-        <form onSubmit={handleFormSubmit}>
-          <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">Dog Name:</label>
-            <input
-              className="input"
-              placeholder="Name"
-              name="name"
-              type="text"
-              id="name"
-              onChange={handleInputChange}
-            />
-          </div>
-          {/* <div className="flex-row space-between my-2">
-            <label className="input-title-secondary" htmlFor="kennel">
-              Kennel:
-            </label>
-            <div className="select-container"></div>
-            <select className="select-container">
-            {kennelOptions.map((kennelOptions) => (
-              <option value={kennelOptions.value}>{kennelOptions.value}</option>
-            ))}
-          </select>
-          </div> */}
-
-          <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">Kennel:</label>
-            <Select
-              class="select"
-              options={kennelOptions}
-              onChange={handleKennelChange}
-            />
-          </div>
-          <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">Demeanor:</label>
-            <Select
-              class="select"
-              options={demeanorOptions}
-              onChange={handleDemeanorChange}
-            />
-          </div>
-          <div className="flex-row space-between my-2">
-            <label className="input-title-secondary">Status</label>
-            <Select
-              class="select"
-              options={statusOptions}
-              onChange={handleStatusChange}
-            />
-          </div>
-          <div className="flex-row flex-end">
-            <button className="btn" type="submit">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+      {isAdmin && (
+        <div className="row">
+          <form onSubmit={handleFormSubmit}>
+            <div className="flex-row space-between my-2">
+              <label className="input-title-secondary">Dog Name:</label>
+              <input
+                className="input"
+                placeholder="Name"
+                name="name"
+                type="text"
+                id="name"
+                onChange={handleInputChange}
+              />
+            </div>
+            {/* <div className="flex-row space-between my-2">
+              <label className="input-title-secondary" htmlFor="kennel">
+                  Kennel:
+              </label>
+              <div className="select-container"></div>
+              <select className="select-container">
+                {kennelOptions.map((kennelOptions) => (
+                  <option value={kennelOptions.value}>{kennelOptions.value}</option>
+                  ))}
+              </select>
+            </div> */}
+            <div className="flex-row space-between my-2">
+              <label className="input-title-secondary">Kennel:</label>
+              <Select
+                class="select"
+                options={kennelOptions}
+                onChange={handleKennelChange}
+              />
+            </div>
+            <div className="flex-row space-between my-2">
+              <br />
+              <label className="input-title-secondary">Demeanor:</label>
+              <Select
+                class="select"
+                options={demeanorOptions}
+                onChange={handleDemeanorChange}
+              />
+            </div>
+            <div className="flex-row space-between my-2">
+              <br />
+              <label className="input-title-secondary">Status</label>
+              <Select
+                class="select"
+                options={statusOptions}
+                onChange={handleStatusChange}
+              />
+            </div>
+            <div className="flex-row space-between my-2">
+              <br />
+              <label className="input-title-secondary">
+                Upload an image for your dog:
+              </label>
+              &nbsp;&nbsp;&nbsp;
+              <input name="image" type="file" onChange={onImageChange} />
+            </div>
+            <div className="flex-row flex-end">
+              <br />
+              <button className="btn" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

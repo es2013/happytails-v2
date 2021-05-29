@@ -47,6 +47,32 @@ export const ADD_CANINE = gql`
       _id
       name
       kennel
+      image
+      demeanor
+      status
+    }
+  }
+`;
+
+export const ADD_DOG_WITH_IMAGE = gql`
+  mutation (
+    $file: Upload!
+    $name: String!
+    $kennel: String!
+    $demeanor: String!
+    $status: String!
+  ) {
+    addDogWithImage(
+      file: $file
+      name: $name
+      kennel: $kennel
+      demeanor: $demeanor
+      status: $status
+    ) {
+      _id
+      name
+      kennel
+      image
       demeanor
       status
     }
@@ -55,14 +81,8 @@ export const ADD_CANINE = gql`
 
 //mutation for add potty
 export const ADD_POTTY = gql`
-  mutation addPotty(
-    $canineId: ID!
-  )
-  {
-    addPotty(
-      canineId: $canineId
-    )
-    {
+  mutation addPotty($canineId: ID!) {
+    addPotty(canineId: $canineId) {
       activityType
       timestamp
       _id
@@ -73,11 +93,8 @@ export const ADD_POTTY = gql`
 
 //mutation for add potty
 export const ADD_WALK = gql`
-mutation addWalk(
-  $canineId:ID!)
-  {
-    addWalk(canineId:$canineId)
-    {
+  mutation addWalk($canineId: ID!) {
+    addWalk(canineId: $canineId) {
       activityType
       timestamp
       _id
@@ -85,9 +102,3 @@ mutation addWalk(
     }
   }
 `;
-
-
-/*
-export const ADD_EMPLOYEE = gql``;
-export const ADD_VOLUNTEER = gql``;
-*/

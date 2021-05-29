@@ -1,38 +1,35 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext } from 'react';
 import { useProductReducer } from './reducers';
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const StoreProvider = ({ value = [], ...props }) => {
+  const [state, dispatch] = useProductReducer({
+    donation: [],
+    cart: [],
+    cartOpen: false,
+    categories: [],
+    currentCategory: '',
+  });
 
-      const [state, dispatch] = useProductReducer({
-        donation: [],
-        cart: [],
-        cartOpen: false,
-        categories: [],
-        currentCategory: ''
+  return <Provider value={[state, dispatch]} {...props} />;
+};
 
-    });
-    // use this to confirm it works!
-    console.log(state);
-    return <Provider value={[state, dispatch]} {...props} />;
-  };
+const useStoreContext = () => {
+  return useContext(StoreContext);
+};
 
-  const useStoreContext = () => {
-    return useContext(StoreContext);
-  };
-
-  export { StoreProvider, useStoreContext };
-
-// import React from 'react';
+export { StoreProvider, useStoreContext };
 
 // Creating context with defaults
 export const AuthContext = React.createContext({
   isAdmin: false,
   token: null,
-  setLoggedIn: () => {},
+  currentUsername: null,
+  setToken: () => {},
   setIsAdmin: () => {},
+  setCurrentUsername: () => {}
 });
 
 // This utility function makes it easier to read the value of context

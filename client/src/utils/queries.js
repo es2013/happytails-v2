@@ -1,5 +1,33 @@
 import gql from 'graphql-tag';
 
+// Retrieve the current user, used to help check for admin status
+// when page reloads after an update
+// export const GET_CURRENT_USER = gql`
+//   query user($username: String!) {
+//     user(username: $username) {
+//       username
+//       email
+//       _id
+//       firstName
+//       lastName
+//       isAdmin
+//     }
+//   }
+// `;
+
+export const GET_CURRENT_USER = gql`
+  query {
+    me {
+      username
+      email
+      _id
+      firstName
+      lastName
+      isAdmin
+    }
+  }
+`;
+
 // Retrieve all users
 export const GET_USERS = gql`
   query {
@@ -9,6 +37,7 @@ export const GET_USERS = gql`
       _id
       firstName
       lastName
+      isAdmin
     }
   }
 `;
@@ -22,6 +51,7 @@ export const GET_DOGS = gql`
       kennel
       demeanor
       status
+      image
       potty {
         username
         timestamp
@@ -44,6 +74,7 @@ export const GET_DOG = gql`
       name
       kennel
       status
+      image
       potty {
         _id
         username
