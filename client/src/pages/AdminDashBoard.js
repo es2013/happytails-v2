@@ -21,16 +21,16 @@ function AdminDashboard() {
   const today = new Date();
   const nowIsPM = allHelpers.isPM(today);
 
-  function seeUsers() {}
+  function seeUsers() { }
 
-  function seeRecords() {}
+  function seeRecords() { }
 
   return (
     <div className="dashboard-container">
       <AdminMessage />
       {token && (
         <div className="center-align">
-          <h6>You can choose a filter to view by:</h6>
+          <h6>Filter dogs by category:</h6>
         </div>
       )}
       {token && (
@@ -40,45 +40,41 @@ function AdminDashboard() {
           pmShift={nowIsPM}
         />
       )}
-      {!nowIsPM && <TableAm dogData={dogData} />}
-      {nowIsPM && <TablePm dogData={dogData} />}
 
       <div className="row">
         {/* Add Dog button links to add dog page*/}
-        <div className="col s4 m2">
-          {/* add on click funtionality to link to add dog page */}
-          <button className="btn add-dog-btn" type="button">
-            <Link to="/add-dog" className="add-dog">
+        <div className="col s12 center-align">
+          <button className="btn admin-btn add-dog-btn" type="button">
+            <Link to="/add-dog" className="admin-link add-dog">
               Add a Dog
             </Link>
           </button>
-        </div>
 
-        {/* See Users shows all users */}
-        <div className="col s4 m2">
           <button
-            className="btn see-users-btn"
+            className="btn admin-btn see-users-btn"
             onClick={seeUsers}
             type="button"
           >
             {/* create user table and render instead of dog tables. */}
-            {/* <a to="/users" className="see-users">
+            {/* <Link to="/users" className="admin-link see-users">
                             See Users
-                        </a> */}
+                </Link> */}
             See Users
           </button>
-        </div>
 
-        {/* takes admin to historical data table */}
-        <div className="col s4 m2">
           <button
-            className="btn historical-table-btn"
+            className="btn admin-btn historical-table-btn"
             onClick={seeRecords}
             type="button"
           >
             See Past Records
           </button>
+
         </div>
+
+        {!nowIsPM && <TableAm dogData={dogData} />}
+        {nowIsPM && <TablePm dogData={dogData} />}
+
       </div>
     </div>
   );

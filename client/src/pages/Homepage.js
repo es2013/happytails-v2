@@ -21,17 +21,10 @@ function Homepage() {
     <div>
       <Hero />
       <UserMessage />
-      {/* {token && <Filters dogData={data?.canines} setDogData={setDogData} />} */}
       <TableAm dogData={dogData} />
-      <br></br>
-      <br></br>
+      <br /><br />
       <TablePm dogData={dogData} />
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      <br /><br /><br /><br /><br /><br />
     </div>
   );
 }

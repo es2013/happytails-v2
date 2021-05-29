@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 function Login() {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
-  const { setIsAdmin, setToken } = useAuth();
+  const { setIsAdmin, setToken, setCurrentUsername } = useAuth();
 
   // The useHistory hook gives access to the history instance that we may use to navigate.
   // Use this instead of window.location.assign('/'); in auth.js so we do not refresh
@@ -23,17 +22,18 @@ function Login() {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
-      
+
       setIsAdmin(mutationResponse.data.login.user.isAdmin);
+      setCurrentUsername(mutationResponse.data.login.user.username);
+
       const token = mutationResponse.data.login.token;
       Auth.login(token);
       setToken(token);
 
-
-      // The useHistory hook gives access to the history instance that we may use to navigate.
-      // Use this instead of window.location.assign('/'); in auth.js so we do not refresh
-      // the page
-      history.push('/');
+      // The useHistory hook gives access to the history instance that we may
+      // use to navigate. Use this instead of window.location.assign('/');
+      // in auth.js so we do not refresh the page
+      history.push('/dashboard');
     } catch (e) {
       console.log(e);
     }
@@ -54,6 +54,12 @@ function Login() {
       </Link>
 
       <h2>Login</h2>
+      
+      {error ? (
+        <div>
+          <p className="error-text">The provided credentials are incorrect</p>
+        </div>
+      ) : null}
 
       <div className="row">
         <form onSubmit={handleFormSubmit}>
@@ -83,13 +89,6 @@ function Login() {
               onChange={handleChange}
             />
           </div>
-          {error ? (
-            <div>
-              <p className="error-text">
-                The provided credentials are incorrect
-              </p>
-            </div>
-          ) : null}
           <div className="flex-row flex-end">
             <button className="btn" type="submit">
               Submit
