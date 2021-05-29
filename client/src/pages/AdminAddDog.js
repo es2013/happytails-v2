@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_CANINE } from '../utils/mutations';
+import { ADD_CANINE, SINGLE_UPLOAD } from '../utils/mutations';
 import Select from 'react-select';
 import { useAuth } from '../utils/GlobalState';
 
@@ -12,9 +12,11 @@ function NewDog(props) {
     kennel: '',
     status: '',
     demeanor: '',
+    image: undefined,
   });
 
   const [addDog] = useMutation(ADD_CANINE);
+  const [uploadImage] = useMutation(SINGLE_UPLOAD)
 
   const kennelOptions = [
     { value: 'All-Star', label: 'All-Star' },
@@ -60,20 +62,27 @@ function NewDog(props) {
     { value: 'In Foster', label: 'In Foster' },
     { value: 'Adopted', label: 'Adopted' },
   ];
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addDog({
-      variables: {
-        name: formState.name,
-        kennel: formState.kennel,
-        demeanor: formState.demeanor,
-        status: formState.status,
-      },
-    });
+    // const mutationResponse = await addDog({
+    //   variables: {
+    //     name: formState.name,
+    //     kennel: formState.kennel,
+    //     demeanor: formState.demeanor,
+    //     status: formState.status,
+    //     image: formState.image,
+    //   },
+    // });
+
+    const mutationResponse = await uploadImage({
+      variables: { file: formState.image }
+    })
+    console.log("UPLOAD IMAGE RESPONE::: ", mutationResponse)
 
     // In order for the updated info to show up on the Dashboard, we need
     // to use window.location to do a hard refresh
-    window.location = '/admin-dashboard';
+    // window.location = '/admin-dashboard';
   };
 
   function handleInputChange(event) {
@@ -94,6 +103,15 @@ function NewDog(props) {
     setFormState({ ...formState, ['status']: value.value });
   };
 
+  const onImageChange = (e) => {
+    let file = e.target.files[0];
+    console.log(file);
+    
+    if (file) {
+      setFormState({ ...formState, image: file })
+    }
+  }
+
   return (
     <div className="container my-1 btn-adddog">
       {isAdmin && (<h2>Add a Dog</h2>)}
@@ -103,6 +121,8 @@ function NewDog(props) {
         <div className="row">
           <form onSubmit={handleFormSubmit}>
             <div className="flex-row space-between my-2">
+              <input name="image" type="file" onChange={onImageChange} /><br />
+
               <label className="input-title-secondary">Dog Name:</label>
               <input
                 className="input"

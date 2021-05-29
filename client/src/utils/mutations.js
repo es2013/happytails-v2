@@ -53,6 +53,17 @@ export const ADD_CANINE = gql`
   }
 `;
 
+export const SINGLE_UPLOAD = gql`
+  mutation($file: Upload!) {
+    singleUpload(file: $file) {
+      filename
+      mimetype
+      encoding
+      url
+    }
+  }
+`;
+
 //mutation for add potty
 export const ADD_POTTY = gql`
   mutation addPotty(

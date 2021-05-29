@@ -2,6 +2,8 @@ const { User, Canine, Activity } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { localTimestamp } = require('../utils/local-timestamp');
+const fs = require("fs");
+const path = require("path");
 
 const resolvers = {
   Query: {
@@ -21,8 +23,8 @@ const resolvers = {
         .sort({ lastName: 1 })
         .sort({ firstName: 1 });
     },
-    user: async (parent, { firstName }) => {
-      return User.findOne({ firstName })
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
         .select('-__v -password')
         .populate('activity');
     },
@@ -41,6 +43,22 @@ const resolvers = {
     addDog: async (parent, args) => {
       const canine = await Canine.create(args);
       return canine;
+      //return {}
+      
+    },
+    singleUpload: async (parent, args) => {
+      const file = await args.file;
+      const { createReadStream, filename, mimetype, encoding } = file
+      const filePath = path.join(__dirname, `../../client/dogs/${filename}`);
+      console.log({ file, filePath });
+      try {
+        const fileStream = createReadStream();
+        fileStream.pipe(fs.createWriteStream(filePath));
+        return { filename, mimetype, encoding, url: '' }
+      } catch (err) {
+        // console.log("ERRR", err)
+        return { filename, mimetype, encoding, url: '' }
+      }
     },
     // Add a new user
     addUser: async (parent, args) => {

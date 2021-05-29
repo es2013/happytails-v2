@@ -1,6 +1,11 @@
 // import the gql tagged template function
 const { gql } = require('apollo-server-express');
 const typeDefs = gql`
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }
   type User {
     _id: ID!
     username: String
@@ -30,6 +35,12 @@ const typeDefs = gql`
     activityType: String
     username: String
   }
+  type UploadedFileResponse {
+      filename: String!
+      mimetype: String!
+      encoding: String!
+      url: String!
+    }
   type Query {
     me: User
     users: [User]
@@ -56,6 +67,7 @@ const typeDefs = gql`
       demeanor: String!
       status: String!
     ): Canine
+    singleUpload(file: Upload!): UploadedFileResponse!
     addPotty(canineId: ID!): Activity
     addWalk(canineId: ID!): Activity
     # addPotty(canineId: _id!, volunteer: String!, timestamp: String!): Canine

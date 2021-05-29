@@ -32,9 +32,16 @@ isAdmin to true again.
 function AuthenticationGuard() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [token, setToken] = useState(null);
-  const { data } = useQuery(GET_CURRENT_USER);
+  const [currentUsername, setCurrentUsername] = useState(null);
 
-  console.log('##111 data: ', data );
+  const { loading, data, error } = useQuery(GET_CURRENT_USER, {
+    variables: { username: currentUsername },
+  });
+
+  // if (loading) return 'Loading GET_CURRENT_USER ...';
+  // if (error) return `GET_CURRENT_USER Error: ${error.message}`;
+
+  console.log('##111 data: ', data);
 
   useEffect(() => {
     const token = localStorage.getItem('id_token');
@@ -45,23 +52,25 @@ function AuthenticationGuard() {
   useEffect(() => {
     if (data) {
       console.log('##222 data: ', data);
-      if (data.me.isAdmin === true) {
-        setIsAdmin(data.me.isAdmin);
-      }
+      setIsAdmin(data.me.isAdmin);
+      setCurrentUsername(data.me.username);
     }
   }, [data]);
 
   console.log(token);
   console.log('@@@ isAdmin: ', isAdmin);
   console.log('##333 data: ', data);
+  console.log('!@!@! currentUsername: ', currentUsername);
 
   return (
     <AuthContext.Provider
       value={{
         isAdmin,
         token,
+        currentUsername,
         setToken,
         setIsAdmin,
+        setCurrentUsername,
       }}
     >
       <Router>
