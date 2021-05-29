@@ -7,8 +7,11 @@ const { authMiddleware } = require('./utils/auth');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const Canine = require('./models/Canine');
-const canineData = require('./seeders/CanineSeeds');
 const User = require('./models/User');
+const { graphqlUploadExpress, processRequest } = require('graphql-upload');
+
+// DO NOT REMOVE these two variable declarations
+const canineData = require('./seeders/CanineSeeds');
 const userData = require('./seeders/UserSeeds');
 
 // create a new Apollo server and pass in our schema data
@@ -16,7 +19,16 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
+  uploads: false,
 });
+
+app.use(express.static(path.resolve(__dirname, 'public')));
+
+app.use(
+  graphqlUploadExpress({
+    maxFileSize: 5000000, // 5MB in size
+  })
+);
 
 // integrate our Apollo server with the Express application as middleware
 server.applyMiddleware({ app });
@@ -76,7 +88,7 @@ app.get('*', (req, res) => {
 //       console.log(err);
 //     };
 //   });
-// });  
+// });
 
 //****************************************
 //*  END of Code to seed USER DATABASE ***

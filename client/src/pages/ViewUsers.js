@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useAuth } from '../utils/GlobalState';
 
 function ViewUsers() {
-  const { isAdmin, token } = useAuth();
+  const { isAdmin } = useAuth();
   const [userData, setUserData] = useState();
   const { loading, error, data } = useQuery(GET_USERS);
 
@@ -19,40 +19,43 @@ function ViewUsers() {
     <>
       <div>
         <br />
-        <h4 className="flow-text">Employees and Volunteers</h4>
+        {isAdmin && <h4 className="flow-text">Employees and Volunteers</h4>}
+        {!isAdmin && <h4 className="flow-text">You are not an Admin!</h4>}
 
-        <table className="striped z-depth-2">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Username</th>
-              <th>Email Address</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.users.map((users) => {
-              return (
-                <>
-                  <tr>
-                    <td>
-                      {users.lastName}, {users.firstName}
-                    </td>
-                    <td>{users.username}</td>
-                    <td>{users.email}</td>
-                    {users.isAdmin && <td>Admin</td>}
-                    {!users.isAdmin && <td>Caretaker</td>}
-                  </tr>
-                </>
-              );
-            })}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Blah</td>
-            </tr>
-          </tfoot>
-        </table>
+        {isAdmin && (
+          <table className="striped z-depth-2">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email Address</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.users.map((users) => {
+                return (
+                  <>
+                    <tr>
+                      <td>
+                        {users.lastName}, {users.firstName}
+                      </td>
+                      <td>{users.username}</td>
+                      <td>{users.email}</td>
+                      {users.isAdmin && <td>Admin</td>}
+                      {!users.isAdmin && <td>Caretaker</td>}
+                    </tr>
+                  </>
+                );
+              })}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Blah</td>
+              </tr>
+            </tfoot>
+          </table>
+        )}
       </div>
     </>
   );

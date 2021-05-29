@@ -20,7 +20,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_CURRENT_USER } from './utils/queries';
 
 /*
-The purpose of this is to add an additional check on isAdmin after any update such
+The purpose of this file is to add an additional check on isAdmin after any update such
 as adding a new dog or updating a dog.  After each update and the user is routed
 back to the Dashboard we need to do a hard refresh for the new data to show up
 on the dashboard.  The hard refresh resets the isAdmin status to false causing
@@ -32,7 +32,11 @@ isAdmin to true again.
 function AuthenticationGuard() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [token, setToken] = useState(null);
-  const { data } = useQuery(GET_CURRENT_USER);
+  const [currentUsername, setCurrentUsername] = useState(null);
+
+  const { loading, data, error } = useQuery(GET_CURRENT_USER, {
+    variables: { username: currentUsername },
+  });
 
   useEffect(() => {
     const token = localStorage.getItem('id_token');
@@ -43,18 +47,19 @@ function AuthenticationGuard() {
   useEffect(() => {
     if (data) {
       setIsAdmin(data.me.isAdmin);
+      setCurrentUsername(data.me.username);
     }
   }, [data]);
-
-  console.log(token);
-
+console.log('currentUsername: ', currentUsername);
   return (
     <AuthContext.Provider
       value={{
         isAdmin,
         token,
+        currentUsername,
         setToken,
         setIsAdmin,
+        setCurrentUsername,
       }}
     >
       <Router>
