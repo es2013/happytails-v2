@@ -5,7 +5,7 @@ import { GET_DOG } from '../utils/queries';
 import { ADD_POTTY, ADD_WALK } from '../utils/mutations';
 import allHelpers from '../utils/helpers.js';
 import { useAuth } from '../utils/GlobalState';
-//lah
+
 function SingleDog(props) {
   const { token } = useAuth();
   const [dogPotty, setDogPotty] = useState(false);
