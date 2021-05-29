@@ -1,12 +1,13 @@
 import React from 'react';
 import './stylesheet.css';
 
+
 function RenderDonate() {
   return (
     
-    <div className="row">
-    <div className="col s12 m3">
-      <div className="card">
+    <div className="row ">
+    <div className="col s12 m3 ">
+      <div className="card ">
         <div className="card-image">
         <img
                 src={require("../../images/doggie.png").default}
