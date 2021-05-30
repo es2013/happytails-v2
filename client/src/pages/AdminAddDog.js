@@ -78,7 +78,7 @@ function NewDog(props) {
 
       // In order for the updated info to show up on the Dashboard, we
       // to use window.location to do a hard refresh
-      //window.location = '/admin-dashboard';
+      window.location = '/admin-dashboard';
     } catch (e) {
       console.log('Add Dog Error: ', e);
     }
