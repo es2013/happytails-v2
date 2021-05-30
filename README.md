@@ -6,29 +6,29 @@ Budget Tracker v2 is ...
 
 
 ## Packages:
-### Packages used on the client side:
-apollo-boost graphql graphql-tag @apollo/react-hooks
-react-router-dom
-jwt-decode
-react-select
-react-dropdown --save
---save @stripe/react-stripe-js @stripe/stripe-js
-react-bootstrap bootstrap
-apollo-client apollo-cache-inmemory apollo-link-context
-@apollo/client ->(in client directory)
-Apollo-upload-client
+### Packages installed on the client side:
+1. apollo-boost graphql graphql-tag @apollo/react-hooks
+2. react-router-dom
+3. jwt-decode
+4. react-select
+5. react-dropdown --save
+6. --save @stripe/react-stripe-js @stripe/stripe-js
+7. react-bootstrap bootstrap
+8. apollo-client apollo-cache-inmemory apollo-link-context
+9. @apollo/client
+10. Apollo-upload-client
 
-### Packages used on the server side:
-apollo-server-express graphql
-jsonwebtoken
-mongoose
-bcrypt
-graphql-upload
-uuid
+### Packages installed on the server side:
+1. apollo-server-express graphql
+2. jsonwebtoken
+3. mongoose
+4. bcrypt
+5. graphql-upload
+6. uuid
 
-### Packages used at the root of the application
-if-env
--D concurrently
+### Packages installed at the root of the application
+1. if-env
+2. -D concurrently
 
 
 ## Usage:
