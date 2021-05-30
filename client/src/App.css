@@ -51,6 +51,11 @@ body {
   background-color: #023e7d;
 }
 
+.doggy-name {
+  color: #023e7d;
+  font-weight: bolder;
+}
+
 .css-2b097c-container {
   color: black;
 }

@@ -112,7 +112,7 @@ function SingleDog(props) {
         <div className="col s12 m4 l8 center">
           <div className="card z-depth-2">
             <div className="card-content">
-              <h3 className="doggy-name flow-text"><span>{dogData.name}</span></h3>
+              <h3 className="doggy-name flow-text">{dogData.name}</h3>
               <img
                 className="single-dog-image"
                 src={
