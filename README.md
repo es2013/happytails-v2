@@ -34,7 +34,7 @@ Budget Tracker v2 is ...
 ## Usage and Reposity:
 
 This application is accessible at https://happytails-v2.herokuapp.com/
-The Happy Tails v2 repository is located at: https://github.com/es2013/happytails-v2
+<br>The Happy Tails v2 repository is located at: https://github.com/es2013/happytails-v2
 
 
 ## What the Happy Tails V2 Application Looks Like:
