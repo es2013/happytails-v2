@@ -49,11 +49,6 @@ function ViewUsers() {
                 );
               })}
             </tbody>
-            <tfoot>
-              <tr>
-                <td>Blah</td>
-              </tr>
-            </tfoot>
           </table>
         )}
       </div>

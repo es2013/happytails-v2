@@ -16,7 +16,7 @@ function AdminDashboard() {
 
   if (!isAdmin) {
     window.location = '/dashboard';
-  };
+  }
 
   React.useEffect(() => {
     setDogData(data?.canines || []);
@@ -25,9 +25,9 @@ function AdminDashboard() {
   const today = new Date();
   const nowIsPM = allHelpers.isPM(today);
 
-  function seeUsers() { }
+  function seeUsers() {}
 
-  function seeRecords() { }
+  function seeRecords() {}
 
   return (
     <div className="dashboard-container">
@@ -59,11 +59,9 @@ function AdminDashboard() {
             onClick={seeUsers}
             type="button"
           >
-            {/* create user table and render instead of dog tables. */}
-            {/* <Link to="/users" className="admin-link see-users">
-                            See Users
-                </Link> */}
-            See Users
+            <Link to="/view-users" className="admin-link see-users">
+              See Users
+            </Link>
           </button>
 
           <button
@@ -73,7 +71,6 @@ function AdminDashboard() {
           >
             See Past Records
           </button>
-
         </div>
         <section className="container center-align">
           {!nowIsPM && <TableAm dogData={dogData} />}
