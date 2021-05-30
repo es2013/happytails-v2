@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#f3d947" />
     <meta
       name="description"
       content="A doggy actvity tracker for shelters."
@@ -47,10 +47,10 @@
    <script>
     (function() {
       if("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./service-worker.js")
+        navigator.serviceWorker.register("./serviceWorker.js")
           .then(() => console.log("Service Worker registered successfully."))
           .catch(error => console.log("Service Worker registration failed:", error));
       }
     })();
-    </script> 
+    </script>  
 </html>
