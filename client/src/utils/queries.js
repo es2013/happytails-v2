@@ -9,6 +9,21 @@ export const GET_CURRENT_USER = gql`
       firstName
       lastName
       isAdmin
+      isActive
+    }
+  }
+`;
+
+export const GET_ONE_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      username
+      email
+      _id
+      firstName
+      lastName
+      isAdmin
+      isActive
     }
   }
 `;
@@ -23,6 +38,7 @@ export const GET_USERS = gql`
       firstName
       lastName
       isAdmin
+      isActive
     }
   }
 `;

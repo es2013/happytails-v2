@@ -34,6 +34,10 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
     activity: {
       type: Schema.Types.ObjectId,
       ref: 'Activity',

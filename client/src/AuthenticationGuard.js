@@ -13,6 +13,9 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { StoreProvider } from './utils/GlobalState';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_CURRENT_USER } from './utils/queries';
+import { AuthContext } from './utils/GlobalState';
 import Homepage from './pages/Homepage';
 import AdminDashboard from './pages/AdminDashBoard';
 import Dashboard from './pages/Dashboard';
@@ -21,13 +24,11 @@ import Signup from './pages/Signup';
 import SingleDog from './pages/SingleDog';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
-import { AuthContext } from './utils/GlobalState';
 import Logout from './pages/Logout';
 import AdminAddDog from './pages/AdminAddDog';
 import ViewUsers from './pages/ViewUsers';
 import Donate from './pages/Donate';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_CURRENT_USER } from './utils/queries';
+import UpdateUser from './pages/UpdateUser';
 
 function AuthenticationGuard() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -74,6 +75,7 @@ function AuthenticationGuard() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/logout" component={Logout} />
             <Route path="/single-dog/:id" component={SingleDog} />
+            <Route path="/update-user/:username" component={UpdateUser} />
             <Route exact path="/add-dog" component={AdminAddDog} />
             <Route exact path="/view-users" component={ViewUsers} />
             <Route exact path="/donate" component={Donate} />

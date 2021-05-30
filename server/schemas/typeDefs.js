@@ -14,6 +14,7 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     isAdmin: Boolean!
+    isActive: Boolean!
     activities: [Activity]
   }
   type Canine {
@@ -61,7 +62,12 @@ const typeDefs = gql`
       firstName: String!
       lastName: String!
       isAdmin: Boolean
+      isActive: Boolean
     ): Auth
+    updateUserStatus(
+      username: String!
+      isActive: Boolean
+    ): User
     addDog(
       name: String!
       kennel: String!

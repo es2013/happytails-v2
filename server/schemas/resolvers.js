@@ -53,7 +53,7 @@ const resolvers = {
       const extension = fileNameSplit[fileNameSplit.length - 1];
       const imageId = uuidv4();
       const fileNameToSave = `${imageId}.${extension}`;
-      
+
       const filePath = path.join(
         __dirname,
         `../public/assets/images/canines/${fileNameToSave}`
@@ -76,6 +76,14 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
+    },
+    updateUserStatus: async (parent, args) => {
+      const user = await User.findOneAndUpdate(
+        { username: args.username },
+        { isActive: args.isActive },
+        { new: true }
+      );
+      return user;
     },
     addPotty: async (parent, args, context) => {
       if (context.user) {
@@ -126,4 +134,5 @@ const resolvers = {
     },
   },
 };
+
 module.exports = resolvers;

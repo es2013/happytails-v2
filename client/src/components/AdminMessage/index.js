@@ -1,10 +1,9 @@
 import React from 'react';
 
-function AdminMessage() {
+function AdminMessage( {canineCount} ) {
     return (
         <h3 className="flow-text speech-bubble">
-            There are currently 30 dogs in the shelter.
-            There are 10 Happy Tails and 20 Sad Tails. 🐶
+            There are currently {canineCount} dogs in the shelter. 🐶
         </h3>
     );
 };
