@@ -5,6 +5,7 @@ const canineSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },
   kennel: {
     type: String,

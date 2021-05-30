@@ -51,7 +51,7 @@ function Signup() {
       
       {error ? (
         <div>
-          <p className="error-text">Missing input field or username/email already exist!</p>
+          <p className="error-text">Missing input field or username/email is not available!</p>
         </div>
       ) : null}
 
