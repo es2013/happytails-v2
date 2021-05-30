@@ -16,10 +16,10 @@ This application is accessible at https://happytails-v2.herokuapp.com/
 ## What the Happy Tails V2 Application Looks Like:
 
 #### The signup page:
-<br><br>![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-Signup.gif)
+![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-Signup.gif)<br><br>
 
 #### Updating a dog's activities:
-<br><br>![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-UpdateDogActivities.gif)
+![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-UpdateDogActivities.gif)<br><br>
 
 #### Updating a user's active/inactive status:
 <br><br>![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-UpdateUserStatus.gif)
