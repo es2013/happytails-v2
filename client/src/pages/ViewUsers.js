@@ -36,24 +36,19 @@ function ViewUsers() {
               {data.users.map((users) => {
                 return (
                   <>
-                    <tr>
-                      <td>
+                    <tr key={users._id}>
+                      <td key={users.lastname}>
                         {users.lastName}, {users.firstName}
                       </td>
-                      <td>{users.username}</td>
-                      <td>{users.email}</td>
-                      {users.isAdmin && <td>Admin</td>}
-                      {!users.isAdmin && <td>Caretaker</td>}
+                      <td key={users.username}>{users.username}</td>
+                      <td key={users.email}>{users.email}</td>
+                      {users.isAdmin && <td key={users.firstName}>Admin</td>}
+                      {!users.isAdmin && <td key={users.firstName}>Caretaker</td>}
                     </tr>
                   </>
                 );
               })}
             </tbody>
-            <tfoot>
-              <tr>
-                <td>Blah</td>
-              </tr>
-            </tfoot>
           </table>
         )}
       </div>
