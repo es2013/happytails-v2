@@ -45,13 +45,13 @@ function UpdateUser(props) {
 
       {!token && (
         <div className="col s12 m4 l8 center">
-          <h3>You are not logged in!</h3>
+          <h3>User is not logged in!</h3>
         </div>
       )}
 
       {!isAdmin && (
         <div className="col s12 m4 l8 center">
-          <h3>You are not an Admin!</h3>
+          <h3>User is not an Admin!</h3>
         </div>
       )}
 

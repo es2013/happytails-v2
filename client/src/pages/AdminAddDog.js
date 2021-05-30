@@ -119,7 +119,7 @@ function NewDog(props) {
   return (
     <div className="container my-1 btn-adddog">
       {isAdmin && <h2>Add a Dog</h2>}
-      {!isAdmin && <h3>You are not an admin!</h3>}
+      {!isAdmin && <h3 className="center-align">User is not an admin!</h3>}
 
       {error ? (
         <div>

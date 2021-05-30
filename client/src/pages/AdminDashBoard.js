@@ -32,7 +32,13 @@ function AdminDashboard() {
 
   return (
     <div className="dashboard-container">
-      <AdminMessage canineCount={canineCount}/>
+      {isAdmin && <AdminMessage canineCount={canineCount}/>}
+
+      {!isAdmin && (
+        <div className="center-align">
+          <br /><h4>User is not an admin!</h4><br />
+        </div>
+      )}
 
       {token && (
         <div className="center-align">
