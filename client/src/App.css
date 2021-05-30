@@ -51,9 +51,24 @@ body {
   background-color: #023e7d;
 }
 
-.doggy-name {
+.update-text-name {
   color: #023e7d;
   font-weight: bolder;
+}
+
+.update-text-name2 {
+  color: #023e7d;
+  font-weight: bold;
+}
+
+.emphasized-text {
+  font-style: italic;
+  color: var(--primary);
+}
+
+
+.inactive-text {
+  color: #6b6060;
 }
 
 .css-2b097c-container {

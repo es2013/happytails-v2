@@ -77,6 +77,14 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    updateUserStatus: async (parent, args) => {
+      const user = await User.findOneAndUpdate(
+        { username: args.username },
+        { isActive: args.isActive },
+        { new: true }
+      );
+      return user;
+    },
     addPotty: async (parent, args, context) => {
       if (context.user) {
         const potty = await Activity.create({

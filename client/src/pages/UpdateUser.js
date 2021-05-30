@@ -1,104 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
-import { GET_DOG } from '../utils/queries';
-import { ADD_POTTY, ADD_WALK } from '../utils/mutations';
-import allHelpers from '../utils/helpers.js';
+import { GET_ONE_USER } from '../utils/queries';
+import { UPDATE_USER_STATUS } from '../utils/mutations';
 import { useAuth } from '../utils/GlobalState';
 
-function SingleDog(props) {
-  const { token } = useAuth();
-  const [dogPotty, setDogPotty] = useState(false);
-  const [dogWalk, setDogWalk] = useState(false);
-  const [canine_id] = useState(props.match.params.id);
-  const [addPotty] = useMutation(ADD_POTTY);
-  const [addWalk] = useMutation(ADD_WALK);
-  const [dogData, setDogData] = useState({});
+function UpdateUser(props) {
+  const { token, isAdmin } = useAuth();
+  const [updateUsername] = useState(props.match.params.username);
+  const [userData, setUserData] = useState({});
   const history = useHistory();
+  const [updateUserStatus, { updateUserError }] =
+    useMutation(UPDATE_USER_STATUS);
 
-  const handleFormSubmit = async (event) => {
-    try {
-      if (dogWalk) {
-        const { error, data } = await addWalk({
-          variables: {
-            canineId: canine_id,
-          },
-        });
-        console.log('!!! Walk Error: ', { error, data });
-        // if (error) {
-        //   throw error.message
-        // }
-      }
-      if (dogPotty) {
-        const { error, data } = await addPotty({
-          variables: {
-            canineId: canine_id,
-          },
-        });
-
-        console.log('!!! Potty Error: ', { error, data });
-      }
-
-      // In order for the updated info to show up on the Dashboard, we
-      // to use window.location to do a hard refresh
-      window.location = '/dashboard';
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handlePottyChange = (event) => {
-    const { checked } = event.target;
-    setDogPotty(checked);
-  };
-
-  const handleWalkChange = (event) => {
-    const { checked } = event.target;
-    setDogWalk(checked);
-  };
-
-  const { loading, error, data } = useQuery(GET_DOG, {
-    variables: {
-      id: canine_id,
-    },
+  const { loading, getUserError, data } = useQuery(GET_ONE_USER, {
+    variables: { username: updateUsername },
   });
 
   useEffect(() => {
-    setDogData(data?.canine || {});
+    setUserData(data?.users || {});
   }, [data]);
 
-  useEffect(() => {
-    if (dogData.potty) {
-      dogData.potty.forEach((p) => {
-        if (
-          p.username &&
-          allHelpers.isToday(new Date(Number(p.timestamp))) &&
-          allHelpers.isPM(new Date(Number(p.timestamp)))
-        ) {
-          setDogPotty(true);
-        }
-      });
-    }
-
-    if (dogData.walk) {
-      dogData.walk.forEach((p) => {
-        if (
-          p.username &&
-          allHelpers.isToday(new Date(Number(p.timestamp))) &&
-          allHelpers.isPM(new Date(Number(p.timestamp)))
-        ) {
-          setDogWalk(true);
-        }
-      });
-    }
-  }, [dogData]);
-
   if (loading) return 'Loading...';
-  if (error) return `GET_DOG Error: ${error.message}`;
+  if (getUserError) return `GET_ONE_USER Error: ${getUserError.message}`;
+
+  const handleFormSubmit = async (userStatus) => {
+    const mutationResponse = await updateUserStatus({
+      variables: { username: updateUsername, isActive: userStatus },
+    });
+
+    if (updateUserError)
+      return `UPDATE_USER_STATUS Error: ${updateUserError.message}`;
+
+    // In order for the updated info to show up on the Dashboard, we
+    // to use window.location to do a hard refresh
+    window.location = '/view-users';
+  };
 
   return (
     <div className="row">
-      {!dogData && <h3>No dog selected!</h3>}
+      {!data && <h3>No User selected!</h3>}
 
       <div className="col s12 m4 l2"></div>
 
@@ -108,53 +49,45 @@ function SingleDog(props) {
         </div>
       )}
 
-      {token && (
+      {!isAdmin && (
+        <div className="col s12 m4 l8 center">
+          <h3>You are not an Admin!</h3>
+        </div>
+      )}
+
+      {token && isAdmin && (
         <div className="col s12 m4 l8 center">
           <div className="card z-depth-2">
             <div className="card-content">
-              <h3 className="doggy-name flow-text">{dogData.name}</h3>
-              <img
-                className="single-dog-image"
-                src={
-                  dogData.image
-                    ? `${process.env.REACT_APP_API_BASE_URL}/${dogData.image}`
-                    : `/dogs/${dogData.name}.jpg`
-                }
-                alt={`${dogData.name}`}
-                width="150"
-                heigh="150"
-              />
+              <h3 className="update-text-name flow-text">
+                <span>
+                  {data.user.firstName} {data.user.lastName}
+                </span>
+              </h3>
             </div>
 
+            {data.user.isActive && (
+              <div className="update-text-name2 flow-text">
+                User{' '}
+                <span className="emphasized-text">{data.user.username}</span> is
+                currently an
+                <span className="emphasized-text"> active</span> user.
+                <br />
+                Click on the blue button to de-activate this user.
+              </div>
+            )}
+
+            {!data.user.isActive && (
+              <div className="update-text-name2 flow-text">
+                User{' '}
+                <span className="emphasized-text">{data.user.username}</span> is
+                currently an
+                <span className="emphasized-text"> inactive</span> user.
+                <br />
+                Click on the blue button to activate this user.
+              </div>
+            )}
             <div className="card-action">
-              <p className="flow-text">
-                Please check off the activities that have been completed
-              </p>
-
-              <label className="check activity-checkbox">
-                <input
-                  name="potty"
-                  onClick={handlePottyChange}
-                  type="checkbox"
-                  className="filled-in"
-                  id="potty-check"
-                  checked={dogPotty}
-                />
-                <span className="flow-text">Potty</span>
-              </label>
-
-              <label className="check activity-checkbox">
-                <input
-                  name="walk"
-                  onClick={handleWalkChange}
-                  type="checkbox"
-                  className="filled-in"
-                  id="walk-check"
-                  checked={dogWalk}
-                />
-                <span className="flow-text">Walk</span>
-              </label>
-
               <br></br>
               <div className="button-container">
                 <a
@@ -166,18 +99,34 @@ function SingleDog(props) {
                 >
                   Cancel
                 </a>
-                <button
-                  className="waves-effect waves-light btn doggie-update-submit"
-                  id="27"
-                  data-v_id="14"
-                  type="submit"
-                  onClick={() => {
-                    handleFormSubmit();
-                  }}
-                  disabled={!dogWalk && !dogPotty}
-                >
-                  Submit
-                </button>
+
+                {data.user.isActive && (
+                  <button
+                    className="waves-effect waves-light btn doggie-update-submit"
+                    id="27"
+                    data-v_id="14"
+                    type="submit"
+                    onClick={() => {
+                      handleFormSubmit(false);
+                    }}
+                  >
+                    De-Activate {data.user.username}
+                  </button>
+                )}
+
+                {!data.user.isActive && (
+                  <button
+                    className="waves-effect waves-light btn doggie-update-submit"
+                    id="27"
+                    data-v_id="14"
+                    type="submit"
+                    onClick={() => {
+                      handleFormSubmit(true);
+                    }}
+                  >
+                    Activate {data.user.username}
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -188,4 +137,4 @@ function SingleDog(props) {
   );
 }
 
-export default SingleDog;
+export default UpdateUser;

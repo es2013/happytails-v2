@@ -33,11 +33,13 @@ function AdminDashboard() {
   return (
     <div className="dashboard-container">
       <AdminMessage canineCount={canineCount}/>
+
       {token && (
         <div className="center-align">
           <h6>Filter dogs by category:</h6>
         </div>
       )}
+
       {token && (
         <Filters
           dogData={data?.canines}
@@ -45,6 +47,7 @@ function AdminDashboard() {
           pmShift={nowIsPM}
         />
       )}
+      
       {isAdmin && (
         <div className="row">
           {/* Add Dog button links to add dog page*/}

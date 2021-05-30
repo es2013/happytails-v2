@@ -101,7 +101,7 @@ function TablePm({ dogData }) {
                           to={`/single-dog/${canine._id}`}
                           className="select-dog"
                         >
-                          Select
+                          Update
                         </Link>
                       </button>
                     </td>

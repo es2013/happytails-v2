@@ -31,13 +31,20 @@ function Login() {
       setToken(token);
 
       const isAdmin = mutationResponse.data.login.user.isAdmin;
+      const isActive = mutationResponse.data.login.user.isActive;
 
       // The useHistory hook gives access to the history instance that we may
       // use to navigate. Use this instead of window.location.assign('/');
       // in auth.js so we do not refresh the page
+
+      if (!isActive) {
+        alert('Your user status is Inactive!');
+        history.push('/logout');
+      }
+
       if (isAdmin) {
         history.push('/admin-dashboard');
-      }else{
+      } else {
         history.push('/dashboard');
       }
     } catch (e) {
@@ -60,7 +67,7 @@ function Login() {
       </Link>
 
       <h2>Login</h2>
-      
+
       {error ? (
         <div>
           <p className="error-text">The provided credentials are incorrect</p>
@@ -99,7 +106,8 @@ function Login() {
             <button className="btn" type="submit">
               Submit
             </button>
-            <br /><br />
+            <br />
+            <br />
           </div>
         </form>
       </div>

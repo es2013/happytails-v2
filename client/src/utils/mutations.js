@@ -8,6 +8,7 @@ export const LOGIN = gql`
         _id
         username
         isAdmin
+        isActive
       }
     }
   }
@@ -32,6 +33,19 @@ export const ADD_USER = gql`
       user {
         _id
       }
+    }
+  }
+`;
+
+export const UPDATE_USER_STATUS = gql`
+  mutation updateUserStatus( $username: String!, $isActive: Boolean! ){
+    updateUserStatus(
+      username: $username
+      isActive: $isActive
+    )
+    {
+      username
+      isActive
     }
   }
 `;
