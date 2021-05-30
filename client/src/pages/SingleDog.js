@@ -10,8 +10,7 @@ function SingleDog(props) {
   const { token } = useAuth();
   const [dogPotty, setDogPotty] = useState(false);
   const [dogWalk, setDogWalk] = useState(false);
-  const [_id, setId] = useState('');
-  const [canine_id, setCanine_id] = useState(props.match.params.id);
+  const [canine_id] = useState(props.match.params.id);
   const [addPotty] = useMutation(ADD_POTTY);
   const [addWalk] = useMutation(ADD_WALK);
   const [dogData, setDogData] = useState({});

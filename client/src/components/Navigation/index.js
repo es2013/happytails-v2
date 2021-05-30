@@ -4,7 +4,7 @@ import './stylesheet.css';
 import { useAuth } from '../../utils/GlobalState';
 
 function Navigation() {
-  const { isAdmin, token } = useAuth();
+  const { isAdmin, token, currentUsername } = useAuth();
 
   return (
     <header className="navbar-fixed">
@@ -24,9 +24,9 @@ function Navigation() {
 
               {/* {isAdmin && <li><Link to="/view-users">Dog Lovers</Link></li>} */}
 
-              {isAdmin && <li><Link to="/admin-dashboard">Dashboard</Link></li>}
+              {isAdmin && <li><Link to="/admin-dashboard">{currentUsername}'s Dashboard</Link></li>}
 
-              {!isAdmin && token && <li><Link to="/dashboard">Dashboard</Link></li>}
+              {!isAdmin && token && <li><Link to="/dashboard">{currentUsername}'s Dashboard</Link></li>}
 
               {/* <li><Link to="/donate">Donate</Link></li> */}
 

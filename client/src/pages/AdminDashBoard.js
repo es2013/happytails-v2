@@ -14,10 +14,6 @@ function AdminDashboard() {
   const { data } = useQuery(GET_DOGS);
   const [dogData, setDogData] = React.useState([]);
 
-  if (!isAdmin) {
-    window.location = '/dashboard';
-  }
-
   React.useEffect(() => {
     setDogData(data?.canines || []);
   }, [data]);
@@ -44,39 +40,41 @@ function AdminDashboard() {
           pmShift={nowIsPM}
         />
       )}
+      {isAdmin && (
+        <div className="row">
+          {/* Add Dog button links to add dog page*/}
+          <div className="col s12 center-align">
+            <button className="btn admin-btn add-dog-btn" type="button">
+              <Link to="/add-dog" className="admin-link add-dog">
+                Add a Dog
+              </Link>
+            </button>
 
-      <div className="row">
-        {/* Add Dog button links to add dog page*/}
-        <div className="col s12 center-align">
-          <button className="btn admin-btn add-dog-btn" type="button">
-            <Link to="/add-dog" className="admin-link add-dog">
-              Add a Dog
-            </Link>
-          </button>
+            <button
+              className="btn admin-btn see-users-btn"
+              onClick={seeUsers}
+              type="button"
+            >
+              <Link to="/view-users" className="admin-link see-users">
+                See Users
+              </Link>
+            </button>
 
-          <button
-            className="btn admin-btn see-users-btn"
-            onClick={seeUsers}
-            type="button"
-          >
-            <Link to="/view-users" className="admin-link see-users">
-              See Users
-            </Link>
-          </button>
+            <button
+              className="btn admin-btn historical-table-btn"
+              onClick={seeRecords}
+              type="button"
+            >
+              See Past Records
+            </button>
+          </div>
 
-          <button
-            className="btn admin-btn historical-table-btn"
-            onClick={seeRecords}
-            type="button"
-          >
-            See Past Records
-          </button>
+          <section className="container center-align">
+            {!nowIsPM && <TableAm dogData={dogData} />}
+            {nowIsPM && <TablePm dogData={dogData} />}
+          </section>
         </div>
-        <section className="container center-align">
-          {!nowIsPM && <TableAm dogData={dogData} />}
-          {nowIsPM && <TablePm dogData={dogData} />}
-        </section>
-      </div>
+      )}
     </div>
   );
 }
