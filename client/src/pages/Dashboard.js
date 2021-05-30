@@ -35,8 +35,10 @@ function Dashboard() {
           pmShift={nowIsPM}
         />
       )}
-      {!nowIsPM && <TableAm dogData={dogData} />}
-      {nowIsPM && <TablePm dogData={dogData} />}
+      <section className="container center-align">
+        {!nowIsPM && <TableAm dogData={dogData} />}
+        {nowIsPM && <TablePm dogData={dogData} />}
+      </section>
     </div>
   );
 }

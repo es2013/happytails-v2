@@ -15,7 +15,7 @@ function NewDog(props) {
     image: undefined,
   });
 
-  const [uploadImage] = useMutation(ADD_DOG_WITH_IMAGE);
+  const [uploadImage, { error }] = useMutation(ADD_DOG_WITH_IMAGE);
 
   const kennelOptions = [
     { value: 'All-Star', label: 'All-Star' },
@@ -65,21 +65,23 @@ function NewDog(props) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // TODO: validate that all forms fields are filled in
+    try {
+      const mutationResponse = await uploadImage({
+        variables: {
+          file: formState.image,
+          name: formState.name,
+          kennel: formState.kennel,
+          demeanor: formState.demeanor,
+          status: formState.status,
+        },
+      });
 
-    const mutationResponse = await uploadImage({
-      variables: {
-        file: formState.image,
-        name: formState.name,
-        kennel: formState.kennel,
-        demeanor: formState.demeanor,
-        status: formState.status,
-      },
-    });
-    
-    // In order for the updated info to show up on the Dashboard, we
-    // to use window.location to do a hard refresh
-    window.location = '/admin-dashboard';
+      // In order for the updated info to show up on the Dashboard, we
+      // to use window.location to do a hard refresh
+      window.location = '/admin-dashboard';
+    } catch (e) {
+      console.log('Add Dog Error: ', e);
+    }
   };
 
   function handleInputChange(event) {
@@ -93,9 +95,11 @@ function NewDog(props) {
   const handleKennelChange = (value) => {
     setFormState({ ...formState, ['kennel']: value.value });
   };
+
   const handleDemeanorChange = (value) => {
     setFormState({ ...formState, ['demeanor']: value.value });
   };
+
   const handleStatusChange = (value) => {
     setFormState({ ...formState, ['status']: value.value });
   };
@@ -108,10 +112,22 @@ function NewDog(props) {
     }
   };
 
+  if (error) {
+    console.log('Add Dog Error: ', error);
+  }
+
   return (
     <div className="container my-1 btn-adddog">
       {isAdmin && <h2>Add a Dog</h2>}
       {!isAdmin && <h3>You are not an admin!</h3>}
+
+      {error ? (
+        <div>
+          <p className="error-text">
+            Missing input field or the dog name is not available!
+          </p>
+        </div>
+      ) : null}
 
       {isAdmin && (
         <div className="row">
@@ -127,17 +143,7 @@ function NewDog(props) {
                 onChange={handleInputChange}
               />
             </div>
-            {/* <div className="flex-row space-between my-2">
-              <label className="input-title-secondary" htmlFor="kennel">
-                  Kennel:
-              </label>
-              <div className="select-container"></div>
-              <select className="select-container">
-                {kennelOptions.map((kennelOptions) => (
-                  <option value={kennelOptions.value}>{kennelOptions.value}</option>
-                  ))}
-              </select>
-            </div> */}
+
             <div className="flex-row space-between my-2">
               <label className="input-title-secondary">Kennel:</label>
               <Select
@@ -146,6 +152,7 @@ function NewDog(props) {
                 onChange={handleKennelChange}
               />
             </div>
+
             <div className="flex-row space-between my-2">
               <br />
               <label className="input-title-secondary">Demeanor:</label>
@@ -155,6 +162,7 @@ function NewDog(props) {
                 onChange={handleDemeanorChange}
               />
             </div>
+
             <div className="flex-row space-between my-2">
               <br />
               <label className="input-title-secondary">Status</label>
@@ -164,6 +172,7 @@ function NewDog(props) {
                 onChange={handleStatusChange}
               />
             </div>
+
             <div className="flex-row space-between my-2">
               <br />
               <label className="input-title-secondary">
@@ -172,11 +181,14 @@ function NewDog(props) {
               &nbsp;&nbsp;&nbsp;
               <input name="image" type="file" onChange={onImageChange} />
             </div>
+
             <div className="flex-row flex-end">
               <br />
               <button className="btn" type="submit">
                 Submit
               </button>
+              <br />
+              <br />
             </div>
           </form>
         </div>

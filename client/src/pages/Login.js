@@ -41,7 +41,7 @@ function Login() {
         history.push('/dashboard');
       }
     } catch (e) {
-      console.log(e);
+      console.log('Login Error: ', e);
     }
   };
 

@@ -2,7 +2,6 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   scalar Upload
-
   type File {
     filename: String!
     mimetype: String!
@@ -10,27 +9,23 @@ const typeDefs = gql`
   }
   type User {
     _id: ID!
-    username: String
-    email: String
-    firstName: String
-    lastName: String
-    isAdmin: Boolean
+    username: String!
+    email: String!
+    firstName: String!
+    lastName: String!
+    isAdmin: Boolean!
     activities: [Activity]
   }
   type Canine {
     _id: ID!
-    name: String
-    kennel: String
-    demeanor: String
+    name: String!
+    kennel: String!
+    demeanor: String!
     image: String
-    status: String
+    status: String!
     walk: [Activity]
     potty: [Activity]
   }
-  # input ActivityInput {
-  #   _id: ID!
-  #   timestamp: String!
-  # }
   type Activity {
     _id: ID
     canindId: String

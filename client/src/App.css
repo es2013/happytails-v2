@@ -27,6 +27,7 @@ body {
   font-size: 16px;
   color: var(--light);
   background-color: var(--primary);
+  /* background-image:url("http://localhost:3000/images/paws-1.jpg"); */
 }
 
 .activity-checkbox {
