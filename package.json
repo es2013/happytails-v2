@@ -30,6 +30,7 @@
     "concurrently": "^6.1.0",
     "dotenv": "^9.0.2",
     "if-env": "^1.0.4",
+    "inject-web-manifest-plugin": "^1.0.6",
     "jquery": "^3.6.0",
     "jsdom": "^16.6.0",
     "nodemon": "^2.0.7",

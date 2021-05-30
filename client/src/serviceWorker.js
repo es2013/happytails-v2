@@ -106,3 +106,5 @@ registerRoute(
       self.skipWaiting();
     }
   });
+
+  export default serviceWorker;
