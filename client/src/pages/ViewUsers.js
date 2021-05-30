@@ -24,7 +24,7 @@ function ViewUsers() {
     <>
       <div>
         <br />
-        {isAdmin && <h4 className="flow-text">There are {userCount} Employees and Volunteers</h4>}
+        {isAdmin && <h4 className="flow-text">There are currently {userCount} Employees and Volunteers.</h4>}
         {!isAdmin && <h4 className="flow-text">You are not an Admin!</h4>}
 
         {isAdmin && (
