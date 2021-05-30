@@ -6,11 +6,10 @@ const db = require('./config/connection');
 const { authMiddleware } = require('./utils/auth');
 const PORT = process.env.PORT || 3001;
 const app = express();
-const Canine = require('./models/Canine');
-const User = require('./models/User');
 const { graphqlUploadExpress, processRequest } = require('graphql-upload');
 
-// DO NOT REMOVE this canineData variable declaration
+// DO NOT REMOVE these Canine and canineData requires - these are for seeding data
+const Canine = require('./models/Canine');
 const canineData = require('./seeders/CanineSeeds');
 
 // create a new Apollo server and pass in our schema data

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GET_USERS } from '../utils/queries';
+import { GET_USERS, GET_USER_COUNT } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
 import { useAuth } from '../utils/GlobalState';
 
@@ -12,6 +12,11 @@ function ViewUsers() {
     setUserData(data?.users || {});
   }, [userData]);
 
+  let userCount = 0
+  if (data) {
+    userCount = data.users.length;
+  } 
+
   if (loading) return 'Loading...';
   if (error) return `GET_USERS Error: ${error.message}`;
 
@@ -19,7 +24,7 @@ function ViewUsers() {
     <>
       <div>
         <br />
-        {isAdmin && <h4 className="flow-text">Employees and Volunteers</h4>}
+        {isAdmin && <h4 className="flow-text">There are {userCount} Employees and Volunteers</h4>}
         {!isAdmin && <h4 className="flow-text">You are not an Admin!</h4>}
 
         {isAdmin && (
@@ -43,7 +48,9 @@ function ViewUsers() {
                       <td key={users.username}>{users.username}</td>
                       <td key={users.email}>{users.email}</td>
                       {users.isAdmin && <td key={users.firstName}>Admin</td>}
-                      {!users.isAdmin && <td key={users.firstName}>Caretaker</td>}
+                      {!users.isAdmin && (
+                        <td key={users.firstName}>Caretaker</td>
+                      )}
                     </tr>
                   </>
                 );

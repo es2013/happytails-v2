@@ -53,7 +53,7 @@ const resolvers = {
       const extension = fileNameSplit[fileNameSplit.length - 1];
       const imageId = uuidv4();
       const fileNameToSave = `${imageId}.${extension}`;
-      
+
       const filePath = path.join(
         __dirname,
         `../public/assets/images/canines/${fileNameToSave}`
@@ -126,4 +126,5 @@ const resolvers = {
     },
   },
 };
+
 module.exports = resolvers;

@@ -18,6 +18,11 @@ function AdminDashboard() {
     setDogData(data?.canines || []);
   }, [data]);
 
+  let canineCount = 0
+  if (dogData) {
+    canineCount = dogData.length;
+  } 
+
   const today = new Date();
   const nowIsPM = allHelpers.isPM(today);
 
@@ -27,7 +32,7 @@ function AdminDashboard() {
 
   return (
     <div className="dashboard-container">
-      <AdminMessage />
+      <AdminMessage canineCount={canineCount}/>
       {token && (
         <div className="center-align">
           <h6>Filter dogs by category:</h6>
@@ -58,14 +63,6 @@ function AdminDashboard() {
               <Link to="/view-users" className="admin-link see-users">
                 See Users
               </Link>
-            </button>
-
-            <button
-              className="btn admin-btn historical-table-btn"
-              onClick={seeRecords}
-              type="button"
-            >
-              See Past Records
             </button>
           </div>
 
