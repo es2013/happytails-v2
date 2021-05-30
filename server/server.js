@@ -10,9 +10,8 @@ const Canine = require('./models/Canine');
 const User = require('./models/User');
 const { graphqlUploadExpress, processRequest } = require('graphql-upload');
 
-// DO NOT REMOVE these two variable declarations
+// DO NOT REMOVE this canineData variable declaration
 const canineData = require('./seeders/CanineSeeds');
-const userData = require('./seeders/UserSeeds');
 
 // create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
@@ -68,31 +67,6 @@ app.get('*', (req, res) => {
 //////////////////////////////////////////////
 ///  END of Code to seed CANINE DATABASE ///
 //////////////////////////////////////////////
-
-//******************************************
-//*  START of Code to seed USER DATABASE ***
-//******************************************
-// To seed the User table:
-// 1.) Uncomment the follow section of code, then save.
-// 2.) Run the server in the Server directory.
-// 3.) The User table is now seeded.
-// 4.) Comment out this block of code again.
-
-//  User.deleteMany((err, datas) => {
-//   if (err) {
-//     console.log(err);
-//   };
-
-//   User.insertMany(userData, function (err, r) {
-//     if (err) {
-//       console.log(err);
-//     };
-//   });
-// });
-
-//****************************************
-//*  END of Code to seed USER DATABASE ***
-//****************************************
 
 db.once('open', () => {
   app.listen(PORT, () => {
