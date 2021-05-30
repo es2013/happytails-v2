@@ -10,9 +10,13 @@ import AdminMessage from '../components/AdminMessage';
 import allHelpers from '../utils/helpers';
 
 function AdminDashboard() {
-  const { token } = useAuth();
+  const { token, isAdmin } = useAuth();
   const { data } = useQuery(GET_DOGS);
   const [dogData, setDogData] = React.useState([]);
+
+  if (!isAdmin) {
+    window.location = '/dashboard';
+  };
 
   React.useEffect(() => {
     setDogData(data?.canines || []);
@@ -71,10 +75,10 @@ function AdminDashboard() {
           </button>
 
         </div>
-
-        {!nowIsPM && <TableAm dogData={dogData} />}
-        {nowIsPM && <TablePm dogData={dogData} />}
-
+        <section className="container center-align">
+          {!nowIsPM && <TableAm dogData={dogData} />}
+          {nowIsPM && <TablePm dogData={dogData} />}
+        </section>
       </div>
     </div>
   );

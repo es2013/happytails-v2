@@ -1,5 +1,16 @@
 .page-footer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
     background-color: rgb(0, 78, 137);
+    color: rgb(248, 249, 250);
+    position: sticky;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(0, 78, 137) , rgba(255, 213, 0));
+      /* background-color: rgb(0, 78, 137);
     justify-content: center;
     color: rgb(248, 249, 250);
     text-align: center;
@@ -9,23 +20,27 @@
     width: 100%;
     position: sticky;
     padding: 0%;
+    background-image: linear-gradient(to right, rgb(0, 78, 137) , rgba(255, 213, 0));
+    bottom: 0;
+    position: fixed; */
 }
 
 .center {
     font-family: 'Karla', sans-serif;
     font-weight: 900;
-    color: #ffbe0b;
+    color: white;
 }
 
 .donate-link {
-    padding: 70px;
-    margin-bottom: 20px;
+    justify-content: center;
     text-decoration: none;
     font-weight: bold;
+    align-items: center;
+    margin-bottom: 10%;
 }
 
 .donate-link:hover {
-    color: white;
+    color: rgb(18, 106, 237);
     font-family: Tahoma;
     font-weight: bolder;
     font-size: large;

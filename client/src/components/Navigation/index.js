@@ -10,7 +10,7 @@ function Navigation() {
     <header className="navbar-fixed">
       <nav>
         <div className="row nav-wrapper grey">
-          <div className="col s6">
+          <div className="col s6 ">
             <a href="/" className="homepage-link">
               Happy Tails
             </a>

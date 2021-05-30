@@ -8,7 +8,7 @@ import { useAuth } from '../utils/GlobalState';
 
 function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
   const { setToken } = useAuth();
   const history = useHistory();
 
@@ -29,9 +29,10 @@ function Signup() {
       setToken(token);
       history.push('./dashboard');
     } catch (e) {
-      console.log(e);
+      console.log('Add User Error: ', e);
     }
   };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -39,12 +40,21 @@ function Signup() {
       [name]: value,
     });
   };
+
   return (
     <div className="container my-1 btn-signup ">
       <Link className="login-signup-toggle" to="/login">
         ← Go to Login
       </Link>
+
       <h2>Signup</h2>
+      
+      {error ? (
+        <div>
+          <p className="error-text">Missing input field or username/email is not available!</p>
+        </div>
+      ) : null}
+
       <div className="row">
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">

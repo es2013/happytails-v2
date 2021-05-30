@@ -34,7 +34,7 @@ function AuthenticationGuard() {
   const [token, setToken] = useState(null);
   const [currentUsername, setCurrentUsername] = useState(null);
 
-  const { loading, data, error } = useQuery(GET_CURRENT_USER, {
+  const { data} = useQuery(GET_CURRENT_USER, {
     variables: { username: currentUsername },
   });
 
