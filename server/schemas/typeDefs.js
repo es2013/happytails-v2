@@ -21,7 +21,7 @@ const typeDefs = gql`
     name: String!
     kennel: String!
     demeanor: String!
-    image: String!
+    image: String
     status: String!
     walk: [Activity]
     potty: [Activity]
