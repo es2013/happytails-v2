@@ -14,10 +14,6 @@
     justify-content: center;
   }
   
-.row {
-  margin: 2px;
-}
-  
   .donateP{
     color: rgb(0, 78, 137);
     font-weight: 400;
@@ -28,6 +24,7 @@
 
   .card{
     justify-content: center;
+    margin: 3em;
   }
 
   .card .card-image .card-title {
