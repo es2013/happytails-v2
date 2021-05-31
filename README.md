@@ -117,7 +117,15 @@ This application was created using React.js and Apollo to launch the server and 
 
 ## Usage
 
-USAGE INSTRUCTIONS
+To use this app you must first create a user account.  Navigate to the hompage using the link found in the [Description](#description) section and click login.  This will direct you to a login page which has an additional link for signup.  Once you have entered the corrent info in the signup form you will be directed to your dashboard where you can veiw all dogs, update a dog's activities, and filter dogs by category.  
+
+To log in as an admin use the following information into the login page on the deployed application: 
+
+email: "doglover.com",  password: "doglover"
+
+As an admin user you will be able to make additional actions and have access to exclusive pages and data.  The admin user will be able to add dogs, veiw user info, and activate or de-activate users.  
+
+If you wish to run the application on local host first follow all instructions in the [Installation](#installation) section.  To seed the data navigate to the server.js file in the server directory.  Towards the middle of the file there will be a block of code commented out with instructions on how to seed the database above it.  Once your database is seeded and node modules are installed you can run the command "npm start" from the root directory and the page will open automatically in your default browser. 
 
 Here are some screenshots and gifs of the application's functionality:
 
