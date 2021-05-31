@@ -25,7 +25,7 @@ function Dashboard() {
   const nowIsPM = allHelpers.isPM(today);
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container container center-align">
       <UserMessage />
       {token && (
         <div className="center-align">

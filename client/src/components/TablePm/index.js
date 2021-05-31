@@ -1,5 +1,5 @@
 import React from 'react';
-import dogImage from '../../images/bulldog-favicon-trans-bg.png';
+import dogImage from '../../images/shiba-inu-logo-trans-bg.png';
 import allHelpers from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import './stylesheet.css';
