@@ -4,7 +4,7 @@ import './stylesheet.css';
 
 function Footer() {
   return (
-    <div className="row">
+    <div className="row footer">
       <footer className="page-footer">
         <div className="container container-footer">
           <div className="row">
