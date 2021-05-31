@@ -38,101 +38,103 @@ function UpdateUser(props) {
   };
 
   return (
-    <div className="row">
-      {!data && <h3>No User selected!</h3>}
+    <div className="container update-user-container">
+      <div className="row">
+        {!data && <h3>No User selected!</h3>}
 
-      <div className="col s12 m4 l2"></div>
+        <div className="col s12 m4 l2"></div>
 
-      {!token && (
-        <div className="col s12 m4 l8 center">
-          <h3>You are not logged in!</h3>
-        </div>
-      )}
+        {!token && (
+          <div className="col s12 m4 l8 center">
+            <h3>You are not logged in!</h3>
+          </div>
+        )}
 
-      {!isAdmin && (
-        <div className="col s12 m4 l8 center">
-          <h3>You are not an Admin!</h3>
-        </div>
-      )}
+        {!isAdmin && (
+          <div className="col s12 m4 l8 center">
+            <h3>You are not an Admin!</h3>
+          </div>
+        )}
 
-      {token && isAdmin && (
-        <div className="col s12 m4 l8 center">
-          <div className="card z-depth-2">
-            <div className="card-content">
-              <h3 className="update-text-name flow-text">
-                <span>
-                  {data.user.firstName} {data.user.lastName}
-                </span>
-              </h3>
-            </div>
+        {token && isAdmin && (
+          <div className="col s12 m4 l8 center">
+            <div className="card z-depth-2">
+              <div className="card-content">
+                <h3 className="update-text-name flow-text">
+                  <span>
+                    {data.user.firstName} {data.user.lastName}
+                  </span>
+                </h3>
+              </div>
 
-            {data.user.isActive && (
-              <div className="update-text-name2 flow-text">
-                User{' '}
-                <span className="emphasized-text">{data.user.username}</span> is
+              {data.user.isActive && (
+                <div className="update-text-name2 flow-text">
+                  User{' '}
+                  <span className="emphasized-text">{data.user.username}</span> is
                 currently an
-                <span className="emphasized-text"> active</span> user.
-                <br />
+                  <span className="emphasized-text"> active</span> user.
+                  <br />
                 Click on the blue button to de-activate this user.
-              </div>
-            )}
+                </div>
+              )}
 
-            {!data.user.isActive && (
-              <div className="update-text-name2 flow-text">
-                User{' '}
-                <span className="emphasized-text">{data.user.username}</span> is
+              {!data.user.isActive && (
+                <div className="update-text-name2 flow-text">
+                  User{' '}
+                  <span className="emphasized-text">{data.user.username}</span> is
                 currently an
-                <span className="emphasized-text"> inactive</span> user.
-                <br />
+                  <span className="emphasized-text"> inactive</span> user.
+                  <br />
                 Click on the blue button to activate this user.
-              </div>
-            )}
-            <div className="card-action">
-              <br></br>
-              <div className="button-container">
-                <a
-                  className="waves-effect waves-light red btn doggie-update-submit"
-                  id="27"
-                  data-v_id="14"
-                  type="submit"
-                  onClick={() => history.goBack()}
-                >
-                  Cancel
+                </div>
+              )}
+              <div className="card-action">
+                <br></br>
+                <div className="button-container">
+                  <a
+                    className="waves-effect waves-light red btn doggie-update-submit"
+                    id="27"
+                    data-v_id="14"
+                    type="submit"
+                    onClick={() => history.goBack()}
+                  >
+                    Cancel
                 </a>
 
-                {data.user.isActive && (
-                  <button
-                    className="waves-effect waves-light btn doggie-update-submit"
-                    id="27"
-                    data-v_id="14"
-                    type="submit"
-                    onClick={() => {
-                      handleFormSubmit(false);
-                    }}
-                  >
-                    De-Activate {data.user.username}
-                  </button>
-                )}
+                  {data.user.isActive && (
+                    <button
+                      className="waves-effect waves-light btn doggie-update-submit"
+                      id="27"
+                      data-v_id="14"
+                      type="submit"
+                      onClick={() => {
+                        handleFormSubmit(false);
+                      }}
+                    >
+                      De-Activate {data.user.username}
+                    </button>
+                  )}
 
-                {!data.user.isActive && (
-                  <button
-                    className="waves-effect waves-light btn doggie-update-submit"
-                    id="27"
-                    data-v_id="14"
-                    type="submit"
-                    onClick={() => {
-                      handleFormSubmit(true);
-                    }}
-                  >
-                    Activate {data.user.username}
-                  </button>
-                )}
+                  {!data.user.isActive && (
+                    <button
+                      className="waves-effect waves-light btn doggie-update-submit"
+                      id="27"
+                      data-v_id="14"
+                      type="submit"
+                      onClick={() => {
+                        handleFormSubmit(true);
+                      }}
+                    >
+                      Activate {data.user.username}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-      <div className="col s12 m4 l2"></div>
+        )}
+        <div className="col s12 m4 l2"></div>
+      </div>
     </div>
   );
 }

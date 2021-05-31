@@ -73,3 +73,9 @@ nav .nav-wrapper {
         font-size: 15px;
     }
 }
+
+@media only screen and (max-width: 668px) {
+    .username {
+        display: none;
+    }
+}

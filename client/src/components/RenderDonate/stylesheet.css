@@ -26,9 +26,18 @@
     align-items: center;
   }
 
+  .card{
+    justify-content: center;
+  }
+
   .card .card-image .card-title {
     color: #ffd60a;
     background-color: rgb(69, 57, 10);
     align-items: center;
-    
+  }
+
+  .card-image {
+    max-width: 14em;
+    max-height: auto;
+    margin: 3em;
   }

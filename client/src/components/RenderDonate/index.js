@@ -5,7 +5,7 @@ import './stylesheet.css';
 function RenderDonate() {
   return (
     <div className="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
-      <div className="col s12 m">
+      <div className="col s12 m center">
         <div className="card">
           <div className="card-image">
             <img

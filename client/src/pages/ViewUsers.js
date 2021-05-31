@@ -33,7 +33,7 @@ function ViewUsers() {
   if (error) return `GET_USERS Error: ${error.message}`;
 
   return (
-    <>
+    <div className="container user-table-container ">
       <div>
         <br />
         {isAdmin && (
@@ -121,7 +121,7 @@ function ViewUsers() {
           </table>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
