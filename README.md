@@ -1,70 +1,46 @@
-# Happy Tails V2
+# Happy Tails v2.0
 
-## Description:
+## Table of Contents
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [License](#license)
+5. [Contributing](#contributing)
+6. [Tests](#tests)
+7. [Questions](#questions)
 
-Budget Tracker v2 is ...
+## Description
+This is a task tracking site that was created using React and Apollo Provider.  Happy Tails v2.0 serves the same purpose as the original Happy Tails site, but includes added features and improved performance.  This site is currently hosted on Heroku at [Heroku Deployment](https://happytails-v2.herokuapp.com/https://happytails-v2.herokuapp.com/) and can also be run locally using the files located in the GitHub repository [Github](https://github.com/es2013/happy-tails).  To learn how to run this server locally please continue reading the [Installation](#installation) and [Usage](#usage) sections.
 
-
-## Packages:
-### Packages installed on the client side:
-1. apollo-boost graphql graphql-tag @apollo/react-hooks
-2. react-router-dom
-3. jwt-decode
-4. react-select
-5. react-dropdown --save
-6. --save @stripe/react-stripe-js @stripe/stripe-js
-7. react-bootstrap bootstrap
-8. apollo-client apollo-cache-inmemory apollo-link-context
-9. @apollo/client
-10. Apollo-upload-client
-
-### Packages installed on the server side:
-1. apollo-server-express graphql
-2. jsonwebtoken
-3. mongoose
-4. bcrypt
-5. graphql-upload
-6. uuid
-
-### Packages installed at the root of the application
-1. if-env
-2. -D concurrently
+## Installation
 
 
-## Usage and Reposity:
-
-This application is deployed at https://happytails-v2.herokuapp.com/
-<br>The Happy Tails v2 repository is located at: https://github.com/es2013/happytails-v2
+## Usage
 
 
-## What the Happy Tails V2 Application Looks Like:
+## License
+![Apache license](https://img.shields.io/badge/license-Apache2.0-brightgreen)
+[Apache license](http://www.apache.org/licenses/)
+   Copyright [yyyy] [name of copyright owner]
 
-#### The signup page:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-Signup.gif)<br><br>
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+   
+        http://www.apache.org/licenses/LICENSE-2.0
+   
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
 
-#### Updating a dog's activities:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-UpdateDogActivities.gif)<br><br>
+## Contributing
 
-#### Updating a user's active/inactive status:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-UpdateUserStatus.gif)<br><br>
 
-#### Filtering by dog demeanor or dog status:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-FiltersDemeanorStatus.gif)<br><br>
+## Tests
 
-#### Filtering by dog activities:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-FiltersByActivities.gif)<br><br>
 
-#### Admin user adding a dog to the database:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-AddADog.gif)<br><br>
-
-#### Link the the donation page:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-DonateLink.gif)<br><br>
-
-#### Making sure only an admin user can perform admin tasks:
->![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-AdminAndLoggedInStatus.gif)<br><br>
-
-#### Validating input:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-InputValidation.gif)<br><br>
-
-#### Signup Page: Checking to make sure only an active user can login:
-![Mockup](https://github.com/es2013/happytails-v2/blob/main/public/assets/images/HappyTails2-InactiveLogin.gif)<br><br>
+## Questions
+For questions or concerns regarding this project or future collaborations please contact any of the authors via GitHub at:
+![Nathan Stephens](https://github.com/nystephens), ![Shellie Nguyen](https://github.com/shellienguyen), ![Erika Salcedo](https://github.com/es2013), ![Toby Moore](https://github.com/Tobydawg), ![Alex Reveles](https://github.com/alexreveles)
