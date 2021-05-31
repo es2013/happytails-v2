@@ -66,7 +66,7 @@ WHEN I select the See User button I am redirected to a page with a users table a
 WHEN I click the Update button for a user I am taken to a page with that user's information and a button to activate or de-activate the selected user<br>
 
 
-This application was created using React.js and Apollo to launch the server and connect to a graphql database hosted on MongoDB Altas.  The database is called "happy_tails".  All user, canine, and activity data is stored in happy_tails.  The live app is currently deployed on Heroku, using the JAWSDB add on to store data.  All passwords have been encrypted using the bcrypt Node.js package.  The HTML pages and components are generated using React.js.
+This application was created using React.js and Apollo to launch the server and connect to a graphql database hosted on MongoDB Altas.  The database is called "happy-tails".  All user, canine, and activity data is stored in happy-tails.  The live app is currently deployed on Heroku, using the JAWSDB add on to store data.  All passwords have been encrypted using the bcrypt Node.js package.  The HTML pages and components are generated using React.js.
 
 
 ## Installation
