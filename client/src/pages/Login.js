@@ -61,7 +61,7 @@ function Login() {
   };
 
   return (
-    <div className="container my-1">
+    <div className="login-container container my-1">
       <Link className="login-signup-toggle" to="/signup">
         ← Go to Signup
       </Link>

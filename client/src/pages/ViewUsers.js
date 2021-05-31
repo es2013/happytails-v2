@@ -33,7 +33,7 @@ function ViewUsers() {
   if (error) return `GET_USERS Error: ${error.message}`;
 
   return (
-    <>
+    <div className="container user-table-container ">
       <div>
         <br />
         {isAdmin && (
@@ -42,7 +42,7 @@ function ViewUsers() {
           </h3>
         )}
 
-        {!isAdmin && <h4 className="flow-text">You are not an Admin!</h4>}
+        {!isAdmin && <h3 className="center-align">User is not an Admin!</h3>}
 
         {isAdmin && (
           <table className="striped z-depth-2 container center-align">
@@ -121,7 +121,7 @@ function ViewUsers() {
           </table>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

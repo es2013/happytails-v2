@@ -97,93 +97,95 @@ function SingleDog(props) {
   if (error) return `GET_DOG Error: ${error.message}`;
 
   return (
-    <div className="row">
-      {!dogData && <h3>No dog selected!</h3>}
+    <div className="container dog-container">
+      <div className="row dog-card-row">
+        {!dogData && <h3>No dog selected!</h3>}
 
-      <div className="col s12 m4 l2"></div>
+        <div className="col s12 m4 l2"></div>
 
-      {!token && (
-        <div className="col s12 m4 l8 center">
-          <h3>You are not logged in!</h3>
-        </div>
-      )}
+        {!token && (
+          <div className="col s12 m4 l8 center">
+            <h3>You are not logged in!</h3>
+          </div>
+        )}
 
-      {token && (
-        <div className="col s12 m4 l8 center">
-          <div className="card z-depth-2">
-            <div className="card-content">
-              <h3 className="update-text-name flow-text"><span>{dogData.name}</span></h3>
-              <img
-                className="single-dog-image"
-                src={
-                  dogData.image
-                    ? `${process.env.REACT_APP_API_BASE_URL}/${dogData.image}`
-                    : `/dogs/${dogData.name}.jpg`
-                }
-                alt={`${dogData.name}`}
-                width="150"
-                heigh="150"
-              />
-            </div>
+        {token && (
+          <div className="col s12 m4 l8 center">
+            <div className="card z-depth-2">
+              <div className="card-content">
+                <h3 className="update-text-name flow-text"><span>{dogData.name}</span></h3>
+                <img
+                  className="single-dog-image"
+                  src={
+                    dogData.image
+                      ? `${process.env.REACT_APP_API_BASE_URL}/${dogData.image}`
+                      : `/dogs/${dogData.name}.jpg`
+                  }
+                  alt={`${dogData.name}`}
+                  width="150"
+                  heigh="150"
+                />
+              </div>
 
-            <div className="card-action">
-              <p className="flow-text">
-                Please check off the activities that have been completed
+              <div className="card-action">
+                <p className="flow-text">
+                  Please check off the activities that have been completed
               </p>
 
-              <label className="check activity-checkbox">
-                <input
-                  name="potty"
-                  onClick={handlePottyChange}
-                  type="checkbox"
-                  className="filled-in"
-                  id="potty-check"
-                  checked={dogPotty}
-                />
-                <span className="flow-text">Potty</span>
-              </label>
+                <label className="check activity-checkbox">
+                  <input
+                    name="potty"
+                    onClick={handlePottyChange}
+                    type="checkbox"
+                    className="filled-in"
+                    id="potty-check"
+                    checked={dogPotty}
+                  />
+                  <span className="flow-text">Potty</span>
+                </label>
 
-              <label className="check activity-checkbox">
-                <input
-                  name="walk"
-                  onClick={handleWalkChange}
-                  type="checkbox"
-                  className="filled-in"
-                  id="walk-check"
-                  checked={dogWalk}
-                />
-                <span className="flow-text">Walk</span>
-              </label>
+                <label className="check activity-checkbox">
+                  <input
+                    name="walk"
+                    onClick={handleWalkChange}
+                    type="checkbox"
+                    className="filled-in"
+                    id="walk-check"
+                    checked={dogWalk}
+                  />
+                  <span className="flow-text">Walk</span>
+                </label>
 
-              <br></br>
-              <div className="button-container">
-                <a
-                  className="waves-effect waves-light red btn doggie-update-submit"
-                  id="27"
-                  data-v_id="14"
-                  type="submit"
-                  onClick={() => history.goBack()}
-                >
-                  Cancel
+                <br></br>
+                <div className="button-container">
+                  <a
+                    className="waves-effect waves-light red btn doggie-update-submit"
+                    id="27"
+                    data-v_id="14"
+                    type="submit"
+                    onClick={() => history.goBack()}
+                  >
+                    Cancel
                 </a>
-                <button
-                  className="waves-effect waves-light btn doggie-update-submit"
-                  id="27"
-                  data-v_id="14"
-                  type="submit"
-                  onClick={() => {
-                    handleFormSubmit();
-                  }}
-                  disabled={!dogWalk && !dogPotty}
-                >
-                  Update
+                  <button
+                    className="waves-effect waves-light btn doggie-update-submit"
+                    id="27"
+                    data-v_id="14"
+                    type="submit"
+                    onClick={() => {
+                      handleFormSubmit();
+                    }}
+                    disabled={!dogWalk && !dogPotty}
+                  >
+                    Update
                 </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-      <div className="col s12 m4 l2"></div>
+        )}
+        <div className="col s12 m4 l2"></div>
+      </div>
     </div>
   );
 }

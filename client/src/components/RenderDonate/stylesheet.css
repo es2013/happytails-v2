@@ -1,22 +1,21 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  .flexbox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
+  box-sizing: border-box;
+}
+
+.flexbox {
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  align-items: center;
+  justify-content: center;
+}
 
   .row {
     align-items: center;
     justify-content: center;
   }
-  
-.row {
-  margin: 2px;
-}
   
   .donateP{
     color: rgb(0, 78, 137);
@@ -26,9 +25,19 @@
     align-items: center;
   }
 
+  .card{
+    justify-content: center;
+    margin: 3em;
+  }
+
   .card .card-image .card-title {
     color: #ffd60a;
     background-color: rgb(69, 57, 10);
     align-items: center;
-    
+  }
+
+  .card-image {
+    max-width: 14em;
+    max-height: auto;
+    margin: 3em;
   }

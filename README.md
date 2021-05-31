@@ -1,9 +1,9 @@
-## happytails-v2
 # Happy Tails V2
 
 ## Description:
 
 Happy Tails-V2 is a scalable React application created by dog lovers to solve the many issues facing dog shelters today.  Happy Tails-V2 helps shelters digitally track whether a dog has had their morning & evening walk as well as their morning & evening potty break.  In addition, Happy Tails-V2 records the demeanor of the dog to help administrators pair them with a compatible volunteer.  Happy Tails-V2 allows for volunteers & adminstrators to track their activity to make sure all the canines needs are met. Happy Tails-V2 is the perfect App for any shelter needing to track their dogs personality, volunteer status, walks & potty breaks combined with volunteer and administrative functions. Dogs, volunteers, and shelters alike LOVE Happy Tails-V2! Use Happy Tails today to more effectively keep your dogs happy and healthy! 
+
 
 
 ## Packages:

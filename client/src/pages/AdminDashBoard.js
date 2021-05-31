@@ -26,13 +26,17 @@ function AdminDashboard() {
   const today = new Date();
   const nowIsPM = allHelpers.isPM(today);
 
-  function seeUsers() {}
-
-  function seeRecords() {}
+  // function seeRecords() {}
 
   return (
     <div className="dashboard-container">
-      <AdminMessage canineCount={canineCount}/>
+      {isAdmin && <AdminMessage canineCount={canineCount}/>}
+
+      {!isAdmin && (
+        <div className="center-align">
+          <br /><h4>User is not an admin!</h4><br />
+        </div>
+      )}
 
       {token && (
         <div className="center-align">
@@ -60,7 +64,6 @@ function AdminDashboard() {
 
             <button
               className="btn admin-btn see-users-btn"
-              onClick={seeUsers}
               type="button"
             >
               <Link to="/view-users" className="admin-link see-users">

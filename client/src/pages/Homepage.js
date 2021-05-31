@@ -17,8 +17,8 @@ function Homepage() {
   return (
     <div>
       <Hero />
-      <UserMessage />
       <section className="container center-align">
+      <UserMessage />
         <TableAm dogData={dogData} />
         <br /><br />
         <TablePm dogData={dogData} />
