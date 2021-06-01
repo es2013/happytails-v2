@@ -13,7 +13,7 @@ function RenderDonate() {
               className="card-img-top"
               alt="happy-tails-project"
             />
-            <p className="card-title">Going to the Moon!</p>
+            {/* <p className="card-title">Going to the Moon!</p> */}
           </div>
           <div className="card-content">
             <p className="donateP">
