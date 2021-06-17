@@ -33,10 +33,6 @@ function Login() {
       const isAdmin = mutationResponse.data.login.user.isAdmin;
       const isActive = mutationResponse.data.login.user.isActive;
 
-      // The useHistory hook gives access to the history instance that we may
-      // use to navigate. Use this instead of window.location.assign('/');
-      // in auth.js so we do not refresh the page
-
       if (!isActive) {
         alert('Your user status is Inactive!');
         history.push('/logout');

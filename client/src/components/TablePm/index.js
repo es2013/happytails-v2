@@ -2,7 +2,7 @@ import React from 'react';
 import dogImage from '../../images/shiba-inu-logo-trans-bg.png';
 import allHelpers from '../../utils/helpers';
 import { Link } from 'react-router-dom';
-import './stylesheet.css';
+import '../TableAm/stylesheet.css';
 import { useAuth } from '../../utils/GlobalState';
 
 const convertActivity = (activity) => {

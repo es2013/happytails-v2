@@ -25,9 +25,6 @@ function SingleDog(props) {
           },
         });
         console.log('!!! Walk Error: ', { error, data });
-        // if (error) {
-        //   throw error.message
-        // }
       }
       if (dogPotty) {
         const { error, data } = await addPotty({
@@ -68,6 +65,8 @@ function SingleDog(props) {
   }, [data]);
 
   useEffect(() => {
+    // If only a single record should be shown we could add a conditional here to check for most recent activity and display only that.
+
     if (dogData.potty) {
       dogData.potty.forEach((p) => {
         if (

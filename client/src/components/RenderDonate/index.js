@@ -23,7 +23,7 @@ function RenderDonate() {
             </p>
           </div>
           <div className="card-action">
-            <a href="https://licensepet.com/wl3/don/snbrwd/436" target="_blank">
+            <a href="https://licensepet.com/wl3/don/snbrwd/436" target="_blank" rel="noreferrer">
               Click here to Donate today🐶{' '}
             </a>
           </div>
