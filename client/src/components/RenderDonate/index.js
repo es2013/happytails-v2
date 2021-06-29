@@ -1,35 +1,34 @@
 import React from 'react';
 import './stylesheet.css';
+import happyDoggo from '../../images/happy-doggo-on-walk.jpg';
 
 
 function RenderDonate() {
   return (
-    <div className="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
-      <div className="col s12 m center">
-        <div className="card">
-          <div className="card-image">
-            <img
-              src={require('../../images/doggie.png').default}
-              className="card-img-top"
-              alt="happy-tails-project"
-            />
-            {/* <p className="card-title">Going to the Moon!</p> */}
-          </div>
-          <div className="card-content">
-            <p className="donateP">
-              Making a small donation today will help our fury friends get the
-              love they deserve and allow them to continue having happy tails
-              🐶.
+    <section>
+      <div className="row">
+        <div className="col s12 m center">
+          <div className="speech-bubble">
+            <p className="donatetext">
+              Make a donation today to help our furry friends at the Santa Barbara County Animal Services get the
+              love they deserve and make some happy tails!  Any amount is enough, we appreciate your generosity.
+              🐶
             </p>
-          </div>
-          <div className="card-action">
-            <a href="https://licensepet.com/wl3/don/snbrwd/436" target="_blank">
+            <a className="donatelink" href="https://licensepet.com/wl3/don/snbrwd/436" target="_blank">
               Click here to Donate today🐶{' '}
             </a>
           </div>
         </div>
       </div>
-    </div>
+
+      <div className="row">
+        <div className="col s12 m center">
+          <img className="happy-doggo image-border" src={happyDoggo}></img>
+        </div>
+      </div>
+    </section>
+
+
   );
 }
 

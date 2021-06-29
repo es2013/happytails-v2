@@ -17,12 +17,17 @@
   justify-content: center;
 }
   
-.donateP{
-  color: rgb(0, 78, 137);
+.donatetext{
+  color: white;
   font-weight: 400;
   font-family: 'Karla', sans-serif;
-  font-size: large;
+  font-size: larger;
   align-items: center;
+}
+
+.donatelink {
+  color: white;
+  font-size: x-large;
 }
 
 .card{
@@ -40,4 +45,13 @@ align-items: center;
   max-width: 14em;
   max-height: auto;
   margin: 3em;
+}
+
+.happy-doggo {
+  max-height: 500px;
+}
+
+.image-border {
+  border: 10px solid rgba(0,0,0,0.095);
+  border-radius: 25px;
 }
