@@ -12,32 +12,32 @@
   justify-content: center;
 }
 
-  .row {
-    align-items: center;
-    justify-content: center;
-  }
+.row {
+  align-items: center;
+  justify-content: center;
+}
   
-  .donateP{
-    color: rgb(0, 78, 137);
-    font-weight: 400;
-    font-family: 'Karla', sans-serif;
-    font-size: large;
-    align-items: center;
-  }
+.donateP{
+  color: rgb(0, 78, 137);
+  font-weight: 400;
+  font-family: 'Karla', sans-serif;
+  font-size: large;
+  align-items: center;
+}
 
-  .card{
-    justify-content: center;
-    margin: 3em;
-  }
+.card{
+  justify-content: center;
+  margin: 3em;
+}
 
-  .card .card-image .card-title {
-    color: #ffd60a;
-    background-color: rgb(69, 57, 10);
-    align-items: center;
-  }
+.card .card-image .card-title {
+color: #ffd60a;
+background-color: rgb(69, 57, 10);
+align-items: center;
+}
 
-  .card-image {
-    max-width: 14em;
-    max-height: auto;
-    margin: 3em;
-  }
+.card-image {
+  max-width: 14em;
+  max-height: auto;
+  margin: 3em;
+}
