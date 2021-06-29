@@ -35,7 +35,7 @@ function AuthenticationGuard() {
   const [token, setToken] = useState(null);
   const [currentUsername, setCurrentUsername] = useState(null);
 
-  const { data} = useQuery(GET_CURRENT_USER, {
+  const { data } = useQuery(GET_CURRENT_USER, {
     variables: { username: currentUsername },
   });
 
@@ -66,21 +66,21 @@ function AuthenticationGuard() {
     >
       <Router>
         <StoreProvider>
-          <Navigation />
-          <Switch>
-            <Route exact path="/" component={Homepage} />
-            <Route path="/admin-dashboard" component={AdminDashboard} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/logout" component={Logout} />
-            <Route path="/single-dog/:id" component={SingleDog} />
-            <Route path="/update-user/:username" component={UpdateUser} />
-            <Route exact path="/add-dog" component={AdminAddDog} />
-            <Route exact path="/view-users" component={ViewUsers} />
-            <Route exact path="/donate" component={Donate} />
-          </Switch>
-          <Footer />
+            <Navigation />
+            <Switch>
+              <Route exact path="/" component={Homepage} />
+              <Route path="/admin-dashboard" component={AdminDashboard} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/logout" component={Logout} />
+              <Route path="/single-dog/:id" component={SingleDog} />
+              <Route path="/update-user/:username" component={UpdateUser} />
+              <Route exact path="/add-dog" component={AdminAddDog} />
+              <Route exact path="/view-users" component={ViewUsers} />
+              <Route exact path="/donate" component={Donate} />
+            </Switch>
+            <Footer />
         </StoreProvider>
       </Router>
     </AuthContext.Provider>
