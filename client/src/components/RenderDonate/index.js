@@ -15,7 +15,7 @@ function RenderDonate() {
               🐶
             </p>
             <a className="donatelink" href="https://licensepet.com/wl3/don/snbrwd/436" target="_blank">
-              Click here to Donate today🐶{' '}
+              Click here to Donate today💚{' '}
             </a>
           </div>
         </div>
