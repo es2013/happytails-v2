@@ -29,6 +29,9 @@
     color: rgb(18, 106, 237);
     font-family: Tahoma;
     font-weight: bolder;
-    font-size: large;
+    font-size: larger;
 }
 
+.github-link {
+    font-size: smaller;
+}

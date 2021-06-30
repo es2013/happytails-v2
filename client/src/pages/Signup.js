@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../utils/GlobalState';
-import erikaAndFren from '../images/erika-and-fren.png';
+import manyDogs from '../images/many-dog-hero.jpg';
 
 
 function Signup() {
@@ -133,7 +133,7 @@ function Signup() {
       </div>
       <div className="row">
         <div className="col s12 m center">
-          <img className="happy-doggo image-border" src={erikaAndFren}></img>
+          <img className="happy-doggo image-border" src={manyDogs}></img>
         </div>
       </div>
     </div>
