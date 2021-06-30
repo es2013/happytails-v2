@@ -5,8 +5,6 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../utils/GlobalState';
-import manyDogs from '../images/many-dog-hero.jpg';
-
 
 function Signup() {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -50,7 +48,7 @@ function Signup() {
       </Link>
 
       <h2>Signup</h2>
-
+      
       {error ? (
         <div>
           <p className="error-text">Missing input field or username/email is not available!</p>
@@ -130,11 +128,6 @@ function Signup() {
             </button>
           </div>
         </form>
-      </div>
-      <div className="row">
-        <div className="col s12 m center">
-          <img className="happy-doggo image-border" src={manyDogs}></img>
-        </div>
       </div>
     </div>
   );

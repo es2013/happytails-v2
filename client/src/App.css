@@ -155,17 +155,10 @@ button:hover {
 
 .login-container {
   margin: 3em;
-  position: relative;
-  min-height: 100vh;
-}
-
-.content-wrap {
-  padding-bottom: 2.5rem;    /* Footer height */
 }
 
 .dog-container {
   margin: 3em;
-  justify-content: center;
 }
 
 .dog-card-row {
@@ -223,15 +216,6 @@ a:hover {
 .user-table-container {
   margin-bottom: 3em;
   margin-top: 2em;
-}
-
-.happy-doggo {
-  max-height: 400px;
-}
-
-.image-border {
-  border: 10px solid rgba(0,0,0,0.095);
-  border-radius: 25px;
 }
 
 

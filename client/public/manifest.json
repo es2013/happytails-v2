@@ -22,6 +22,5 @@
   "start_url": "/happytails-v2.herokuapp.com/",
   "display": "standalone",
   "theme_color": "#f3d947",
-  "background_color": "#5fa8d3",
-  "orientation": "portrait"
+  "background_color": "#5fa8d3"
 }

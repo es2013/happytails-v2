@@ -1,3 +1,7 @@
+.footer {
+
+}
+
 .page-footer {
     display: flex;
     width: 100%;
@@ -29,9 +33,6 @@
     color: rgb(18, 106, 237);
     font-family: Tahoma;
     font-weight: bolder;
-    font-size: larger;
+    font-size: large;
 }
 
-.github-link {
-    font-size: smaller;
-}
