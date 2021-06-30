@@ -225,6 +225,14 @@ a:hover {
   margin-top: 2em;
 }
 
+.happy-doggo {
+  max-height: 400px;
+}
+
+.image-border {
+  border: 10px solid rgba(0,0,0,0.095);
+  border-radius: 25px;
+}
 
 
 
