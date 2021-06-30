@@ -14,10 +14,13 @@ function Footer() {
               <Link className="donate-link center" to="/donate">
                 Donate
               </Link>
+              <br></br>
+              <Link className="github-link donate-link center" target="_blank" to="https://github.com/es2013/happytails-v2">
+                GitHub
+              </Link>
             </div>
           </div>
           <div>
-            {/* <Link className="donate-link center" to="/donate">Donate</Link> */}
           </div>
         </div>
       </footer>
